@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1023155540439-h969ugp4ka6t16276ao0lk0r2esdvdju.apps.googleusercontent.com</string>
+	<string>1023155540439-u43aocm27ovlfqvpp5m48meg6hk3h7e9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1023155540439-h969ugp4ka6t16276ao0lk0r2esdvdju</string>
+	<string>com.googleusercontent.apps.1023155540439-u43aocm27ovlfqvpp5m48meg6hk3h7e9</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>1023155540439-0e290i55k4278qrk00fpllp6ti6vvsfc.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.mahakalguruji</string>
+	<string>manal.mahakal.com</string>
 	<key>PROJECT_ID</key>
 	<string>manalsoftech-6807e</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1023155540439:ios:fe902af1f1ad9859bffb92</string>
+	<string>1:1023155540439:ios:7341f7f8e70547c0bffb92</string>
 </dict>
 </plist>

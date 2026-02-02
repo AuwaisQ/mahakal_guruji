@@ -87,42 +87,6 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1023155540439:android:1cf11292cc5e9a2dbffb92",
-        "android_client_info": {
-          "package_name": "com.example.mahakalguruji"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1023155540439-5e8jglk059k1eg485q8anhv9beljrcsa.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB80EHlj24xSBxeu9lJBcREVDeCeVd5zR0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1023155540439-5e8jglk059k1eg485q8anhv9beljrcsa.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "1023155540439-3ga7u2n9q68jfvsqe4bei2q84r2hj8g2.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.vendor.mahakal"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:1023155540439:android:9a4a5eeb2abbefdcbffb92",
         "android_client_info": {
           "package_name": "com.vendor.mahakal"

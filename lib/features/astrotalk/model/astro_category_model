@@ -1,0 +1,34 @@
+import 'dart:convert';
+
+class AstroCategoryModel {
+  final int id;
+  final String enName;
+  final String hiName;
+  final String image;
+
+  AstroCategoryModel({
+    required this.id,
+    required this.enName,
+    required this.hiName,
+    required this.image,
+  });
+
+  factory AstroCategoryModel.fromRawJson(String str) =>
+      AstroCategoryModel.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory AstroCategoryModel.fromJson(Map<String, dynamic> json) => AstroCategoryModel(
+        id: json["id"] ?? 0,
+        enName: json["en_name"] ?? '',
+        hiName: json["hi_name"] ?? '',
+        image: json["image"] ?? '',
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "en_name": enName,
+        "hi_name": hiName,
+        "image": image,
+      };
+}

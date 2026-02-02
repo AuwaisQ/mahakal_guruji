@@ -1,0 +1,43 @@
+buildscript {
+    ext.kotlin_version = '2.1.0'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.1'
+        classpath 'com.google.gms:google-services:4.4.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
+configurations.all {
+    resolutionStrategy {
+        // Force latest androidx.core for Android 15 support
+        force 'androidx.core:core-ktx:1.17.0'
+        force 'androidx.core:core:1.17.0'
+    }
+}

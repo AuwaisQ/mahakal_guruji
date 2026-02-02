@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB80EHlj24xSBxeu9lJBcREVDeCeVd5zR0',
-    appId: '1:1023155540439:android:1cf11292cc5e9a2dbffb92',
+    appId: '1:1023155540439:android:acd3337e6ad6f687bffb92',
     messagingSenderId: '1023155540439',
     projectId: 'manalsoftech-6807e',
     storageBucket: 'manalsoftech-6807e.appspot.com',
@@ -59,12 +59,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDlNVGYhEaXbf8wnT-rjrNusGikYfB8MWs',
-    appId: '1:1023155540439:ios:fe902af1f1ad9859bffb92',
+    appId: '1:1023155540439:ios:7341f7f8e70547c0bffb92',
     messagingSenderId: '1023155540439',
     projectId: 'manalsoftech-6807e',
     storageBucket: 'manalsoftech-6807e.appspot.com',
     androidClientId: '1023155540439-0e290i55k4278qrk00fpllp6ti6vvsfc.apps.googleusercontent.com',
-    iosClientId: '1023155540439-h969ugp4ka6t16276ao0lk0r2esdvdju.apps.googleusercontent.com',
-    iosBundleId: 'com.example.mahakalguruji',
+    iosClientId: '1023155540439-u43aocm27ovlfqvpp5m48meg6hk3h7e9.apps.googleusercontent.com',
+    iosBundleId: 'manal.mahakal.com',
   );
+
 }
