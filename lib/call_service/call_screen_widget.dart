@@ -85,7 +85,7 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
 
   String? get remoteIdentity => call?.remote_identity;
 
-  String? get direction => call?.direction;
+  Direction? get direction => call?.direction;
 
   Call? get call => widget._call ?? _currentCall;
 

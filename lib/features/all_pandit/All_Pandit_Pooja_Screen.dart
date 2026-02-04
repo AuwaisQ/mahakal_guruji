@@ -112,58 +112,87 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
       ),
       borderRadius: BorderRadius.circular(16),
       child: Container(
-        margin: isList ? EdgeInsets.only(bottom: 16) : null,
+        margin: isList ? const EdgeInsets.only(bottom: 16) : null,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.deepOrange.withOpacity(0.1),
-              blurRadius: 15,
-              spreadRadius: 2,
-              offset: Offset(0, 6),
+              color: Colors.deepOrange.withOpacity(0.08),
+              blurRadius: 12,
+              offset: const Offset(0, 6),
             ),
           ],
           border: Border.all(
-            color: Colors.grey.shade100,
-            width: 1,
+            color: Colors.grey.shade200,
+            width: 0.8,
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Image Section with Gradient Overlay
+
+            /// IMAGE SECTION
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(16),
                   ),
                   child: CachedNetworkImage(
                     imageUrl: panditDetails.thumbnail,
-                    height: isList ? 150 : 90,
+                    height: isList ? 150 : 120,
                     width: double.infinity,
-                    fit: BoxFit.fill,
-                    // placeholder: (_, __) => placeholderImage(),
-                    // errorWidget: (_, __, ___) => NoImageWidget()
+                    fit: BoxFit.cover,
+
+                    /// PLACEHOLDER
+                    placeholder: (_, __) => Container(
+                      height: isList ? 150 : 120,
+                      color: Colors.grey.shade200,
+                      child: const Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.deepOrange,
+                        ),
+                      ),
+                    ),
+
+                    /// ERROR IMAGE
+                    errorWidget: (_, __, ___) => Container(
+                      height: isList ? 150 : 120,
+                      color: Colors.grey.shade200,
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.image_not_supported_outlined,
+                              size: 40, color: Colors.grey),
+                          SizedBox(height: 6),
+                          Text(
+                            "Image not available",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
 
-                // Gradient Overlay
+                /// SOFT GRADIENT OVERLAY
                 Container(
-                  height: isList ? 150 : 90,
+                  height: isList ? 150 : 120,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(16),
                     ),
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
                         Colors.transparent,
-                        Colors.black.withOpacity(0.2),
+                        Colors.black.withOpacity(0.15),
                       ],
                     ),
                   ),
@@ -171,49 +200,41 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
               ],
             ),
 
-            // Details Section
+            /// DETAILS
             Padding(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Pooja Name with Icon
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          panditDetails.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                            height: 1.3,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8),
 
-                  // Location
-                  if (panditDetails.poojaVenue != null && panditDetails.poojaVenue!.isNotEmpty)
+                  /// NAME
+                  Text(
+                    panditDetails.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
+                  ),
+
+                  const SizedBox(height: 6),
+
+                  /// LOCATION
+                  if (panditDetails.poojaVenue?.isNotEmpty ?? false)
                     Row(
                       children: [
-                        Icon(
-                          Icons.location_on_outlined,
-                          size: 16,
-                          color: Colors.grey.shade600,
-                        ),
-                        SizedBox(width: 6),
+                        Icon(Icons.location_on_outlined,
+                            size: 16, color: Colors.grey.shade600),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: Text(
                             panditDetails.poojaVenue!,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 13,
                               color: Colors.grey.shade600,
                             ),
                           ),
@@ -221,29 +242,12 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                       ],
                     ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 12),
 
-                  // Booking Button with Enhanced Design
-                  Container(
-                    height: 40,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.deepOrange,
-                          Colors.orange.shade600,
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.deepOrange.withOpacity(0.3),
-                          blurRadius: 8,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
+                  /// BOOK NOW BUTTON
+                  SizedBox(
+                    height: 42,
+                    width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -257,38 +261,20 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
+                        elevation: 0,
+                        backgroundColor: Colors.deepOrange,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        padding: EdgeInsets.zero,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.calendar_today,
-                            color: Colors.white,
-                            size: 18,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            "Book Now",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Icon(
-                            Icons.arrow_forward_rounded,
-                            color: Colors.white,
-                            size: 18,
-                          ),
-                        ],
+                      child: Text(
+                        "Book Now",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.4,
+                          color: Colors.white
+                        ),
                       ),
                     ),
                   ),
@@ -330,7 +316,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
       backgroundColor: Colors.white,
       body: isLoading
           ? const Center(child: CircularProgressIndicator(color: Colors.orange))
-          : fullList.isEmpty ? NoDataScreen(title: 'No Pooja', subtitle: 'Data Not Available',) : CustomScrollView(
+          : fullList.isEmpty ? const NoDataScreen(title: 'No Pooja', subtitle: 'Data Not Available',) : CustomScrollView(
         controller: widget.scrollController,
         slivers: [
           // ----------------- TOP SEARCH APPBAR -----------------
@@ -356,10 +342,10 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                       fontWeight: FontWeight.bold),
                 ),
 
-                Spacer(),
+                const Spacer(),
 
                 _buildSearchToggle(),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 _buildGridToggle(),
               ],
             ),
@@ -442,7 +428,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.08),
                       blurRadius: 15,
-                      offset: Offset(0, 5),
+                      offset: const Offset(0, 5),
                     ),
                   ],
                 ),
@@ -552,7 +538,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                 color: Colors.deepOrange.shade800,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Description
             Padding(
@@ -600,10 +586,10 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
     return GestureDetector(
       onTap: () => _onCategoryTap(index, category),
       child: Container(
-        margin: EdgeInsets.only(right: 8),
+        margin: const EdgeInsets.only(right: 8),
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          duration: const Duration(milliseconds: 300),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
             gradient: isSelected
                 ? LinearGradient(
@@ -632,14 +618,14 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
               BoxShadow(
                 color: Colors.deepOrange.withOpacity(0.3),
                 blurRadius: 10,
-                offset: Offset(0, 4),
+                offset: const Offset(0, 4),
               ),
             ]
                 : [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.1),
                 blurRadius: 6,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
               ),
             ],
           ),
@@ -648,7 +634,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
             children: [
               // Icon with background circle
               Container(
-                padding: EdgeInsets.all(6),
+                padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: isSelected
@@ -663,7 +649,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                   color: isSelected ? Colors.white : Colors.deepOrange,
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Text(
                 shortName,
                 style: TextStyle(
@@ -721,21 +707,21 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
   Color _getCategoryColor(String categoryName) {
     switch (categoryName) {
       case "Samsya Nivaran Puja":
-        return Color(0xFF1DD1A1); // Emerald Green
+        return const Color(0xFF1DD1A1); // Emerald Green
       case "Vastu Puja":
-        return Color(0xFF5F27CD); // Royal Purple
+        return const Color(0xFF5F27CD); // Royal Purple
       case "Manglik Puja":
-        return Color(0xFFFF9F43); // Orange
+        return const Color(0xFFFF9F43); // Orange
       case "Graha Shanti":
-        return Color(0xFFFF4757); // Vibrant Red
+        return const Color(0xFFFF4757); // Vibrant Red
       case "Kundli Milan":
-        return Color(0xFF2E86DE); // Ocean Blue
+        return const Color(0xFF2E86DE); // Ocean Blue
       case "Remedies":
-        return Color(0xFF10AC84); // Forest Green
+        return const Color(0xFF10AC84); // Forest Green
       case "Gemstone":
-        return Color(0xFFFF6B9D); // Hot Pink
+        return const Color(0xFFFF6B9D); // Hot Pink
       case "Other Pujas":
-        return Color(0xFFFECA57); // Golden Yellow
+        return const Color(0xFFFECA57); // Golden Yellow
       default:
         return Colors.deepOrange;
     }
@@ -847,7 +833,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage('https://astromanch.com/public/storage/images/blog_2531759311506.webp'),
+          image: const NetworkImage('https://astromanch.com/public/storage/images/blog_2531759311506.webp'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withOpacity(0.4), // Dark overlay for better text visibility
@@ -910,7 +896,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
 
             // NAME + STATS
             Expanded(
@@ -931,15 +917,15 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
 
                   // Stats with better styling
                   Row(
                     children: [
                       _buildStatWithIcon(Icons.work_history, "6+ Yrs", "Experience"),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       _buildStatWithIcon(Icons.people, "10K+", "Devotees"),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       _buildStatWithIcon(Icons.favorite, "1.2K", "Followers"),
                     ],
                   ),
@@ -957,7 +943,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
 
   Widget _buildStatWithIcon(IconData icon, String value, String label) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.15),
         borderRadius: BorderRadius.circular(10),
@@ -972,10 +958,10 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(icon, size: 12, color: Colors.white),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               Text(
                 value,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -983,7 +969,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
               ),
             ],
           ),
-          SizedBox(height: 2),
+          const SizedBox(height: 2),
           Text(
             label,
             style: TextStyle(
@@ -998,7 +984,7 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
 
   Widget _buildFollowBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.deepOrange,
         borderRadius: BorderRadius.circular(12),
@@ -1006,11 +992,11 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
           BoxShadow(
             color: Colors.deepOrange.withOpacity(0.5),
             blurRadius: 8,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Row(
+      child: const Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.person_add, color: Colors.white, size: 18),
