@@ -4,7 +4,7 @@ import 'package:mahakal/utill/images.dart';
 class AppConstants {
   static const String appName = 'Mahakal.com';
   static const String slogan = 'E-Commerce Marketplace';
-  static const String appVersion = '12.33';
+  static const String appVersion = '12.35';
 
   static const String otherBaseUrl = 'https://hotels.mahakal.com';
   // static const String baseUrl = 'https://uat.pavtr.in';

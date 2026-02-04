@@ -31,8 +31,8 @@ android {
     }
 
     defaultConfig {
-        applicationId = "manal.mahakal.com"
-        minSdkVersion = flutter.minSdkVersion
+        applicationId = "manal.mahakal.guruji"
+        minSdk = 23
         targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName

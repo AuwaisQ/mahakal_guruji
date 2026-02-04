@@ -83,7 +83,7 @@ class MoreHorizontalSection extends StatelessWidget {
                         title: getTranslated('orders', context),
                         navigateTo: OrderScreen(
                           barIndex: 0,
-                          orderIndex: 111,
+                          orderIndex: 4,
                         ),
                         count: 1,
                         hasCount: false,
