@@ -1,2 +1,0 @@
-/Users/saudmirza/Flutter Projects/Mahakal_user_app/android/app/.cxx/Debug/m35h2r3i/x86_64/CMakeFiles/edit_cache.dir
-/Users/saudmirza/Flutter Projects/Mahakal_user_app/android/app/.cxx/Debug/m35h2r3i/x86_64/CMakeFiles/rebuild_cache.dir

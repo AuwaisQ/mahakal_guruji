@@ -2,7 +2,7 @@ name: mahakal
 description: A new Flutter setup application for starting a project.
 
 publish_to: 'none'
-version: 2.1.1+56
+version: 0.0.1+1
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -46,7 +46,7 @@ dependencies:
   flutter_callkit_incoming: ^2.5.8
 
   # FIREBASE
-  firebase_core: ^4.0.0
+  firebase_core: ^4.4.0
   firebase_messaging: ^16.0.0
   firebase_auth: ^6.0.1
   firebase_analytics: ^12.0.0
