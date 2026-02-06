@@ -95,7 +95,7 @@ class _AuthScreenState extends State<AuthScreen>
                         Navigator.of(Get.context!).pushReplacement(
                             CupertinoPageRoute(
                                 builder: (BuildContext context) =>
-                                    const PanditBottomBar(pageIndex: 0, panditId: 22, sellerId: 123, astroImage: '', otherSkills: [],),));
+                                    const PanditBottomBar(pageIndex: 0, panditId: 3, sellerId: 188, astroImage: '',),));
                         Provider.of<BannerController>(Get.context!,
                                 listen: false)
                             .getBannerList(true);
@@ -533,7 +533,7 @@ class _AuthScreenState extends State<AuthScreen>
             .getUserInfo(context);
         Navigator.pushAndRemoveUntil(
             Get.context!,
-            CupertinoPageRoute(builder: (_) => const PanditBottomBar(pageIndex: 0, panditId: 22, sellerId: 123, astroImage: '', otherSkills: [],),),
+            CupertinoPageRoute(builder: (_) => const PanditBottomBar(pageIndex: 0, panditId: 3, sellerId: 188, astroImage: '',),),
             (route) => false);
       }
     } else {

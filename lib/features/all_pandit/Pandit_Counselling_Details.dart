@@ -1,12 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../data/datasource/remote/http/httpClient.dart';
 import '../../main.dart';
 import '../../utill/app_constants.dart';
+import '../../utill/devotees_count_widget.dart';
 import '../../utill/razorpay_screen.dart';
 import '../profile/controllers/profile_contrroller.dart';
 import 'Counselling_Form_Submit.dart';
@@ -20,7 +22,7 @@ class PanditCounsellingDetails extends StatefulWidget {
   String gurujiId;
   String slug;
 
-   PanditCounsellingDetails({super.key,required this.gurujiId,required this.slug});
+  PanditCounsellingDetails({super.key,required this.gurujiId,required this.slug});
 
   @override
   State<PanditCounsellingDetails> createState() => _PanditCounsellingDetailsState();
@@ -38,10 +40,10 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
   AllPanditCounsDetailModel? allPanditCounsellingData;
   AllPanditCounsLead? allPanditCounslead;
 
-  String userId = "";
-  String userNAME = "";
-  String userEMAIL = "";
-  String userPHONE = "";
+  String userId = '';
+  String userNAME = '';
+  String userEMAIL = '';
+  String userPHONE = '';
 
   @override
   void initState() {
@@ -58,10 +60,10 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
       isLoading = true;
     });
     try {
-      String  url = "${AppConstants.allPanditCounsellingUrl}${widget.gurujiId}&slug=${widget.slug}";
+      String  url = '${AppConstants.allPanditCounsellingUrl}${widget.gurujiId}&slug=${widget.slug}';
       final res = await HttpService().getApi(url);
 
-      print("All Pandit Counselling Data $res");
+      print('All Pandit Counselling Data $res');
 
       if (res != null) {
         final allCounsellingData = AllPanditCounsDetailModel.fromJson(res);
@@ -70,15 +72,15 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
           allPanditCounsellingData = allCounsellingData;
           isLoading = false;
         });
-        print("${allPanditCounsellingData}");
+        print('${allPanditCounsellingData}');
       } else {
-        print("Response is null");
+        print('Response is null');
         setState(() {
           isLoading = false;
         });
       }
     } catch (e) {
-      print("fetching new vendor $e");
+      print('fetching new vendor $e');
       setState(() {
         isLoading = false;
       });
@@ -133,21 +135,21 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
     }
 
     final Map<String, dynamic> data = {
-      "service_id": "${allPanditCounsellingData?.counselling?.counsellingPackage?.serviceId}",
-      "guruji_id": "${allPanditCounsellingData?.counselling?.counsellingPackage?.panditId}",
-      "final_amount": "${allPanditCounsellingData?.counselling?.counsellingPackage?.price}",
-      "payment_id": isSuccess ? "$paymentId" : "wallet"
+      'service_id': '${allPanditCounsellingData?.counselling?.counsellingPackage?.serviceId}',
+      'guruji_id': '${allPanditCounsellingData?.counselling?.counsellingPackage?.panditId}',
+      'final_amount': '${allPanditCounsellingData?.counselling?.counsellingPackage?.price}',
+      'payment_id': isSuccess ? '$paymentId' : 'wallet'
     };
 
-    print("Lead Req Data: $data");
+    print('Lead Req Data: $data');
 
     try {
-      final res = await HttpService().postApi("${AppConstants.allPanditCounsellingLeadUrl}", data);
-      print("Lead Update Data: $res");
+      final res = await HttpService().postApi('${AppConstants.allPanditCounsellingLeadUrl}', data);
+      print('Lead Update Data: $res');
 
       if (res['status'] == true) {
         allPanditCounslead = AllPanditCounsLead.fromJson(res);
-        print("Lead Id: ${allPanditCounslead?.orderId}");
+        print('Lead Id: ${allPanditCounslead?.orderId}');
 
         if (isSuccess) {
           // Stop loading before navigation
@@ -176,7 +178,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
         }
       }
     } catch (e) {
-      print("Error in Lead Data: $e");
+      print('Error in Lead Data: $e');
       if (isSuccess) {
         setState(() {
           _isNavigatingAfterPayment = false;
@@ -218,7 +220,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                   child: Column(
                     children: [
                       Text(
-                        "Booking Confirmation",
+                        'Booking Confirmation',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -239,7 +241,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
 
                 /// SERVICE NAME
                 Text(
-                  allPanditCounsellingData?.counselling?.name ?? "",
+                  allPanditCounsellingData?.counselling?.name ?? '',
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -253,19 +255,19 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
 
                 /// BOOKING INFO
                 _infoRow(
-                  "Booking Date",
+                  'Booking Date',
                   DateFormat('dd MMMM, EEEE').format(DateTime.now()),
                 ),
                 _infoRow(
-                  "Guruji",
-                  allPanditCounsellingData?.guruji?.name ?? "",
+                  'Guruji',
+                  allPanditCounsellingData?.guruji?.name ?? '',
                 ),
 
                 const SizedBox(height: 20),
 
                 /// CUSTOMER SECTION
                 Text(
-                  "Customer Details",
+                  'Customer Details',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -275,11 +277,11 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
 
                 const SizedBox(height: 12),
 
-                _infoRow("Name", userNAME),
-                _infoRow("Mobile", userPHONE),
+                _infoRow('Name', userNAME),
+                _infoRow('Mobile', userPHONE),
                 _infoRow(
-                  "Total Amount",
-                  "₹${allPanditCounsellingData?.counselling?.counsellingPackage?.price}",
+                  'Total Amount',
+                  '₹${allPanditCounsellingData?.counselling?.counsellingPackage?.price}',
                   isHighlight: true,
                 ),
 
@@ -299,7 +301,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                           ),
                         ),
                         child: const Text(
-                          "Cancel",
+                          'Cancel',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
@@ -315,17 +317,17 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                         onPressed: () {
                           Navigator.pop(context);
                           razorpayService.openCheckout(
-                            amount: int.parse("${allPanditCounsellingData!.counselling!.counsellingPackage!.price}",),
+                            amount: int.parse('${allPanditCounsellingData!.counselling!.counsellingPackage!.price}',),
                             razorpayKey: AppConstants.razorpayLive,
                             description: 'All Pandit Counselling',
                             onSuccess: (response) {
-                              updateLead(true, response.paymentId ?? "");
+                              updateLead(true, response.paymentId ?? '');
                             },
                             onFailure: (response) {
-                              debugPrint("Payment Failed");
+                              debugPrint('Payment Failed');
                             },
                             onExternalWallet: (response) {
-                              debugPrint("Wallet: ${response.walletName}");
+                              debugPrint('Wallet: ${response.walletName}');
                             },
                           );
                         },
@@ -338,7 +340,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                           elevation: 3,
                         ),
                         child: const Text(
-                          "Confirm & Pay",
+                          'Confirm & Pay',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -370,7 +372,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
 
           /// Label
           Text(
-            "$label:",
+            '$label:',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -405,62 +407,68 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
   @override
   Widget build(BuildContext context) {
     return isLoading ? Scaffold(body: Center(child: CircularProgressIndicator(color: Colors.orange))) : Scaffold(
-      appBar: PreferredSize(
-        preferredSize:  Size.fromHeight(60),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: SafeArea(
-            child: Row(
-              children: [
-                // iOS Style Back Button
-                IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.black,
-                    size: 22,
+        appBar: PreferredSize(
+          preferredSize:  Size.fromHeight(60),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: SafeArea(
+              child: Row(
+                children: [
+                  // iOS Style Back Button
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.black,
+                      size: 22,
+                    ),
                   ),
-                ),
 
-                const Expanded(
-                  child: Center(
-                    child: Text(
-                      "Counselling Details",
-                      style: TextStyle(
-                        color: Colors.deepOrange,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 0.5,
+                  const Expanded(
+                    child: Center(
+                      child: Text(
+                        'Counselling Details',
+                        style: TextStyle(
+                          color: Colors.deepOrange,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.5,
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                const SizedBox(width: 48), // Balance for center title
-              ],
+                  const SizedBox(width: 48), // Balance for center title
+                ],
+              ),
             ),
           ),
         ),
-      ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
-          height: 100,
+        bottomNavigationBar: Container(
+          height: 105,
           width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           decoration: BoxDecoration(
-            color: Colors.white,
+            gradient: LinearGradient(
+              colors: [
+                Colors.white,
+                Colors.deepOrange.shade50,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 10,
-                offset: Offset(0, -2),
+                color: Colors.black.withOpacity(0.12),
+                blurRadius: 12,
+                offset: const Offset(0, -3),
               ),
             ],
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(18),
-              topRight: Radius.circular(18),
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
             ),
           ),
 
@@ -468,289 +476,277 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
 
-              /// Left Side - Service Charge
+              /// 💰 Service Charge
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Service Charge",
+                    'Service Charge',
                     style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black87,
+                      fontSize: 13,
+                      color: Colors.black54,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
                   Text(
-                    "₹ ${allPanditCounsellingData!.counselling!.counsellingPackage!.price} /-",
+                    '₹ ${allPanditCounsellingData!.counselling!.counsellingPackage!.price} /-',
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 22,
                       color: Colors.deepOrange,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.3,
                     ),
                   ),
                 ],
               ),
 
-              /// Space between left & right
               const Spacer(),
 
-              /// Right Side - Buttons
-              Row(
-                children: [
-                  // BACK BUTTON
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade200,
-                      elevation: 0,
-                      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    icon: const Icon(Icons.arrow_back, color: Colors.black87),
-                    label: const Text(
-                      "Back",
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+              /// 👉 Action Buttons
+              /// NEXT (Primary CTA)
+              ElevatedButton(
+                onPressed: () {
+                  updateLead(false, '');
+                  showConfirmationDialog(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  elevation: 4,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
                   ),
-
-                  const SizedBox(width: 12),
-
-                  // NEXT BUTTON
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      updateLead(false, "");
-                      showConfirmationDialog(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepOrange,
-                      elevation: 2,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.white),
-                    label: const Text(
-                      "Next",
+                  backgroundColor: Colors.deepOrange,
+                ),
+                child: Row(
+                  children: const [
+                    Text(
+                      'Continue',
                       style: TextStyle(
+                        fontSize: 15,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(width: 6),
+                    Icon(Icons.arrow_forward_ios,
+                        size: 16, color: Colors.white),
+                  ],
+                ),
               ),
             ],
           ),
-
         ),
-        body:SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
+              SizedBox(height: 10,),
               /// ============ SLIDER ===============
-              Column(
-                children: [
-                  CarouselSlider.builder(
-                    itemCount: allPanditCounsellingData?.images.length,
-                    options: CarouselOptions(
-                      height: 180,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration: Duration(milliseconds: 900),
-                      viewportFraction: 0.9,
-                      enlargeCenterPage: true,
-                      enlargeStrategy: CenterPageEnlargeStrategy.height,
-                      onPageChanged: (index, reason) {
-                        setState(() => activeIndex = index);
-                      },
+              CarouselSlider.builder(
+                itemCount: allPanditCounsellingData?.images?.length,
+                options: CarouselOptions(
+                  height: 180,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 900),
+                  viewportFraction: 1,
+                  enlargeCenterPage: true,
+                  enlargeStrategy: CenterPageEnlargeStrategy.height,
+                  onPageChanged: (index, reason) {
+                    setState(() => activeIndex = index);
+                  },
+                ),
+                itemBuilder: (context, index, realIndex) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 6),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
                     ),
-                    itemBuilder: (context, index, realIndex) {
-                      return Container(
-                        margin: EdgeInsets.symmetric(horizontal: 6),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(14),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              blurRadius: 6,
-                              offset: Offset(0, 3),
-                            )
-                          ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(14),
+                        child: Image.network(
+                          '${allPanditCounsellingData!.images?[index]}',
+                          fit: BoxFit.fill,
+                          width: double.infinity,
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(14),
-                          child: Image.network(
-                            allPanditCounsellingData!.images[index],
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(height: 8),
-
-                  AnimatedSmoothIndicator(
-                    activeIndex: activeIndex,
-                    count: allPanditCounsellingData!.images.length,
-                    effect: ExpandingDotsEffect(
-                      dotHeight: 5,
-                      dotWidth: 5,
-                      activeDotColor: Colors.deepOrange,
-                      dotColor: Colors.grey.shade400,
+                      ),
                     ),
-                  ),
-
-                  SizedBox(height: 12),
-                ],
+                  );
+                },
               ),
+              SizedBox(height: 8),
+
+              Center(
+                child: AnimatedSmoothIndicator(
+                  activeIndex: activeIndex,
+                  count: allPanditCounsellingData!.images!.length,
+                  effect: ExpandingDotsEffect(
+                    dotHeight: 5,
+                    dotWidth: 5,
+                    activeDotColor: Colors.deepOrange,
+                    dotColor: Colors.grey.shade400,
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 12),
 
               /// ==========  POOJA DETAILS ==============
               StatefulBuilder(
                 builder: (context, setState) {
                   return AnimatedSize(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
+                    duration: const Duration(milliseconds: 220),
+                    curve: Curves.easeOutCubic,
+                    alignment: Alignment.topCenter,
                     child: Container(
                       width: double.infinity,
-                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      padding: EdgeInsets.all(16),
+                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      padding: const EdgeInsets.all(12), // ⬅ compact
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Colors.deepOrange.shade100,
                             Colors.deepOrange.shade50,
+                            Colors.white,
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(14),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.deepOrange.shade100.withOpacity(0.5),
-                            blurRadius: 10,
-                            offset: Offset(0, 4),
+                            color: Colors.deepOrange.withOpacity(0.08),
+                            blurRadius: 8,
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
-
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
-                          /// DESCRIPTION
+                          /// DESCRIPTION (compact when collapsed)
                           Text(
-                            "${allPanditCounsellingData?.counselling?.metaDescription}",
-                            style: TextStyle(fontSize: 14, color: Colors.black87),
+                            allPanditCounsellingData?.counselling?.metaDescription ?? '',
+                            maxLines: isExpanded ? null : 2,
+                            overflow:
+                            isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 13,
+                              color: Colors.black87,
+                              height: 1.35,
+                            ),
                           ),
 
-                          SizedBox(height: 12),
+                          const SizedBox(height: 8),
 
-                          /// RATINGS + ARROW
+                          /// RATINGS + TOGGLE
                           Row(
                             children: [
-                              SizedBox(
-                                width: 100,
-                                height: 30,
-                                child: Stack(
-                                  children: List.generate(
-                                    5,
-                                        (index) => Positioned(
-                                      left: index * 18.0,
-                                      child: CircleAvatar(
-                                        radius: 15,
-                                        backgroundImage: NetworkImage(
-                                          "https://i.pravatar.cc/50?img=${index + 1}",
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                              SizedBox(width: 8),
-                              Icon(Icons.star, color: Colors.amber, size: 18),
-                              SizedBox(width: 4),
-
-                              Text(
-                                "4.8 (250 ratings)",
+                              Expanded(
+                                  flex: 2,
+                                  child: DevoteeAvatarStack()),
+                              const Spacer(),
+                              const Icon(Icons.star,
+                                  color: Colors.amber, size: 16),
+                              const SizedBox(width: 4),
+                              const Text(
+                                '4.8',
                                 style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(width: 2),
+                              Text(
+                                '(250)',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.shade600,
                                 ),
                               ),
 
-                              Spacer(),
-
-                              GestureDetector(
+                              InkWell(
+                                borderRadius: BorderRadius.circular(20),
                                 onTap: () => setState(() => isExpanded = !isExpanded),
-                                child: Icon(
-                                  isExpanded
-                                      ? Icons.keyboard_arrow_up
-                                      : Icons.keyboard_arrow_down,
-                                  size: 26,
-                                  color: Colors.deepOrange,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4),
+                                  child: Icon(
+                                    isExpanded
+                                        ? Icons.keyboard_arrow_up_rounded
+                                        : Icons.keyboard_arrow_down_rounded,
+                                    size: 24,
+                                    color: Colors.deepOrange,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
 
+                          /// EXPANDED CONTENT
                           if (isExpanded) ...[
-                            SizedBox(height: 10),
+                            const SizedBox(height: 8),
 
                             Text(
-                              "${allPanditCounsellingData?.counselling?.name}",
+                              allPanditCounsellingData?.counselling?.name ?? '',
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w700,
                                 color: Colors.deepOrange.shade800,
                               ),
                             ),
 
-                            SizedBox(height: 6),
+                            const SizedBox(height: 4),
 
                             Text(
-                              "${allPanditCounsellingData?.counselling?.metaTitle}",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                              allPanditCounsellingData?.counselling?.metaTitle ?? '',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
 
-                            SizedBox(height: 8),
+                            const SizedBox(height: 6),
 
                             Row(
                               children: [
-                                Icon(Icons.location_on, size: 16, color: Colors.black54),
-                                SizedBox(width: 4),
-                                Text(
-                                  "${allPanditCounsellingData?.counselling?.name}",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black54,
+                                const Icon(Icons.location_on,
+                                    size: 14, color: Colors.black54),
+                                const SizedBox(width: 4),
+                                Expanded(
+                                  child: Text(
+                                    allPanditCounsellingData?.counselling?.name ?? '',
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.black54,
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
-                          ]
+                          ],
                         ],
                       ),
                     ),
                   );
                 },
               ),
-
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Html(data:'${allPanditCounsellingData?.counselling?.details}'),
+                    Html(data:'${allPanditCounsellingData?.counselling?.process}'),
+                    Html(data:'${allPanditCounsellingData?.counselling?.benefits}'),
+                    Html(data:'${allPanditCounsellingData?.counselling?.templeDetails}'),
+                  ],
+                ),
+              ),
 
               // Loading overlay ONLY for post-payment navigation
               // Loading overlay ONLY for post-payment navigation
@@ -815,6 +811,8 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                     ),
                   ),
                 ),
+
+              SizedBox(height: 100),
 
             ],
           ),

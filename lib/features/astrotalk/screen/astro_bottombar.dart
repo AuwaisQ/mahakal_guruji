@@ -48,7 +48,7 @@ class _AstroBottomBarState extends State<AstroBottomBar> {
       AstroTalkHome(scrollController: homeScrollController),
       const SizedBox(),
       const AstroCallLogPage(),
-      PanditBottomBar(pageIndex: 0, panditId: 22, sellerId: 123, astroImage: "", otherSkills: [])
+      PanditBottomBar(pageIndex: 0, panditId: 22, sellerId: 123, astroImage: "",)
       //AllPanditPage(isEngView: true, scrollController: moreScrollController,),
     ];
     _updateActiveScrollController();

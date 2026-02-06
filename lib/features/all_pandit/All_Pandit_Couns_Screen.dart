@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../data/datasource/remote/http/httpClient.dart';
+import '../../utill/images.dart';
 import 'Model/all_pandit_service_model.dart';
 import 'Pandit_Bottom_bar.dart';
 import 'Pandit_Counselling_Details.dart';
@@ -26,8 +27,8 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
   bool _isSearchActive = false;
   bool isGridview = true;
 
-  TextEditingController _searchController = TextEditingController();
-  FocusNode _focusNode = FocusNode();
+  final TextEditingController _searchController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
 
   List<Counselling> fullList = [];
   List<Counselling> filteredList = [];
@@ -44,7 +45,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
     setState(() => isLoading = true);
 
     try {
-      final url = "/api/v1/guruji/detail?id=${widget.panditId}&type=counselling";
+      final url = '/api/v1/guruji/detail?id=${widget.panditId}&type=counselling';
       final response = await HttpService().getApi(url);
 
       gurujiInfo = AllPanditServicesModel.fromJson(response);
@@ -54,7 +55,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
 
       setState(() => isLoading = false);
     } catch (e) {
-      log("Error: $e");
+      log('Error: $e');
       setState(() => isLoading = false);
     }
   }
@@ -67,9 +68,9 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
 
     setState(() {
       filteredList = fullList.where((item) {
-        final name = item.name.toLowerCase() ?? "";
-        final venue = item.category?.name.toLowerCase() ?? "";
-        return name.contains(value.toLowerCase()) || venue.contains(value.toLowerCase());
+        final name = item.enName?.toLowerCase() ?? '';
+        // final venue = item.category?.name.toLowerCase() ?? '';
+        return name.contains(value.toLowerCase());
       }).toList();
     });
   }
@@ -78,79 +79,138 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
     return InkWell(
       onTap: () =>
           Navigator.push(
-        context,
-        CupertinoPageRoute(
-          builder: (_) => PanditCounsellingDetails(gurujiId: '${gurujiInfo?.guruji?.id}', slug: '${counselling.slug}',)
-        ),
-      ),
+            context,
+            CupertinoPageRoute(
+                builder: (_) => PanditCounsellingDetails(gurujiId: '${gurujiInfo?.guruji?.id}', slug: '${counselling.slug}',)
+            ),
+          ),
       child: Container(
-        margin: isList ? EdgeInsets.only(bottom: 12) : null,
+        margin: isList ? const EdgeInsets.only(bottom: 14) : null,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              blurRadius: 5,
-              color: Colors.black12,
-            )
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Image
             ClipRRect(
-              borderRadius:
-              const BorderRadius.vertical(top: Radius.circular(14)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(16),
+              ),
               child: CachedNetworkImage(
-                imageUrl: counselling.thumbnail,
-                height: isList ? 215 : 110,
+                imageUrl: counselling.thumbnail ?? '',
+                height: isList ? 180 : 110,
                 width: double.infinity,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover, // 🔥 natural look
                 placeholder: (_, __) => Container(
-                  height: 215,
+                  height: isList ? 210 : 115,
                   color: Colors.grey.shade200,
                 ),
-                //errorWidget: (_, __, ___) => NoImageWidget(),
+                errorWidget: (_, __, ___) =>
+                    Image.asset(Images.placeholder, fit: BoxFit.cover),
               ),
             ),
+
+            // Details
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Title
                   Text(
-                    counselling.name,
+                    counselling.enName ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 16),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
                   ),
-                  const SizedBox(height: 5),
-                  Text("Rs: ${counselling.counsellingPackage?.price}",
+                  Text(
+                    '(${counselling.hiName})',
                     maxLines: 1,
-                    style: TextStyle(color: Colors.blue,fontSize: 18),
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
                   ),
-                  const SizedBox(height: 10),
+
+                  const SizedBox(height: 2),
+
+                  // Price Row
+                  Row(
+                    children: [
+                      Text(
+                        '₹${counselling.counsellingSellingPrice}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepOrange,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        '₹${counselling.counsellingMainPrice}',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey.shade500,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  // Book Button
                   SizedBox(
                     width: double.infinity,
+                    height: 36,
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrange),
                       onPressed: () {
                         Navigator.push(
                           context,
                           CupertinoPageRoute(
-                            builder: (_) => PanditCounsellingDetails(gurujiId: '${gurujiInfo?.guruji?.id}', slug: '${counselling.slug}',)
+                            builder: (_) => PanditCounsellingDetails(
+                              gurujiId: '${gurujiInfo?.guruji?.id}',
+                              slug: counselling.slug ?? '',
+                            ),
                           ),
                         );
                       },
-                      child: const Text("Book Now",
-                          style: TextStyle(color: Colors.white)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepOrange.shade400,
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Book Now',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.3,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -176,7 +236,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
       backgroundColor: Colors.white,
       body: isLoading
           ? const Center(child: CircularProgressIndicator(color: Colors.orange))
-          : fullList.isEmpty ? NoDataScreen(title: 'No Counselling', subtitle: 'Data Not Available',) :  CustomScrollView(
+          : CustomScrollView(
         controller: widget.scrollController,
         slivers: [
           // ----------------- TOP SEARCH APPBAR -----------------
@@ -186,16 +246,16 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
             backgroundColor: Colors.white,
             title: Row(
               children: [
-                // IconButton(
-                //   icon: const Icon(Icons.arrow_back_ios,
-                //       color: Colors.black),
-                //   onPressed: () => Navigator.pop(context),
-                // ),
+                IconButton(
+                  icon: const Icon(Icons.arrow_back_ios,
+                      color: Colors.black),
+                  onPressed: () => Navigator.pop(context),
+                ),
 
                 _isSearchActive
                     ? _buildSearchBox()
                     : const Text(
-                  "Vendor Profile",
+                  'Vendor Profile',
                   style: TextStyle(
                       color: Colors.deepOrange,
                       fontSize: 22,
@@ -276,7 +336,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
               onChanged: searchItems,
               decoration: const InputDecoration(
                 border: InputBorder.none,
-                hintText: "Search Counsell...",
+                hintText: 'Search Counsell...',
               ),
             ),
           ),
@@ -346,7 +406,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
             backgroundColor: Colors.orange.shade200,
             child: ClipOval(
               child: CachedNetworkImage(
-                imageUrl: gurujiInfo?.guruji?.image ?? "",
+                imageUrl: gurujiInfo?.guruji?.image ?? '',
                 width: 90,
                 height: 90,
                 fit: BoxFit.cover,
@@ -362,7 +422,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  gurujiInfo?.guruji?.name ?? "",
+                  gurujiInfo?.guruji?.enName ?? '',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
@@ -371,11 +431,11 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
 
                 Row(
                   children: [
-                    _buildStat("6+ Yrs", "Experience"),
+                    _buildStat('6+ Yrs', 'Experience'),
                     SizedBox(width: 10),
-                    _buildStat("10,000+", "Devotees"),
+                    _buildStat('10,000+', 'Devotees'),
                     SizedBox(width: 10),
-                    _buildStat("1200", "Followers"),
+                    _buildStat('1200', 'Followers'),
                   ],
                 ),
                 SizedBox(height: 14),
@@ -405,7 +465,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
       ),
       child: Center(
         child: Text(
-          "Following",
+          'Following',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
