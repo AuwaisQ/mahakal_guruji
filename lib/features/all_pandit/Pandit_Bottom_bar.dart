@@ -7,8 +7,14 @@ import 'package:mahakal/main.dart';
 import 'package:page_animation_transition/animations/bottom_to_top_transition.dart';
 import 'package:page_animation_transition/page_animation_transition.dart';
 import 'package:provider/provider.dart';
+import '../../../common/basewidget/not_logged_in_bottom_sheet_widget.dart';
 import '../../../utill/dimensions.dart';
+import '../../data/datasource/remote/http/httpClient.dart';
 import '../../utill/customPainter.dart';
+import '../astrotalk/components/astro_bottomItem.dart';
+import '../astrotalk/screen/astro_calldetails.dart';
+import '../astrotalk/screen/astro_home.dart';
+import '../astrotalk/screen/astro_live_streampage.dart';
 import '../astrotalk/screen/astro_profilepage.dart';
 import '../auth/controllers/auth_controller.dart';
 import '../more/screens/more_screen_view.dart';
@@ -17,84 +23,23 @@ import '../shop/screens/shop_screen.dart';
 import 'All_Pandit_Couns_Screen.dart';
 import 'All_Pandit_Pooja_Screen.dart';
 import 'Model/all_pandit_model.dart';
+import 'Model/all_pandit_service_model.dart';
 import 'PanditBottomNavItem.dart';
 
-/// ==========================
-/// NoDataScreen Widget
-/// ==========================
-import 'package:flutter/material.dart';
-
-class NoDataScreen extends StatelessWidget {
-  final String title;
-  final String subtitle;
-
-  const NoDataScreen({super.key, required this.title, required this.subtitle});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white, // White background
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        // leading: IconButton(
-        //   icon: const Icon(Icons.arrow_back, color: Colors.black),
-        //   onPressed: () => Navigator.pop(context),
-        // ),
-        title: Text(
-          'Info',
-          style: const TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.error_outline, size: 100, color: Colors.grey[400]),
-              const SizedBox(height: 30),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 15),
-              Text(
-                subtitle,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 /// PanditBottomBar StatefulWidget
-class PanditBottomBar extends StatefulWidget {
+class   PanditBottomBar extends StatefulWidget {
   final int pageIndex;
   final dynamic panditId;
   final dynamic sellerId;
   final String astroImage;
-  final List<OtherSkill> otherSkills;
 
   const PanditBottomBar({
     super.key,
     required this.pageIndex,
     required this.panditId,
     required this.sellerId,
-    required this.astroImage, required this.otherSkills,
+    required this.astroImage,
   });
 
   @override
@@ -107,7 +52,7 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
   final ScrollController counsellingScrollController = ScrollController();
   final ScrollController chatScrollController = ScrollController();
   final ScrollController shopScrollController = ScrollController();
-  final ScrollController eventScrollController = ScrollController();
+  final ScrollController menuScrollController = ScrollController();
   ScrollController? activeScrollController;
   int _pageIndex = 0;
   late List<Widget> _screens;
@@ -118,9 +63,8 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
     Provider.of<ProfileController>(Get.context!, listen: false)
         .getUserInfo(context);
 
-    print("Pandit Id: ${widget.panditId}");
-    print("Seller Id: ${widget.sellerId}");
-    print("Other Skills: ${widget.otherSkills}");
+    print('Pandit Id: ${widget.panditId}');
+    print('Seller Id: ${widget.sellerId}');
 
     _pageIndex = widget.pageIndex;
     _pageController = PageController(initialPage: widget.pageIndex);
@@ -128,92 +72,35 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
     /// Screens with ID checks
     _screens = [
       // Pooja Screen
-      widget.panditId != null
-          ? AllPanditPoojaScreen(
+      AllPanditPoojaScreen(
         panditId: widget.panditId,
         scrollController: poojaScrollController,
-      )
-          : const NoDataScreen(
-        title: "No Pooja Data",
-        subtitle: "Coming Soon. Please check back later.",
       ),
 
       // Counselling Screen
-      widget.panditId != null
-          ? AllPanditCounsScreen(
+      AllPanditCounsScreen(
         panditId: widget.panditId,
         scrollController: counsellingScrollController,
-      )
-          : const NoDataScreen(
-        title: "No Advising Data",
-        subtitle: "Coming Soon. Please check back later.",
       ),
 
       // Chat / Placeholder
       const SizedBox(),
 
       // Shop Screen
-      widget.sellerId != null
-          ? TopSellerProductScreen(
-        sellerId: int.tryParse("${widget.sellerId}"),
-        temporaryClose:
-        Provider.of<ShopController>(context, listen: false)
-            .sellerModel
-            ?.sellers?[1]
-            .shop
-            ?.temporaryClose,
-        vacationStatus:
-        Provider.of<ShopController>(context, listen: false)
-            .sellerModel
-            ?.sellers?[1]
-            .shop
-            ?.vacationStatus,
-        vacationEndDate:
-        Provider.of<ShopController>(context, listen: false)
-            .sellerModel
-            ?.sellers?[1]
-            .shop
-            ?.vacationEndDate,
-        vacationStartDate:
-        Provider.of<ShopController>(context, listen: false)
-            .sellerModel
-            ?.sellers?[1]
-            .shop
-            ?.vacationStartDate,
-        name: Provider.of<ShopController>(context, listen: false)
-            .sellerModel
-            ?.sellers?[1]
-            .shop
-            ?.name,
-        banner: Provider.of<ShopController>(context, listen: false)
-            .sellerModel
-            ?.sellers?[1]
-            .shop
-            ?.banner,
-        image: Provider.of<ShopController>(context, listen: false)
-            .sellerModel
-            ?.sellers?[1]
-            .shop
-            ?.image,
+      TopSellerProductScreen(
+        sellerId: int.tryParse('${widget.sellerId}'),
+        temporaryClose: Provider.of<ShopController>(context, listen: false).sellerModel?.sellers?[1].shop?.temporaryClose,
+        vacationStatus: Provider.of<ShopController>(context, listen: false).sellerModel?.sellers?[1].shop?.vacationStatus,
+        vacationEndDate: Provider.of<ShopController>(context, listen: false).sellerModel?.sellers?[1].shop?.vacationEndDate,
+        vacationStartDate: Provider.of<ShopController>(context, listen: false).sellerModel?.sellers?[1].shop?.vacationStartDate,
+        name: Provider.of<ShopController>(context, listen: false).sellerModel?.sellers?[1].shop?.name,
+        banner: Provider.of<ShopController>(context, listen: false).sellerModel?.sellers?[1].shop?.banner,
+        image: Provider.of<ShopController>(context, listen: false).sellerModel?.sellers?[1].shop?.image,
         scrollController: shopScrollController,
-      )
-          : const NoDataScreen(
-        title: "No Shop Data",
-        subtitle: "Coming Soon. Please check back later.",
       ),
 
-      MoreScreen(scrollController: eventScrollController),
-
-      // // Event Screen
-      // widget.panditId != null
-      //     ? ComingSoonWidget(
-      //  // panditId: widget.panditId,
-      //  // scrollController: eventScrollController,
-      // )
-      //     : const NoDataScreen(
-      //   title: "No Event Data",
-      //   subtitle: "Coming Soon. Please check back later.",
-      // ),
+      // menu Screen
+      MoreScreen(scrollController: menuScrollController),
     ];
 
     _updateActiveScrollController();
@@ -231,7 +118,7 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
         activeScrollController = shopScrollController;
         break;
       case 4:
-        activeScrollController = eventScrollController;
+        activeScrollController = menuScrollController;
         break;
       default:
         activeScrollController = null;
@@ -296,22 +183,18 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
                                 ? Theme.of(context).primaryColor
                                 : Theme.of(context).cardColor,
                             onPressed: () {
-                              if (widget.otherSkills != null && widget.otherSkills.isNotEmpty) {
-                                Navigator.push(
-                                  context,
-                                  PageAnimationTransition(
-                                    page: AstrologerprofileView(
-                                      id: '${widget.otherSkills[0].id}', // astroId still used for navigation
-                                      astrologerImage: '${widget.astroImage}',
-                                    ),
-                                    pageAnimationType: BottomToTopTransition(),
+                              Navigator.push(
+                                context,
+                                PageAnimationTransition(
+                                  page: AstrologerprofileView(
+                                    id: '${widget.panditId}', // astroId still used for navigation
+                                    astrologerImage: widget.astroImage,
                                   ),
-                                );
-                              } else {
-                                NoDataScreen(title: '', subtitle: '',);
-                              }
-                            },
+                                  pageAnimationType: BottomToTopTransition(),
+                                ),
+                              );
 
+                            },
                             elevation: 10,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
@@ -351,20 +234,16 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
                                   iconData: CupertinoIcons.minus,
                                   isSelected: _pageIndex == 5,
                                   onTap: () {
-                                    if (widget.otherSkills != null && widget.otherSkills.isNotEmpty) {
-                                      Navigator.push(
-                                        context,
-                                        PageAnimationTransition(
-                                          page: AstrologerprofileView(
-                                            id: '${widget.otherSkills[0].id}', // Still needed for navigation
-                                            astrologerImage: '${widget.astroImage}',
-                                          ),
-                                          pageAnimationType: BottomToTopTransition(),
+                                    Navigator.push(
+                                      context,
+                                      PageAnimationTransition(
+                                        page: AstrologerprofileView(
+                                          id: '${widget.panditId}', // Still needed for navigation
+                                          astrologerImage: widget.astroImage,
                                         ),
-                                      );
-                                    } else {
-                                      NoDataScreen(title: '', subtitle: '',);
-                                    }
+                                        pageAnimationType: BottomToTopTransition(),
+                                      ),
+                                    );
                                   },
                                 ),
                                 PanditBottomNavItem(
@@ -374,8 +253,8 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
                                   onTap: () => _setPage(3),
                                 ),
                                 PanditBottomNavItem(
-                                  title: 'Menu',
-                                  iconData: Icons.event,
+                                  title: 'menu',
+                                  iconData: Icons.menu,
                                   isSelected: _pageIndex == 4,
                                   onTap: () => _setPage(4),
                                 ),
