@@ -999,7 +999,7 @@ class _ChatScreenViewState extends State<ChatScreenView> {
                   color: Colors.black.withOpacity(0.2),
                   child: const Center(
                     child: CircularProgressIndicator(
-                      color: Colors.deepOrange,
+                      color: Colors.amber,
                     ),
                   ),
                 ),

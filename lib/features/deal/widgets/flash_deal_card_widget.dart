@@ -99,14 +99,14 @@ class FlashDealWidget extends StatelessWidget {
                                                       context)
                                                   .darkTheme
                                               ? Colors.white
-                                              : Colors.orange,
+                                              : Colors.amber,
                                           fontSize: Dimensions.fontSizeSmall)),
                                   Icon(Icons.star,
                                       color:
                                           Provider.of<ThemeController>(context)
                                                   .darkTheme
                                               ? Colors.white
-                                              : Colors.orange,
+                                              : Colors.amber,
                                       size: 15),
                                   Text('(${product.reviewCount.toString()})',
                                       style: textRegular.copyWith(

@@ -60,7 +60,7 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
         if (addressList == null) {
           return const Center(
               child: CircularProgressIndicator(
-            color: Colors.orange,
+            color: Colors.amber,
           ));
         }
 
@@ -119,7 +119,7 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
                                           width: 20,
                                           child: Icon(
                                             Icons.add_location_alt,
-                                            color: Colors.deepOrange,
+                                            color: Colors.amber,
                                           )),
                                     ),
                                   ]),
@@ -177,7 +177,7 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
                                                       gradient:
                                                           const LinearGradient(
                                                         colors: [
-                                                          Colors.deepOrange,
+                                                          Colors.amber,
                                                           Colors.amber
                                                         ],
                                                         begin: Alignment.topLeft,
@@ -186,7 +186,7 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
                                                       ),
                                                       boxShadow: [
                                                         BoxShadow(
-                                                          color: Colors.deepOrange
+                                                          color: Colors.amber
                                                               .withOpacity(0.3),
                                                           blurRadius: 10,
                                                           spreadRadius: 2,
@@ -294,8 +294,8 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
                                                       )
                                                     : LinearGradient(
                                                         colors: [
-                                                          Colors.orange.shade600,
-                                                          Colors.orange.shade300
+                                                          Colors.amber.shade600,
+                                                          Colors.amber.shade300
                                                         ],
                                                         begin: Alignment.topLeft,
                                                         end:

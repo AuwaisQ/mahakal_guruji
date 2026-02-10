@@ -175,13 +175,13 @@ class _AstroCallLogPageState extends State<AstroCallLogPage> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: Colors.orange[50],
+                            color: Colors.amber[50],
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: const Text(
                             "Free 25/min",
                             style: TextStyle(
-                                color: Colors.deepOrange,
+                                color: Colors.amber,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -197,13 +197,13 @@ class _AstroCallLogPageState extends State<AstroCallLogPage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 gradient: const LinearGradient(
-                                  colors: [Colors.orange, Colors.deepOrange],
+                                  colors: [Colors.amber, Colors.amber],
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.orange.withOpacity(0.2),
+                                    color: Colors.amber.withOpacity(0.2),
                                     blurRadius: 6,
                                     offset: const Offset(0, 3),
                                   )

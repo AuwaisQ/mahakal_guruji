@@ -22,7 +22,7 @@ class _AstroSearchViewState extends State<AstroSearchView> {
       appBar: AppBar(
         title: const Text(
           "Search",
-          style: TextStyle(color: Colors.orange),
+          style: TextStyle(color: Colors.amber),
         ),
         centerTitle: true,
         // actions: [
@@ -40,17 +40,17 @@ class _AstroSearchViewState extends State<AstroSearchView> {
         //           borderRadius:
         //           BorderRadius.circular(4.0),
         //           color: isTranslate
-        //               ? Colors.orange
+        //               ? Colors.amber
         //               : Colors.white,
         //           border: Border.all(
-        //               color: Colors.orange,
+        //               color: Colors.amber,
         //               width: 2)),
         //       child: Center(
         //         child: Icon(
         //           Icons.translate,
         //           color: isTranslate
         //               ? Colors.white
-        //               : Colors.orange,
+        //               : Colors.amber,
         //           size: 18,
         //         ),
         //       ),
@@ -99,7 +99,7 @@ class _AstroSearchViewState extends State<AstroSearchView> {
                   child: Row(
                     children: [
                       Container(
-                        color: Colors.orange,
+                        color: Colors.amber,
                         height: 18,
                         width: 3,
                       ),
@@ -184,7 +184,7 @@ class _AstroSearchViewState extends State<AstroSearchView> {
                   child: Row(
                     children: [
                       Container(
-                        color: Colors.orange,
+                        color: Colors.amber,
                         height: 18,
                         width: 3,
                       ),

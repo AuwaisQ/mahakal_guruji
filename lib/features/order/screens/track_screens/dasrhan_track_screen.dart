@@ -166,7 +166,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
             color: Colors.white,
             child: const Center(
                 child: CircularProgressIndicator(
-              color: Colors.orange,
+              color: Colors.amber,
             )))
         : Scaffold(
             appBar: AppBar(
@@ -221,7 +221,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
               },
               color: Colors.white, // Progress indicator color
               backgroundColor: Colors
-                  .deepOrange, // Background color of the refresh indicator
+                  .amber, // Background color of the refresh indicator
               displacement: 40.0,
               child: SingleChildScrollView(
                 child: Column(
@@ -301,16 +301,16 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: Colors.orange.shade50,
+                      color: Colors.amber.shade50,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: Colors.orange.shade200,
+                        color: Colors.amber.shade200,
                       ),
                     ),
                     child: Text(
                       trackModelData?.data.packageName ?? 'Package',
                       style: TextStyle(
-                        color: Colors.orange.shade800,
+                        color: Colors.amber.shade800,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -322,7 +322,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.deepOrange,
+                      color: Colors.amber,
                     ),
                   ),
                 ],
@@ -336,14 +336,14 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
           padding: const EdgeInsets.all(16),
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.deepOrangeAccent.shade100,
+            color: Colors.amberAccent.shade100,
             borderRadius: BorderRadius.circular(12),
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
                 Colors.transparent,
-                Colors.deepOrange.withOpacity(0.2),
+                Colors.amber.withOpacity(0.2),
                 Colors.purple.withOpacity(0.4),
               ],
               stops: const [0.0, 0.6, 1.0],
@@ -398,7 +398,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                       label:
                           const Text('Invoice', style: TextStyle(fontSize: 13)),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrange,
+                        backgroundColor: Colors.amber,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -474,17 +474,17 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.deepOrange,
+                  color: Colors.amber,
                 ),
               ),
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: Colors.deepOrange.withOpacity(0.1),
+                  color: Colors.amber.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: Colors.deepOrange.withOpacity(0.3),
+                    color: Colors.amber.withOpacity(0.3),
                   ),
                 ),
                 child: Text(
@@ -492,7 +492,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: Colors.deepOrange,
+                    color: Colors.amber,
                   ),
                 ),
               ),
@@ -540,16 +540,16 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.deepOrange.withOpacity(0.2),
+                                    color: Colors.amber.withOpacity(0.2),
                                     blurRadius: 10,
                                     spreadRadius: 3,
                                   ),
                                 ],
                                 border:
-                                    Border.all(color: Colors.orange, width: 1)),
+                                    Border.all(color: Colors.amber, width: 1)),
                             child: CircleAvatar(
                               radius: 20, // Slightly larger
-                              backgroundColor: Colors.deepOrange.shade50,
+                              backgroundColor: Colors.amber.shade50,
                               child: data!.image.isNotEmpty
                                   ? ClipRRect(
                                       borderRadius: BorderRadius.circular(200),
@@ -563,7 +563,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                                           return Icon(
                                             Icons.person,
                                             size: 32,
-                                            color: Colors.deepOrange.shade700,
+                                            color: Colors.amber.shade700,
                                           );
                                         },
                                       ),
@@ -572,7 +572,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                                       child: Text(
                                       data.name.substring(0, 1),
                                       style: TextStyle(
-                                          color: Colors.deepOrange.shade700,
+                                          color: Colors.amber.shade700,
                                           fontSize: 25,
                                           fontWeight: FontWeight.bold),
                                     )),
@@ -586,7 +586,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.deepOrange,
+                              color: Colors.amber,
                             ),
                           ),
                           const Spacer(),
@@ -893,7 +893,7 @@ class _MandirDarshanDetailsOrderState extends State<MandirDarshanDetailsOrder> {
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.deepOrange,
+                                  backgroundColor: Colors.amber,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                     side: const BorderSide(

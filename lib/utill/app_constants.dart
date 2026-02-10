@@ -4,12 +4,12 @@ import 'package:mahakal/utill/images.dart';
 class AppConstants {
   static const String appName = 'Mahakal.com';
   static const String slogan = 'E-Commerce Marketplace';
-  static const String appVersion = '12.35';
+  static const String appVersion = '12.36';
 
   static const String otherBaseUrl = 'https://hotels.mahakal.com';
   // static const String baseUrl = 'https://uat.pavtr.in';
-  static const String baseUrl = 'https://sit.resrv.in';
-  // static const String baseUrl = 'https://mahakal.com';
+  // static const String baseUrl = 'https://sit.resrv.in';
+  static const String baseUrl = 'https://mahakal.com';
 
   // Razorpay API key
   static const razorpayLive =
@@ -20,6 +20,9 @@ class AppConstants {
   // static const razorpayLive = "rzp_live_InwZruBPIWObnO";//--Mahakal.com--//
   // static const razorpayLive = "rzp_live_qI7P9oGBEEf1Sn";//--GO-CAAR-GO--//
   // static const razorpayLive = "rzp_test_vsSpBCHRz9XUp2";//--Test--//
+
+  static const int panditId = baseUrl == 'https://sit.resrv.in' ? 3 : 22;
+  static const int sellerId = baseUrl == 'https://sit.resrv.in' ? 188 : 123;
 
   static const String userId = 'userId';
   static const String name = 'name';
@@ -362,16 +365,16 @@ class AppConstants {
   static const ramshalakhaUrl = '/api/v1/sahitya/ram-shalaka';
 
   // All Pandit
-  static const allPanditUrl = "/api/v1/guruji?city=";
+  static const allPanditUrl = '/api/v1/guruji?city=';
   // static const allPanditServicesUrl = "/api/v1/guruji/detail?id=";
-  static const allPanditDetailsUrl = "/api/v1/guruji/puja?guruji_id=";
-  static const allPanditSuccessUrl = "/api/v1/guruji/puja/lead";
-  static const allPanditPersonUrl = "/api/v1/guruji/puja/sankalp/store";
-  static const allPanditOrderUrl = "/api/v1/pooja/orders?type=panditpooja";
-  static const allPanditCounsellingUrl = "/api/v1/guruji/counselling/?guruji_id=";
-  static const allPanditCounsellingLeadUrl = "/api/v1/guruji/counselling/lead";
-  static const allPanditCounsellingSuccessUrl = "/api/v1/guruji/counselling/sankalp/store";
-  static const allPanditServiceUrl = "/api/v1/guruji/detail?id=";
+  static const allPanditDetailsUrl = '/api/v1/guruji/puja?guruji_id=';
+  static const allPanditSuccessUrl = '/api/v1/guruji/puja/lead';
+  static const allPanditPersonUrl = '/api/v1/guruji/puja/sankalp/store';
+  static const allPanditOrderUrl = '/api/v1/pooja/orders?type=panditpooja';
+  static const allPanditCounsellingUrl = '/api/v1/guruji/counselling/?guruji_id=';
+  static const allPanditCounsellingLeadUrl = '/api/v1/guruji/counselling/lead';
+  static const allPanditCounsellingSuccessUrl = '/api/v1/guruji/counselling/sankalp/store';
+  static const allPanditServiceUrl = '/api/v1/guruji/detail?id=';
 
   // Tour Booking
   static const String newTourDataUrl = '/api/v1/tour/new-tours';
@@ -530,15 +533,12 @@ class AppConstants {
   static const String astrologersList = '$expressApiURI/astrologers';
   static const String fetchAstrologersByCategory= '$expressApiURI/astrologers?category=';
   static const String astrologersChatSave = '$expressApiURI/chat/save';
-  static const String astrologersImages =
-      '$baseUrl/storage/app/public/astrologers/';
+  static const String astrologersImages = '$baseUrl/storage/app/public/astrologers/';
   static const String getAstrologersChatData = '$expressApiURI/chat/get';
   static const String sendAstrologersChat = '$expressApiURI/chat/save';
   static const String liveAstrologers = '$expressApiURI/live-stream/active';
-  static const String onlineAstrologersList =
-      '$expressApiURI/astrologers/online/astrologers';
-  static const String astrologerLiveStreamURL =
-      'https://stream.mahakal.com/hls/';
+  static const String onlineAstrologersList = '$expressApiURI/astrologers/online/astrologers';
+  static const String astrologerLiveStreamURL = 'https://stream.mahakal.com/hls/';
   static const String poojaLiveStreamURL = 'https://stream.mahakal.com/live/';
 
   // Support Tickit

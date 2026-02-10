@@ -174,7 +174,7 @@ class _UserProfileUpdateSheetState extends State<UserProfileUpdateSheet> {
                       child: _isSubmitting
                           ? const Center(
                               child: CircularProgressIndicator(
-                                color: Colors.deepOrange,
+                                color: Colors.amber,
                               ),
                             )
                           : ElevatedButton(

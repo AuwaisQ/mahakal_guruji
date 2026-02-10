@@ -121,7 +121,7 @@ class _OrderScreenState extends State<OrderScreen>
     Colors.purple,
     Colors.blue,
     Colors.green,
-    Colors.orange,
+    Colors.amber,
     Colors.red,
   ];
 
@@ -156,7 +156,7 @@ class _OrderScreenState extends State<OrderScreen>
       case 'confirmed':
         return Colors.green;
       default:
-        return Colors.orange; // Default color for unknown statuses
+        return Colors.amber; // Default color for unknown statuses
     }
   }
 
@@ -396,13 +396,13 @@ class _OrderScreenState extends State<OrderScreen>
           bottom: const TabBar(
             padding: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
             dividerColor: Colors.white,
-            labelColor: Colors.deepOrange,
+            labelColor: Colors.amber,
             labelStyle: TextStyle(fontWeight: FontWeight.bold),
             unselectedLabelColor: Colors.black,
             indicatorSize: TabBarIndicatorSize.tab,
-            indicatorColor: Colors.deepOrange,
+            indicatorColor: Colors.amber,
             // indicator: BoxDecoration(
-            //     color: Colors.deepOrange,
+            //     color: Colors.amber,
             //     borderRadius: BorderRadius.circular(
             //         6.0) // Set the background color of the indicator
             // ),
@@ -504,7 +504,7 @@ class _OrderScreenState extends State<OrderScreen>
 
                           //Second tabview
                           RefreshIndicator(
-                            color: Colors.orange,
+                            color: Colors.amber,
                             onRefresh: () async {
                               // fetchAllData(userId);
                               // fetchPdfData(userId);
@@ -540,8 +540,8 @@ class _OrderScreenState extends State<OrderScreen>
                                                 horizontal: 20, vertical: 7.5),
                                             decoration: BoxDecoration(
                                               color: selectOrder == 4
-                                                  ? Colors.deepOrange
-                                                  : Colors.deepOrange
+                                                  ? Colors.amber
+                                                  : Colors.amber
                                                       .withOpacity(0.07),
                                               borderRadius:
                                                   BorderRadius.circular(100),
@@ -571,8 +571,8 @@ class _OrderScreenState extends State<OrderScreen>
                                                 horizontal: 20, vertical: 7.5),
                                             decoration: BoxDecoration(
                                               color: selectOrder == 5
-                                                  ? Colors.deepOrange
-                                                  : Colors.deepOrange
+                                                  ? Colors.amber
+                                                  : Colors.amber
                                                       .withOpacity(0.07),
                                               borderRadius:
                                                   BorderRadius.circular(100),
@@ -601,8 +601,8 @@ class _OrderScreenState extends State<OrderScreen>
                                                 horizontal: 15, vertical: 7.5),
                                             decoration: BoxDecoration(
                                               color: selectOrder == 11
-                                                  ? Colors.deepOrange
-                                                  : Colors.deepOrange
+                                                  ? Colors.amber
+                                                  : Colors.amber
                                                       .withOpacity(0.07),
                                               borderRadius:
                                                   BorderRadius.circular(100),
@@ -731,7 +731,7 @@ class _OrderScreenState extends State<OrderScreen>
                                                                                 _buildOrderDesign(
                                                                               image: eventModelList[index].eventImage,
                                                                               name: eventModelList[index].enEventName,
-                                                                              color: Colors.deepOrange,
+                                                                              color: Colors.amber,
                                                                               date: eventModelList[index].eventBookingDate,
                                                                               price: "${eventModelList[index].amount}",
                                                                               orderId: eventModelList[index].orderNo,
@@ -806,14 +806,14 @@ class _OrderScreenState extends State<OrderScreen>
           ),
           TabBar(
             splashFactory: NoSplash.splashFactory,
-            labelColor: Colors.deepOrange, // active tab text color
+            labelColor: Colors.amber, // active tab text color
             unselectedLabelColor: Colors.grey, // inactive tab text color
             dividerColor: Colors.grey.shade500,
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(
                   width: 1.5,
-                  color: Colors.deepOrange), // active tab underline color
+                  color: Colors.amber), // active tab underline color
               insets: EdgeInsets.symmetric(horizontal: 0.0), // optional spacing
             ),
             tabs: const [
@@ -996,20 +996,20 @@ class _OrderScreenState extends State<OrderScreen>
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.orange[700],
+                                  color: Colors.amber[700],
                                 ),
                               ),
                               Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 4),
                                 decoration: BoxDecoration(
-                                  color: Colors.orange.withOpacity(0.1),
+                                  color: Colors.amber.withOpacity(0.1),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Text(
                                   "View Details",
                                   style: TextStyle(
-                                    color: Colors.orange[700],
+                                    color: Colors.amber[700],
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -1191,7 +1191,7 @@ class _OrderScreenState extends State<OrderScreen>
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.orange[700],
+                                  color: Colors.amber[700],
                                 ),
                               ),
 
@@ -1200,13 +1200,13 @@ class _OrderScreenState extends State<OrderScreen>
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 4),
                                 decoration: BoxDecoration(
-                                  color: Colors.orange.withOpacity(0.1),
+                                  color: Colors.amber.withOpacity(0.1),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Text(
                                   "View Details",
                                   style: TextStyle(
-                                    color: Colors.orange[700],
+                                    color: Colors.amber[700],
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -1268,7 +1268,7 @@ class _OrderScreenState extends State<OrderScreen>
                         child: const Center(
                             child: Icon(
                           Icons.image,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                         )),
                       ),
                       errorWidget: (context, url, error) => Container(
@@ -1295,7 +1295,7 @@ class _OrderScreenState extends State<OrderScreen>
                                 gradient: LinearGradient(
                                   colors: [
                                     Color.lerp(
-                                        Colors.deepOrange,
+                                        Colors.amber,
                                         Colors.red.withOpacity(0.3),
                                         sin(_controller.value * pi))!,
                                     Color.lerp(
@@ -1404,7 +1404,7 @@ class _OrderScreenState extends State<OrderScreen>
                       Text(
                         price == "0" ? "Free" : 'Price: ₹$price',
                         style: const TextStyle(
-                            color: Colors.deepOrange,
+                            color: Colors.amber,
                             fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),

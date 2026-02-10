@@ -222,7 +222,7 @@ class RecommendedProductWidget extends StatelessWidget {
                                                                       context)
                                                                   .darkTheme
                                                               ? Colors.white
-                                                              : Colors.orange,
+                                                              : Colors.amber,
                                                           size: 15),
                                                       Text(
                                                           double.parse(ratting!)

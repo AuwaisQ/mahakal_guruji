@@ -381,7 +381,7 @@ class _PersonDetailsState extends State<PersonDetails> {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: Colors.orange,
+              color: Colors.amber,
             ),
             child: const Center(
                 child: CircularProgressIndicator(
@@ -397,7 +397,7 @@ class _PersonDetailsState extends State<PersonDetails> {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: Colors.orange,
+              color: Colors.amber,
             ),
             child: const Center(
               child: Text(
@@ -418,7 +418,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'Roboto',
-                color: Colors.orange),
+                color: Colors.amber),
           ),
           centerTitle: true,
         ),
@@ -465,7 +465,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                 fontSize: 20,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.orange),
+                                color: Colors.amber),
                           ),
                           const Spacer(),
                           GestureDetector(
@@ -474,7 +474,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                   ? Icons.keyboard_arrow_up
                                   : Icons.keyboard_arrow_down,
                               size: 30,
-                              color: Colors.orange,
+                              color: Colors.amber,
                             ),
                             onTap: () {
                               setState(() {
@@ -495,7 +495,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                             children: [
                               const Icon(
                                 Icons.calendar_month,
-                                color: Colors.orange,
+                                color: Colors.amber,
                                 size: 20,
                               ),
                               const SizedBox(
@@ -520,7 +520,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                             children: [
                               const Icon(
                                 Icons.location_pin,
-                                color: Colors.orange,
+                                color: Colors.amber,
                                 size: 20,
                               ),
                               const SizedBox(
@@ -603,10 +603,10 @@ class _PersonDetailsState extends State<PersonDetails> {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: const BorderSide(
-                                    color: Colors.orange, width: 1.5),
+                                    color: Colors.amber, width: 1.5),
                               ),
                               suffixIcon: const Icon(Icons.person_2,
-                                  color: Colors.orange, size: 25),
+                                  color: Colors.amber, size: 25),
                             ),
                           ),
                         ),
@@ -666,17 +666,17 @@ class _PersonDetailsState extends State<PersonDetails> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
                             borderSide: const BorderSide(
-                                color: Colors.orange, width: 1.5),
+                                color: Colors.amber, width: 1.5),
                           ),
                           suffixIcon: const Icon(Icons.report_outlined,
-                              color: Colors.orange, size: 25),
+                              color: Colors.amber, size: 25),
                         ),
                       ),
                       Row(
                         children: [
                           Checkbox(
                             checkColor: Colors.white,
-                            activeColor: Colors.orange,
+                            activeColor: Colors.amber,
                             value: isChecked,
                             onChanged: (bool? newValue) {
                               setState(() {
@@ -759,10 +759,10 @@ class _PersonDetailsState extends State<PersonDetails> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
                             borderSide: const BorderSide(
-                                color: Colors.orange, width: 1.5),
+                                color: Colors.amber, width: 1.5),
                           ),
                           suffixIcon: const Icon(Icons.phone,
-                              color: Colors.orange, size: 25),
+                              color: Colors.amber, size: 25),
                         ),
                       ),
                     ],
@@ -808,7 +808,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                   horizontal: 15, vertical: 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  color: isYesNo ? Colors.orange : Colors.white,
+                                  color: isYesNo ? Colors.amber : Colors.white,
                                   border: Border.all(
                                       color: Colors.grey.shade400, width: 1.5)),
                               child: Text(
@@ -835,7 +835,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                   horizontal: 15, vertical: 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  color: isYesNo ? Colors.white : Colors.orange,
+                                  color: isYesNo ? Colors.white : Colors.amber,
                                   border: Border.all(
                                       color: Colors.grey.shade400, width: 1.5)),
                               child: Text(
@@ -906,7 +906,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                       borderRadius:
                                       BorderRadius.circular(8),
                                       borderSide: const BorderSide(
-                                          color: Colors.orange,
+                                          color: Colors.amber,
                                           width: 1.5),
                                     ),
                                   ),
@@ -950,7 +950,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                       borderRadius:
                                       BorderRadius.circular(8),
                                       borderSide: const BorderSide(
-                                          color: Colors.orange,
+                                          color: Colors.amber,
                                           width: 1.5),
                                     ),
                                   ),
@@ -995,7 +995,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: const BorderSide(
-                                    color: Colors.orange, width: 1.5),
+                                    color: Colors.amber, width: 1.5),
                               ),
                             ),
                           ),
@@ -1028,7 +1028,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: const BorderSide(
-                                    color: Colors.orange, width: 1.5),
+                                    color: Colors.amber, width: 1.5),
                               ),
                             ),
                           ),
@@ -1135,7 +1135,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: const BorderSide(
-                                    color: Colors.orange, width: 1.5),
+                                    color: Colors.amber, width: 1.5),
                               ),
                             ),
                           ),
@@ -1173,7 +1173,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: const BorderSide(
-                                    color: Colors.orange, width: 1.5),
+                                    color: Colors.amber, width: 1.5),
                               ),
                             ),
                           ),

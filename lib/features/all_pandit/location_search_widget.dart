@@ -101,7 +101,7 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
         Container(
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(color: Colors.orange),
+            border: Border.all(color: Colors.amber),
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
@@ -118,7 +118,7 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
             decoration: InputDecoration(
               hintText: "Search location...",
               hintStyle: TextStyle(color: Colors.grey.shade500),
-              prefixIcon: const Icon(Icons.search, color: Colors.orange),
+              prefixIcon: const Icon(Icons.search, color: Colors.amber),
               suffixIcon: _isLoading
                   ? const Padding(
                 padding: EdgeInsets.all(12.0),
@@ -127,20 +127,20 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
                   width: 18,
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    color: Colors.orange,
+                    color: Colors.amber,
                   ),
                 ),
               )
                   : widget.controller.text.isEmpty
                   ? Icon(Icons.location_on_outlined,
-                  size: 26, color: Colors.orange)
+                  size: 26, color: Colors.amber)
                   : InkWell(
                   onTap: () {
                     widget.controller.clear();
                     setState(() => _suggestions = []);
                   },
                   child: Icon(Icons.cancel,
-                      size: 26, color: Colors.orange)),
+                      size: 26, color: Colors.amber)),
               border: InputBorder.none,
               contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -181,7 +181,7 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
                   child: Row(
                     children: [
                       const Icon(Icons.location_on,
-                          color: Colors.orange, size: 22),
+                          color: Colors.amber, size: 22),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(

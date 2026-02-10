@@ -371,7 +371,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                       },
                                       child: Container(
                                           decoration: BoxDecoration(
-                                              color: Colors.deepOrangeAccent,
+                                              color: Colors.amberAccent,
                                               borderRadius: BorderRadius
                                                   .circular(Dimensions
                                                       .paddingSizeExtraSmall)),

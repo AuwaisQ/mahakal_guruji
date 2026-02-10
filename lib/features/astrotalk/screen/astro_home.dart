@@ -317,7 +317,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
         centerTitle: true,
         title: const Text(
           'Astrologers',
-          style: TextStyle(color: Colors.deepOrange),
+          style: TextStyle(color: Colors.amber),
         ),
         leading: Padding(
                   padding: const EdgeInsets.only(top: 10, left: 10),
@@ -366,7 +366,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
               child: const Icon(
                     Icons.account_balance_wallet,
                     size: 27,
-                    color: Colors.deepOrange,
+                    color: Colors.amber,
                   ),),
           const SizedBox(width: 10),
         ],
@@ -428,7 +428,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                       child: Row(
                         children: [
                           const Icon(Icons.fiber_manual_record,
-                              color: Colors.deepOrange, size: 16),
+                              color: Colors.amber, size: 16),
                           const SizedBox(width: 5),
                           const Text(
                             'Explore Your Preference',
@@ -454,7 +454,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                   isGridView == true
                                       ? Icons.list
                                       : Icons.grid_view,
-                                  color: Colors.deepOrange,
+                                  color: Colors.amber,
                                 ))),
                           )
                         ],
@@ -491,7 +491,6 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                             builder: (_) =>
                                                 AstrologerprofileView(
                                                   id: astrologer.id.toString(),
-                                                  astrologerImage : '${AppConstants.astrologersImages}${astrologer.image}',
                                                 )));
                                   },
                                   child: Stack(
@@ -535,8 +534,8 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                     shape: BoxShape.circle,
                                                     gradient: LinearGradient(
                                                       colors: [
-                                                        Colors.orange,
-                                                        Colors.deepOrange
+                                                        Colors.amber,
+                                                        Colors.amber
                                                       ],
                                                       begin: Alignment.topLeft,
                                                       end:
@@ -621,7 +620,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                       horizontal: 8,
                                                       vertical: 4),
                                                   decoration: BoxDecoration(
-                                                    color: Colors.orange[50],
+                                                    color: Colors.amber[50],
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12),
@@ -630,7 +629,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                     '₹ ${astrologer.isAstrologerChatCharge}/min',
                                                     style: const TextStyle(
                                                         color:
-                                                            Colors.deepOrange,
+                                                            Colors.amber,
                                                         fontSize: 12,
                                                         fontWeight:
                                                             FontWeight.w500),
@@ -720,8 +719,8 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                     gradient:
                                                         const LinearGradient(
                                                       colors: [
-                                                        Colors.orange,
-                                                        Colors.deepOrange
+                                                        Colors.amber,
+                                                        Colors.amber
                                                       ],
                                                       begin:
                                                           Alignment.centerLeft,
@@ -730,7 +729,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                     ),
                                                     boxShadow: [
                                                       BoxShadow(
-                                                        color: Colors.orange
+                                                        color: Colors.amber
                                                             .withOpacity(0.3),
                                                         blurRadius: 8,
                                                         offset:
@@ -804,7 +803,6 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                             builder: (_) =>
                                                 AstrologerprofileView(
                                                   id: astrologer.id.toString(),
-                                                  astrologerImage : '${AppConstants.astrologersImages}${astrologer.image}',
                                                 )));
                                   },
                                   child: Card(
@@ -840,8 +838,8 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                   shape: BoxShape.circle,
                                                   gradient: LinearGradient(
                                                     colors: [
-                                                      Colors.orange,
-                                                      Colors.deepOrange
+                                                      Colors.amber,
+                                                      Colors.amber
                                                     ],
                                                     begin: Alignment.topLeft,
                                                     end: Alignment.bottomRight,
@@ -907,7 +905,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                     const SizedBox(width: 3),
                                                     const Icon(Icons.verified,
                                                         color:
-                                                            Colors.deepOrange,
+                                                            Colors.amber,
                                                         size: 16),
                                                   ],
                                                 ),
@@ -1015,14 +1013,14 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                         horizontal: 8,
                                                         vertical: 4),
                                                 decoration: BoxDecoration(
-                                                  color: Colors.orange[50],
+                                                  color: Colors.amber[50],
                                                   borderRadius:
                                                       BorderRadius.circular(12),
                                                 ),
                                                 child: Text(
                                                   "${astrologer.isAstrologerChatCharge ?? "50"}र/min",
                                                   style: const TextStyle(
-                                                      color: Colors.deepOrange,
+                                                      color: Colors.amber,
                                                       fontSize: 12,
                                                       fontWeight:
                                                           FontWeight.w600),
@@ -1110,8 +1108,8 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                       gradient:
                                                           const LinearGradient(
                                                         colors: [
-                                                          Colors.orange,
-                                                          Colors.deepOrange
+                                                          Colors.amber,
+                                                          Colors.amber
                                                         ],
                                                         begin: Alignment
                                                             .centerLeft,
@@ -1120,7 +1118,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                                                       ),
                                                       boxShadow: [
                                                         BoxShadow(
-                                                          color: Colors.orange
+                                                          color: Colors.amber
                                                               .withOpacity(0.2),
                                                           blurRadius: 6,
                                                           offset: const Offset(
@@ -1176,7 +1174,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
                   color: Colors.black.withOpacity(0.2),
                   child: const Center(
                     child: CircularProgressIndicator(
-                      color: Colors.deepOrange,
+                      color: Colors.amber,
                     ),
                   ),
                 ),
@@ -1212,7 +1210,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
         (index) => Padding(
         padding: const EdgeInsets.only(right: 8.0),
         child: ChoiceChip(
-          side: BorderSide(color: selectedCategoryIndex == index ? Colors.orange : Colors.grey.shade300),
+          side: BorderSide(color: selectedCategoryIndex == index ? Colors.amber : Colors.grey.shade300),
             avatar: CircleAvatar(
             backgroundImage: NetworkImage(astroCategoriesList[index].image),
             radius: 12,
@@ -1220,7 +1218,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
           label: Text(astroCategoriesList[index].enName ?? ''),
           backgroundColor: Colors.grey[200],
           selected: selectedCategoryIndex == index,
-          selectedColor: Colors.orange[100],
+          selectedColor: Colors.amber[100],
           onSelected: (selected) {
             if (selectedCategoryIndex == index) {
               setState(() {
@@ -1239,7 +1237,7 @@ class _AstroTalkHomeState extends State<AstroTalkHome> {
               fetchAstrologersByCategory(int.parse(astroCategoriesList[index].id.toString()));
             }
           },
-          labelStyle: TextStyle(color: selectedCategoryIndex == index ? Colors.deepOrange : Colors.black),
+          labelStyle: TextStyle(color: selectedCategoryIndex == index ? Colors.amber : Colors.black),
         ),
         ),
       ),

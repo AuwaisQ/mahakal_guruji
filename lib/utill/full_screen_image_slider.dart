@@ -55,8 +55,8 @@ class _FullScreenImageSliderState extends State<FullScreenImageSlider> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Colors.deepOrange.shade300,
-                      Colors.deepOrange.shade500,
+                      Colors.amber.shade300,
+                      Colors.amber.shade500,
                     ],
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -72,7 +72,7 @@ class _FullScreenImageSliderState extends State<FullScreenImageSlider> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
-                        color: Colors.deepOrange.withOpacity(0.1),
+                        color: Colors.amber.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
@@ -80,7 +80,7 @@ class _FullScreenImageSliderState extends State<FullScreenImageSlider> {
                           const Icon(
                             Icons.photo_library_rounded,
                             size: 16,
-                            color: Colors.deepOrange,
+                            color: Colors.amber,
                           ),
                           const SizedBox(width: 6),
                           Text(
@@ -88,7 +88,7 @@ class _FullScreenImageSliderState extends State<FullScreenImageSlider> {
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
-                              color: Colors.deepOrange.shade800,
+                              color: Colors.amber.shade800,
                             ),
                           ),
                         ],
@@ -149,7 +149,7 @@ class _FullScreenImageSliderState extends State<FullScreenImageSlider> {
                             return const Center(
                               child: CircularProgressIndicator(
                                 strokeWidth: 2,
-                                color: Colors.deepOrange,
+                                color: Colors.amber,
                               ),
                             );
                           },
@@ -176,8 +176,8 @@ class _FullScreenImageSliderState extends State<FullScreenImageSlider> {
                         gradient: currentIndex == i
                             ? LinearGradient(
                           colors: [
-                            Colors.deepOrange.shade400,
-                            Colors.deepOrange.shade600,
+                            Colors.amber.shade400,
+                            Colors.amber.shade600,
                           ],
                         )
                             : null,

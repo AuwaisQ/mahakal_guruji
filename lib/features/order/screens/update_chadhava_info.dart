@@ -168,7 +168,7 @@ class _UpdateChadhavaPersonDetailsState
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
-                color: Colors.orange,
+                color: Colors.amber,
               ),
               child: const Center(
                   child: CircularProgressIndicator(
@@ -185,7 +185,7 @@ class _UpdateChadhavaPersonDetailsState
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.orange,
+                  color: Colors.amber,
                 ),
                 child: const Center(
                   child: Text(
@@ -205,7 +205,7 @@ class _UpdateChadhavaPersonDetailsState
               fontSize: 20,
               fontWeight: FontWeight.w400,
               fontFamily: 'Roboto',
-              color: Colors.orange),
+              color: Colors.amber),
         ),
         centerTitle: true,
       ),
@@ -255,14 +255,14 @@ class _UpdateChadhavaPersonDetailsState
                               fontSize: 20,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
-                              color: Colors.orange),
+                              color: Colors.amber),
                         ),
                         const Spacer(),
                         GestureDetector(
                           child: const Icon(
                             Icons.keyboard_arrow_down,
                             size: 30,
-                            color: Colors.orange,
+                            color: Colors.amber,
                           ),
                           onTap: () {
                             setState(() {
@@ -283,7 +283,7 @@ class _UpdateChadhavaPersonDetailsState
                                 children: [
                                   const Icon(
                                     Icons.location_pin,
-                                    color: Colors.orange,
+                                    color: Colors.amber,
                                     size: 20,
                                   ),
                                   SizedBox(
@@ -304,7 +304,7 @@ class _UpdateChadhavaPersonDetailsState
                                 children: [
                                   const Icon(
                                     Icons.calendar_month,
-                                    color: Colors.orange,
+                                    color: Colors.amber,
                                     size: 20,
                                   ),
                                   SizedBox(
@@ -383,10 +383,10 @@ class _UpdateChadhavaPersonDetailsState
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1.5),
+                                  color: Colors.amber, width: 1.5),
                             ),
                             suffixIcon: const Icon(Icons.person_2,
-                                color: Colors.orange, size: 25),
+                                color: Colors.amber, size: 25),
                           ),
                         ),
                       ),
@@ -446,17 +446,17 @@ class _UpdateChadhavaPersonDetailsState
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: const BorderSide(
-                              color: Colors.orange, width: 1.5),
+                              color: Colors.amber, width: 1.5),
                         ),
                         suffixIcon: const Icon(Icons.report_outlined,
-                            color: Colors.orange, size: 25),
+                            color: Colors.amber, size: 25),
                       ),
                     ),
                     Row(
                       children: [
                         Checkbox(
                           checkColor: Colors.white,
-                          activeColor: Colors.orange,
+                          activeColor: Colors.amber,
                           value: isChecked,
                           onChanged: (bool? newValue) {
                             setState(() {
@@ -539,10 +539,10 @@ class _UpdateChadhavaPersonDetailsState
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: const BorderSide(
-                              color: Colors.orange, width: 1.5),
+                              color: Colors.amber, width: 1.5),
                         ),
                         suffixIcon: const Icon(Icons.phone,
-                            color: Colors.orange, size: 25),
+                            color: Colors.amber, size: 25),
                       ),
                     ),
                   ],

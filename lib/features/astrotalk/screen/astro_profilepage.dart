@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:mahakal/data/datasource/remote/http/httpClient.dart';
 import 'package:mahakal/features/astrotalk/screen/astro_chatscreen.dart';
 import 'package:mahakal/features/profile/controllers/profile_contrroller.dart';
@@ -16,8 +17,7 @@ import '../components/wallet_recharge_screen.dart';
 
 class AstrologerprofileView extends StatefulWidget {
   String id;
-  String astrologerImage;
-  AstrologerprofileView({super.key, required this.id, required this.astrologerImage});
+  AstrologerprofileView({super.key, required this.id});
 
   @override
   State<AstrologerprofileView> createState() => _AstrologerprofileViewState();
@@ -224,20 +224,19 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _isLoading == true
+      bottomNavigationBar: _isLoading == true
           ? const SizedBox.shrink()
           : Container(
+              margin: const EdgeInsets.symmetric(horizontal: 5),
               padding: const EdgeInsets.symmetric(vertical: 8),
               decoration: const BoxDecoration(
                 color: Colors.white70,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrange),
+                          backgroundColor: Colors.amber),
                       onPressed: () async {
                         print('Chat Now tapped');
 
@@ -251,15 +250,11 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
                               context,
                               CupertinoPageRoute(
                                   builder: (_) => ChatScreenView(
-                                        astrologerId:
-                                            "${astrologerData?['id']}",
-                                        astrologerName:
-                                            astrologerData?['name'] ??
-                                                'Astrologer',
-                                        astrologerImage:
-                                            widget.astrologerImage,
-                                            chargePerMin: astrologerData?['is_astrologer_chat_charge'] ?? 0,
-                                        userId: userId,
+                                    astrologerId: "${astrologerData?['id']}",
+                                    astrologerName: astrologerData?['name'] ?? 'Astrologer',
+                                    astrologerImage: "${AppConstants.astrologersImages}${astrologerData?['image']}",
+                                    chargePerMin: astrologerData?['is_astrologer_chat_charge'] ?? 0,
+                                    userId: userId,
                                       )));
                           return;
                         } else {
@@ -280,11 +275,12 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
                       child: Text(
                         'Chat\nRs. ${astrologerData?['is_astrologer_chat_charge']}/min',
                         textAlign: TextAlign.center,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white,fontSize: 12),
                       )),
+                  SizedBox(width: 6,),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrange),
+                          backgroundColor: Colors.amber),
                       onPressed: () async {
                         if (astrologerData != null &&
                             astrologerData!['id'] != null) {
@@ -311,11 +307,12 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
                       child:  Text(
                         'Audio Call\nRs. ${astrologerData?['is_astrologer_call_charge']}/min',
                         textAlign: TextAlign.center,
-                        style:const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white,fontSize: 12),
                       )),
+                  SizedBox(width: 6,),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrange),
+                          backgroundColor: Colors.amber),
                       onPressed: () async {
                         if (astrologerData != null &&
                             astrologerData!['id'] != null) {
@@ -350,14 +347,14 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
                           :  Text(
                               'Video Call\nRs. ${astrologerData?['is_astrologer_live_stream_charge']}/min',
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white,fontSize: 12),
                             )),
                 ],
               ),
             ),
       appBar: AppBar(
         title:
-            const Text('Profile', style: TextStyle(color: Colors.deepOrange)),
+            const Text('Profile', style: TextStyle(color: Colors.amber)),
         actions: [
           GestureDetector(
               onTap: () {
@@ -377,7 +374,7 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
               child: const Icon(
                     Icons.account_balance_wallet,
                     size: 27,
-                    color: Colors.deepOrange,
+                    color: Colors.amber,
                   ),),
 
           const SizedBox(width: 16),
@@ -388,232 +385,216 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
           _isLoading == true
               ? const Center(child: CircularProgressIndicator())
               : SafeArea(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  /// ---------- TYPE CHECK ----------
+                  Builder(builder: (context) {
+                    final bool isAstrologer =
+                        astrologerData?['is_astrologer_call_charge'] != null ||
+                            astrologerData?['is_astrologer_chat_charge'] != null;
+
+                    final bool isPandit =
+                        astrologerData?['is_pandit_pooja'] != null ||
+                            astrologerData?['is_pandit_offlinepooja'] != null;
+
+                    /// ---------- HEADER ----------
+                    return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Header
+
                         Row(
                           children: [
                             Container(
-                              padding: const EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(color: Colors.blue),
+                                border:
+                                Border.all(color: Colors.deepOrange, width: 2),
                               ),
                               child: CircleAvatar(
-                                radius: 32,
-                                backgroundColor: Colors.grey[300],
+                                radius: 34,
+                                backgroundColor: Colors.grey.shade300,
                                 backgroundImage: NetworkImage(
-                                  widget.astrologerImage,
+                                  "${AppConstants.astrologersImages}${astrologerData?['image']}",
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 12),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(astrologerData?['name'] ?? 'Astrologer',
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18)),
-                                    const SizedBox(width: 5),
-                                    const Icon(Icons.verified,
-                                        color: Colors.green, size: 16),
-                                  ],
-                                ),
-                                 Text('${astrologerData?['experience'] ?? 0} years exp | Eng, Hindi',
-                                    style: const TextStyle(
-                                        fontSize: 14, color: Colors.blueGrey)),
-                              ],
-                            ),
-                          ],
-                        ),
-
-                        //image container
-                        // const SizedBox(
-                        //   height: 10,
-                        // ),
-                        // SizedBox(
-                        //   height: 170,
-                        //   child: ListView.builder(
-                        //     shrinkWrap: true,
-                        //     scrollDirection: Axis
-                        //         .horizontal, // 👈 Makes the list scroll horizontally
-                        //     itemCount: 10,
-                        //     itemBuilder: (context, index) {
-                        //       return Container(
-                        //         width: 120,
-                        //         margin: const EdgeInsets.all(5),
-                        //         decoration: BoxDecoration(
-                        //           border: Border.all(color: Colors.grey),
-                        //           borderRadius: BorderRadius.circular(8),
-                        //           color: Colors.blueAccent,
-                        //           image: const DecorationImage(
-                        //             image: NetworkImage(
-                        //               'https://img.pikbest.com/photo/20241022/office-boy-in-photo_10993810.jpg!bw700', // Replace with your image URLs
-                        //             ),
-                        //             fit: BoxFit.cover,
-                        //           ),
-                        //         ),
-                        //         alignment: Alignment.center,
-                        //       );
-                        //     },
-                        //   ),
-                        // ),
-
-                        //Specialization
-                        // _sectionTitle('Specialization'),
-                        // GridView.builder(
-                        //   physics: const NeverScrollableScrollPhysics(),
-                        //   shrinkWrap: true,
-                        //   itemCount: 6,
-                        //   gridDelegate:
-                        //       const SliverGridDelegateWithFixedCrossAxisCount(
-                        //     crossAxisCount: 3,
-                        //     mainAxisSpacing: 10,
-                        //     crossAxisSpacing: 10,
-                        //     childAspectRatio: 3,
-                        //   ),
-                        //   itemBuilder: (context, index) {
-                        //     return Container(
-                        //       padding: const EdgeInsets.symmetric(
-                        //           horizontal: 16, vertical: 5),
-                        //       decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(8),
-                        //         border: Border.all(
-                        //             color: Colors.deepOrange, width: 1.5),
-                        //         // color: Colors.deepOrange
-                        //       ),
-                        //       child: const Center(
-                        //           child: Text(
-                        //         'Numerology',
-                        //         style: TextStyle(color: Colors.black),
-                        //       )),
-                        //     );
-                        //   },
-                        // ),
-
-                        // About Astrologers
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        _sectionTitle('About Astrologer'),
-                        Text(
-                          astrologerData?['bio'] ??
-                              'No description available.',
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-
-                        // About Astrologers
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        _sectionTitle('Astrologer Quality'),
-                        Text(
-                          astrologerData?['qualities'] ??
-                              'No quality available.',
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-
-
-                        // Language
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        _sectionTitle('Language'),
-                        Wrap(
-                          spacing: 8,
-                          children: (() {
-                            final langData = astrologerData?['language'];
-                            List<dynamic> langs = [];
-                            if (langData == null) {
-                              langs = [];
-                            } else if (langData is String) {
-                              try {
-                                final decoded = jsonDecode(langData);
-                                if (decoded is List) {
-                                  langs = decoded;
-                                } else if (decoded is Map && decoded['language'] is List) {
-                                  langs = decoded['language'];
-                                } else {
-                                  langs = [decoded.toString()];
-                                }
-                              } catch (e) {
-                                langs = langData
-                                    .split(',')
-                                    .map((s) => s.trim())
-                                    .where((s) => s.isNotEmpty)
-                                    .toList();
-                              }
-                            } else if (langData is List) {
-                              langs = langData;
-                            } else {
-                              langs = [langData.toString()];
-                            }
-                            return langs
-                                .map<Widget>((l) => Chip(label: Text(l?.toString() ?? 'HI')))
-                                .toList();
-                          })(),
-                        ),
-
-                        // Reviews Section
-                        Row(
-                          children: [
-                            _sectionTitle('Rreviews'),
-                            const Spacer(),
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text('Read All Reviews'))
-                          ],
-                        ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 2,
-                          itemBuilder: (context, index) {
-                            // final review = controller.reviews[index];
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 6),
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey.shade300),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+                            const SizedBox(width: 14),
+                            Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
                                     children: [
-                                      ...List.generate(
-                                          5,
-                                          (i) => const Icon(Icons.star,
-                                              color: Colors.orange, size: 16)),
-                                      const Spacer(),
-                                      Text('${DateTime.now()}',
-                                          style: const TextStyle(fontSize: 12)),
+                                      Expanded(
+                                        child: Text(
+                                          astrologerData?['name'] ?? '',
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      const Icon(Icons.verified,
+                                          color: Colors.green, size: 18),
                                     ],
                                   ),
                                   const SizedBox(height: 4),
-                                  const Text('Maxwell',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 4),
-                                  const Text('Reviews',
-                                      style: TextStyle(fontSize: 13)),
+                                  Text(
+                                    "${astrologerData?['experience'] ?? 0} yrs experience",
+                                    style: TextStyle(
+                                        color: Colors.grey.shade600),
+                                  ),
                                 ],
                               ),
-                            );
-                          },
+                            ),
+                          ],
                         ),
+
+                        const SizedBox(height: 16),
+
+                        /// ---------- ABOUT ----------
+                        _aboutCard("About",
+                            astrologerData?['bio']),
+
+                        _aboutCard("Qualities",
+                            astrologerData?['qualities']),
+
+                        /// ---------- LANGUAGE ----------
+                        const SizedBox(height: 12),
+                        _sectionTitle('Languages'),
+                        Wrap(
+                          spacing: 8,
+                          children: (() {
+                            final langData = astrologerData?['language'];
+                            List<dynamic> langs = [];
+                            if (langData is String) {
+                              try {
+                                langs = jsonDecode(langData);
+                              } catch (_) {
+                                langs = langData.split(',');
+                              }
+                            } else if (langData is List) {
+                              langs = langData;
+                            }
+                            return langs
+                                .map((l) => Chip(
+                              label: Text(l.toString().toUpperCase()),
+                              backgroundColor:
+                              Colors.amber.shade50,
+                              side: BorderSide(
+                                  color: Colors.amber.shade300),
+                            ))
+                                .toList();
+                          })(),
+                        ),
+
+                        /// ---------- ASTROLOGER SERVICES ----------
+                        if (isAstrologer) ...[
+                          const SizedBox(height: 20),
+                          _sectionTitle('Consultation Charges'),
+                          _serviceTile("Call",
+                              astrologerData?['is_astrologer_call_charge'],
+                              Icons.call),
+                          _serviceTile("Chat",
+                              astrologerData?['is_astrologer_chat_charge'],
+                              Icons.chat),
+                          _serviceTile("Live",
+                              astrologerData?['is_astrologer_live_stream_charge'],
+                              Icons.videocam),
+                          _serviceTile("Report",
+                              astrologerData?['is_astrologer_report_charge'],
+                              Icons.description),
+                        ],
+
+                        /// ---------- PANDIT DETAILS ----------
+                        if (isPandit) ...[
+                          const SizedBox(height: 24),
+
+                          _sectionTitle('Pandit Details'),
+
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              gradient: LinearGradient(
+                                colors: [
+                                  const Color(0xFFFFF8E1), // luxury cream
+                                  const Color(0xFFFFECB3), // soft gold
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              border: Border.all(
+                                color: Colors.amber.shade300,
+                                width: 1.2,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.amber.withOpacity(0.25),
+                                  blurRadius: 14,
+                                  offset: const Offset(0, 6),
+                                ),
+                              ],
+                            ),
+
+                            child: Column(
+                              children: [
+
+                                /// GOTRA
+                                _premiumInfoRow(
+                                  icon: Icons.account_circle_outlined,
+                                  title: "Gotra",
+                                  value: astrologerData?['is_pandit_gotra'],
+                                ),
+
+                                _premiumDivider(),
+
+                                /// MANDIR
+                                _premiumInfoRow(
+                                  icon: Icons.temple_hindu,
+                                  title: "Primary Mandir",
+                                  value: astrologerData?['is_pandit_primary_mandir'],
+                                ),
+
+                                _premiumDivider(),
+
+                                /// CHARGES ROW
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: _chargeCard(
+                                        title: "Min Charge",
+                                        amount: astrologerData?['is_pandit_min_charge'],
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: _chargeCard(
+                                        title: "Max Charge",
+                                        amount: astrologerData?['is_pandit_max_charge'],
+                                        color: Colors.redAccent,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+
                         const SizedBox(height: 60),
                       ],
-                    ),
-                  ),
-                ),
+                    );
+                  }),
+                ],
+              ),
+            ),
+          ),
           if (_isLoading)
             Positioned.fill(
               child: BackdropFilter(
@@ -622,7 +603,7 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
                   color: Colors.black.withOpacity(0.2),
                   child: const Center(
                     child: CircularProgressIndicator(
-                      color: Colors.deepOrange,
+                      color: Colors.amber,
                     ),
                   ),
                 ),
@@ -635,17 +616,173 @@ class _AstrologerprofileViewState extends State<AstrologerprofileView> {
 
   Widget _sectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10,bottom: 5),
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text(
+        title,
+        style:
+        const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  Widget _aboutCard(String title, String? text) {
+    if (text == null || text.isEmpty) return const SizedBox();
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 2))
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title,
+              style: const TextStyle(
+                  fontSize: 16, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 6),
+          Text(text,
+              style: TextStyle(color: Colors.grey.shade700)),
+        ],
+      ),
+    );
+  }
+
+  Widget _serviceTile(String title, dynamic price, IconData icon) {
+    if (price == null) return const SizedBox();
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade300),
+        color: Colors.white,
+      ),
       child: Row(
         children: [
-          const Icon(Icons.fiber_manual_record, color: Colors.blue, size: 18),
-          const SizedBox(width: 5),
+          Icon(icon, color: Colors.deepOrange),
+          const SizedBox(width: 12),
+          Text(title,
+              style: const TextStyle(
+                  fontSize: 16, fontWeight: FontWeight.w500)),
+          const Spacer(),
+          Text("₹$price",
+              style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green)),
+        ],
+      ),
+    );
+  }
+
+  Widget _premiumInfoRow({
+    required IconData icon,
+    required String title,
+    dynamic value,
+  }) {
+    if (value == null || value.toString().isEmpty) {
+      return const SizedBox();
+    }
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.amber.shade100,
+          ),
+          child: Icon(icon, color: Colors.deepOrange, size: 18),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey.shade700,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                value.toString(),
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _premiumDivider() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      child: Divider(
+        height: 1,
+        thickness: 1,
+        color: Colors.amber.shade300.withOpacity(0.6),
+      ),
+    );
+  }
+
+  Widget _chargeCard({
+    required String title,
+    dynamic amount,
+    required Color color,
+  }) {
+    if (amount == null) return const SizedBox();
+
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 14),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: color.withOpacity(0.15),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
           Text(
             title,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 13,
+              color: Colors.grey.shade600,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            "₹${NumberFormat('#,##0').format(amount)}",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              color: color,
+            ),
           ),
         ],
       ),
     );
   }
+
 }

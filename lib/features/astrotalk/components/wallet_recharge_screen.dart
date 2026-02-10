@@ -72,14 +72,14 @@ class _RechargeBottomSheetState extends State<RechargeBottomSheet> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
-                  color: Colors.orange.shade50,
+                  color: Colors.amber.shade50,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 16, horizontal: 18),
                     child: Row(
                       children: [
                         const Icon(Icons.account_balance_wallet_rounded,
-                            color: Colors.orange, size: 32),
+                            color: Colors.amber, size: 32),
                         const SizedBox(width: 14),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +89,7 @@ class _RechargeBottomSheetState extends State<RechargeBottomSheet> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 15,
-                                  color: Colors.orange),
+                                  color: Colors.amber),
                             ),
                             FutureBuilder(
                               future: http_service.HttpService().getApi(
@@ -145,10 +145,10 @@ class _RechargeBottomSheetState extends State<RechargeBottomSheet> {
                         width: 80,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: isSelected ? Colors.orange : Colors.white,
+                          color: isSelected ? Colors.amber : Colors.white,
                           border: Border.all(
                             color: isSelected
-                                ? Colors.orange
+                                ? Colors.amber
                                 : Colors.grey.shade300,
                             width: isSelected ? 2 : 1,
                           ),
@@ -156,7 +156,7 @@ class _RechargeBottomSheetState extends State<RechargeBottomSheet> {
                           boxShadow: isSelected
                               ? [
                                   BoxShadow(
-                                      color: Colors.orange.withOpacity(0.15),
+                                      color: Colors.amber.withOpacity(0.15),
                                       blurRadius: 6)
                                 ]
                               : [],
@@ -201,7 +201,7 @@ class _RechargeBottomSheetState extends State<RechargeBottomSheet> {
                     label: const Text('Proceed To Pay',
                         style: TextStyle(fontSize: 16)),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Colors.amber,
                       foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 52),
                       shape: RoundedRectangleBorder(

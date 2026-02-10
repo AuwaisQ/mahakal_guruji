@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:hidable/hidable.dart';
 import 'package:mahakal/features/profile/controllers/profile_contrroller.dart';
 import 'package:mahakal/main.dart';
+import 'package:mahakal/utill/app_constants.dart';
 import 'package:page_animation_transition/animations/bottom_to_top_transition.dart';
 import 'package:page_animation_transition/page_animation_transition.dart';
 import 'package:provider/provider.dart';
 import '../../../common/basewidget/not_logged_in_bottom_sheet_widget.dart';
 import '../../../utill/dimensions.dart';
 import '../../data/datasource/remote/http/httpClient.dart';
+import '../../localization/language_constrants.dart';
 import '../../utill/customPainter.dart';
 import '../astrotalk/components/astro_bottomItem.dart';
 import '../astrotalk/screen/astro_calldetails.dart';
@@ -19,6 +21,7 @@ import '../astrotalk/screen/astro_profilepage.dart';
 import '../auth/controllers/auth_controller.dart';
 import '../more/screens/more_screen_view.dart';
 import '../shop/controllers/shop_controller.dart';
+import '../shop/domain/models/seller_model.dart';
 import '../shop/screens/shop_screen.dart';
 import 'All_Pandit_Couns_Screen.dart';
 import 'All_Pandit_Pooja_Screen.dart';
@@ -56,15 +59,17 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
   ScrollController? activeScrollController;
   int _pageIndex = 0;
   late List<Widget> _screens;
+  SellerModel? sellerModel;
 
   @override
   void initState() {
     super.initState();
-    Provider.of<ProfileController>(Get.context!, listen: false)
+     Provider.of<ProfileController>(Get.context!, listen: false)
         .getUserInfo(context);
-
+    sellerModel =  Provider.of<ShopController>(Get.context!, listen: false).sellerModel;
     print('Pandit Id: ${widget.panditId}');
     print('Seller Id: ${widget.sellerId}');
+    print('Seller model : $sellerModel');
 
     _pageIndex = widget.pageIndex;
     _pageController = PageController(initialPage: widget.pageIndex);
@@ -74,6 +79,7 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
       // Pooja Screen
       AllPanditPoojaScreen(
         panditId: widget.panditId,
+        sellerId: widget.sellerId,
         scrollController: poojaScrollController,
       ),
 
@@ -188,7 +194,6 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
                                 PageAnimationTransition(
                                   page: AstrologerprofileView(
                                     id: '${widget.panditId}', // astroId still used for navigation
-                                    astrologerImage: widget.astroImage,
                                   ),
                                   pageAnimationType: BottomToTopTransition(),
                                 ),
@@ -218,19 +223,19 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 PanditBottomNavItem(
-                                  title: 'Pooja',
+                                  title: '${getTranslated('POOJA', context)}',
                                   iconData: Icons.temple_hindu,
                                   isSelected: _pageIndex == 0,
                                   onTap: () => _setPage(0),
                                 ),
                                 PanditBottomNavItem(
-                                  title: 'Consult',
+                                  title: '${getTranslated('CONSULT', context)}',
                                   iconData: Icons.article_outlined,
                                   isSelected: _pageIndex == 1,
                                   onTap: () => _setPage(1),
                                 ),
                                 PanditBottomNavItem(
-                                  title: 'Chat',
+                                  title: '${getTranslated('chat', context)}',
                                   iconData: CupertinoIcons.minus,
                                   isSelected: _pageIndex == 5,
                                   onTap: () {
@@ -239,7 +244,6 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
                                       PageAnimationTransition(
                                         page: AstrologerprofileView(
                                           id: '${widget.panditId}', // Still needed for navigation
-                                          astrologerImage: widget.astroImage,
                                         ),
                                         pageAnimationType: BottomToTopTransition(),
                                       ),
@@ -247,13 +251,13 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
                                   },
                                 ),
                                 PanditBottomNavItem(
-                                  title: 'Shop',
+                                  title: '${getTranslated('only_shop', context)}',
                                   iconData: CupertinoIcons.shopping_cart,
                                   isSelected: _pageIndex == 3,
                                   onTap: () => _setPage(3),
                                 ),
                                 PanditBottomNavItem(
-                                  title: 'menu',
+                                  title: '${getTranslated('menu', context)}',
                                   iconData: Icons.menu,
                                   isSelected: _pageIndex == 4,
                                   onTap: () => _setPage(4),

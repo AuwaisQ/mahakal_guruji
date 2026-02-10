@@ -81,7 +81,7 @@ class _CounsellingFormWidgetState extends State<CounsellingFormWidget> {
     return InputDecoration(
       labelText: label,
       labelStyle: const TextStyle(
-        color: Colors.deepOrange,
+        color: Colors.amber,
         fontWeight: FontWeight.bold,
       ),
       filled: true,
@@ -91,7 +91,7 @@ class _CounsellingFormWidgetState extends State<CounsellingFormWidget> {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Colors.deepOrange, width: 2),
+        borderSide: const BorderSide(color: Colors.amber, width: 2),
       ),
     );
   }
@@ -156,7 +156,7 @@ class _CounsellingFormWidgetState extends State<CounsellingFormWidget> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Icon(Icons.help_outline,
-                    size: 50, color: Colors.deepOrange),
+                    size: 50, color: Colors.amber),
                 const SizedBox(height: 12),
                 const Text(
                   "Confirm Submission",
@@ -180,7 +180,7 @@ class _CounsellingFormWidgetState extends State<CounsellingFormWidget> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepOrange),
+                            backgroundColor: Colors.amber),
                         onPressed: () => Navigator.pop(context, true),
                         child: const Text("Confirm",
                             style: TextStyle(color: Colors.white)),
@@ -245,7 +245,7 @@ class _CounsellingFormWidgetState extends State<CounsellingFormWidget> {
             onPressed: () => Navigator.pop(context),
           )
               : null,
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: Colors.amber,
           title: const Text(
             "Counselling Form",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -343,7 +343,7 @@ class _CounsellingFormWidgetState extends State<CounsellingFormWidget> {
                     child: ElevatedButton(
                       onPressed: onSubmitPressed,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrange,
+                        backgroundColor: Colors.amber,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
                       ),

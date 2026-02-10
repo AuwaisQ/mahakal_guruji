@@ -210,7 +210,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Please download the invoice first!"),
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.amber,
         ),
       );
       return;
@@ -377,7 +377,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.orange[100]!,
+                        color: Colors.amber[100]!,
                         blurRadius: 10,
                         spreadRadius: 2,
                       ),
@@ -493,7 +493,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                                   ? Colors.red.shade600
                                                   : subscriptionStatus ==
                                                           "In Progress"
-                                                      ? Colors.orange.shade600
+                                                      ? Colors.amber.shade600
                                                       : Colors.green.shade600,
                                           borderRadius:
                                               BorderRadius.circular(30),
@@ -560,7 +560,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                                 subscriptionStatus ==
                                                         "Cancelled"
                                                     ? Colors.grey
-                                                    : Colors.orange.shade600,
+                                                    : Colors.amber.shade600,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(30),
@@ -798,10 +798,10 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                   width: 80,
                                   height: 80,
                                   decoration: BoxDecoration(
-                                    color: Colors.deepOrange.shade100,
+                                    color: Colors.amber.shade100,
                                     borderRadius: BorderRadius.circular(10),
                                     border: Border.all(
-                                        color: Colors.deepOrange.shade200),
+                                        color: Colors.amber.shade200),
                                   ),
                                   child: item.image != null &&
                                           item.image.isNotEmpty &&
@@ -821,7 +821,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                               return Center(
                                                 child:
                                                     CircularProgressIndicator(
-                                                  color: Colors.deepOrange,
+                                                  color: Colors.amber,
                                                 ),
                                               );
                                             },
@@ -829,7 +829,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                                 (context, error, stackTrace) {
                                               return Icon(
                                                 Icons.shopping_bag,
-                                                color: Colors.deepOrange,
+                                                color: Colors.amber,
                                                 size: 30,
                                               );
                                             },
@@ -838,7 +838,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                       : Center(
                                           child: Icon(
                                             Icons.shopping_bag,
-                                            color: Colors.deepOrange,
+                                            color: Colors.amber,
                                             size: 30,
                                           ),
                                         ),
@@ -855,7 +855,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           overflow: TextOverflow.ellipsis,
-                                          color: Colors.deepOrange.shade800,
+                                          color: Colors.amber.shade800,
                                         ),
                                         maxLines: 1,
                                       ),
@@ -864,7 +864,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 12, vertical: 4),
                                         decoration: BoxDecoration(
-                                          color: Colors.orange.shade50,
+                                          color: Colors.amber.shade50,
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
@@ -894,7 +894,7 @@ class _TrackDonationDetailsState extends State<TrackDonationDetails> {
                                               fontSize: 18,
                                               fontWeight: FontWeight.w600,
                                               color:
-                                                  Colors.deepOrange.shade900,
+                                                  Colors.amber.shade900,
                                             ),
                                           ),
                                         ],
@@ -1083,11 +1083,11 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
           //"${widget.issuedDate}",
           '🎖 Certificate of Honor',
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.orange, fontSize: 18),
+              fontWeight: FontWeight.bold, color: Colors.amber, fontSize: 18),
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.orange),
+          icon: const Icon(Icons.arrow_back, color: Colors.amber),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -1119,7 +1119,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                   imageUrl: widget.certificateImageUrl,
                   fit: BoxFit.cover,
                   placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(color: Colors.orange),
+                    child: CircularProgressIndicator(color: Colors.amber),
                   ),
                   errorWidget: (context, url, error) => const Center(
                     child:
@@ -1167,7 +1167,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.orange.withOpacity(0.2),
+                    color: Colors.amber.withOpacity(0.2),
                     blurRadius: 8,
                     offset: const Offset(0, 4),
                   ),
@@ -1188,7 +1188,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                     const TextSpan(
                       text: 'Mahakal.com',
                       style: TextStyle(
-                          color: Colors.orange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.w600,
                           fontSize: 16),
                     ),
@@ -1208,7 +1208,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
             //     borderRadius: BorderRadius.circular(12),
             //     boxShadow: [
             //       BoxShadow(
-            //         color: Colors.orange.withOpacity(0.2),
+            //         color: Colors.amber.withOpacity(0.2),
             //         blurRadius: 8,
             //         offset: const Offset(0, 4),
             //       ),
@@ -1216,7 +1216,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
             //   ),
             //   child: const Text(
             //     '🎊 You have been awarded this certificate for your dedicated involvement in the Pooja Ceremony, facilitated by Mahakal.com.\n\n🙏 May Lord Mahakal bless you with wisdom and prosperity!',
-            //     style: TextStyle(color: Colors.orange, fontWeight: FontWeight.w600, fontSize: 16),
+            //     style: TextStyle(color: Colors.amber, fontWeight: FontWeight.w600, fontSize: 16),
             //     textAlign: TextAlign.center,
             //   ),
             // ),
@@ -1233,14 +1233,14 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.deepOrange, Colors.orange.shade400],
+                          colors: [Colors.amber, Colors.amber.shade400],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.orange.withOpacity(0.4),
+                            color: Colors.amber.withOpacity(0.4),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),
@@ -1278,14 +1278,14 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.deepOrange, Colors.orange.shade400],
+                          colors: [Colors.amber, Colors.amber.shade400],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.orange.withOpacity(0.4),
+                            color: Colors.amber.withOpacity(0.4),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),

@@ -86,7 +86,7 @@ class FeaturedDealWidget extends StatelessWidget {
                                 color: Provider.of<ThemeController>(context)
                                         .darkTheme
                                     ? Colors.white
-                                    : Colors.orange,
+                                    : Colors.amber,
                                 size: 15),
                             Padding(
                               padding:
@@ -101,7 +101,7 @@ class FeaturedDealWidget extends StatelessWidget {
                                     color: Provider.of<ThemeController>(context)
                                             .darkTheme
                                         ? Colors.white
-                                        : Colors.orange,
+                                        : Colors.amber,
                                     fontSize: Dimensions.fontSizeSmall),
                               ),
                             ),

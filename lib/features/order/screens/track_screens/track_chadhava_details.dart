@@ -111,7 +111,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
       case 'confirmed':
         return Colors.green;
       default:
-        return Colors.orange; // Default color for unknown statuses
+        return Colors.amber; // Default color for unknown statuses
     }
   }
 
@@ -319,14 +319,14 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                                 fontSize: 20,
                                                 fontFamily: 'Roboto',
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.orange),
+                                                color: Colors.amber),
                                           ),
                                           const Spacer(),
                                           GestureDetector(
                                             child: const Icon(
                                               Icons.keyboard_arrow_down,
                                               size: 30,
-                                              color: Colors.orange,
+                                              color: Colors.amber,
                                             ),
                                             onTap: () {
                                               modalSetter(() {
@@ -345,7 +345,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                                 ),
                                                 // Row(
                                                 //   children: [
-                                                //     Icon(Icons.location_pin ,color: Colors.orange,size: 20,),
+                                                //     Icon(Icons.location_pin ,color: Colors.amber,size: 20,),
                                                 //     SizedBox(
                                                 //         width: screenWidth * 0.7,
                                                 //         child: Text(
@@ -365,7 +365,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                                   children: [
                                                     const Icon(
                                                       Icons.calendar_month,
-                                                      color: Colors.orange,
+                                                      color: Colors.amber,
                                                       size: 20,
                                                     ),
                                                     const SizedBox(
@@ -464,12 +464,12 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                                 borderRadius:
                                                     BorderRadius.circular(8),
                                                 borderSide: const BorderSide(
-                                                    color: Colors.orange,
+                                                    color: Colors.amber,
                                                     width: 1.5),
                                               ),
                                               suffixIcon: const Icon(
                                                   Icons.person_2,
-                                                  color: Colors.orange,
+                                                  color: Colors.amber,
                                                   size: 25),
                                             ),
                                           ),
@@ -540,12 +540,12 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             borderSide: const BorderSide(
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 width: 1.5),
                                           ),
                                           suffixIcon: const Icon(
                                               Icons.report_outlined,
-                                              color: Colors.orange,
+                                              color: Colors.amber,
                                               size: 25),
                                         ),
                                       ),
@@ -553,7 +553,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                         children: [
                                           Checkbox(
                                             checkColor: Colors.white,
-                                            activeColor: Colors.orange,
+                                            activeColor: Colors.amber,
                                             value: isChecked,
                                             onChanged: (bool? newValue) {
                                               modalSetter(() {
@@ -649,11 +649,11 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             borderSide: const BorderSide(
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 width: 1.5),
                                           ),
                                           suffixIcon: const Icon(Icons.phone,
-                                              color: Colors.orange, size: 25),
+                                              color: Colors.amber, size: 25),
                                         ),
                                       ),
                                     ],
@@ -671,7 +671,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
-                                          color: Colors.orange.shade400,
+                                          color: Colors.amber.shade400,
                                         ),
                                         child: const Center(
                                             child: CircularProgressIndicator(
@@ -690,7 +690,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
-                                            color: Colors.orange,
+                                            color: Colors.amber,
                                           ),
                                           child: const Center(
                                             child: Text(
@@ -769,7 +769,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                               style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.orange),
+                                  color: Colors.amber),
                             ),
                             Text(
                               "${trackModelData?.order.type}",
@@ -857,7 +857,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                               children: List.generate(options.length, (index) {
                                 return CheckboxListTile(
                                   checkColor: Colors.white,
-                                  activeColor: Colors.orange,
+                                  activeColor: Colors.amber,
                                   title: Text(
                                     options[index],
                                     style: const TextStyle(fontSize: 14),
@@ -925,10 +925,10 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.orange)),
+                                        BorderSide(color: Colors.amber)),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.orange)),
+                                        BorderSide(color: Colors.amber)),
                                 hintText: "Write here...",
                               ),
                             ),
@@ -946,7 +946,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.0),
-                                color: Colors.orange.shade400,
+                                color: Colors.amber.shade400,
                               ),
                               child: const Center(
                                   child: CircularProgressIndicator(
@@ -969,7 +969,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                 margin: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.orange,
+                                  color: Colors.amber,
                                 ),
                                 child: const Center(
                                   child: Text(
@@ -1234,7 +1234,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
               },
               color: Colors.white, // Progress indicator color
               backgroundColor: Colors
-                  .deepOrange, // Background color of the refresh indicator
+                  .amber, // Background color of the refresh indicator
               displacement: 40.0,
               child: SingleChildScrollView(
                 child: Column(
@@ -1266,7 +1266,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                     children: [
                                       Icon(
                                         Icons.article,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -1276,7 +1276,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                               fontSize: 20,
                                               overflow: TextOverflow.ellipsis,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.deepOrange))
+                                              color: Colors.amber))
                                     ],
                                   ),
                                   const Divider(
@@ -1289,7 +1289,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                     children: [
                                       Icon(
                                         Icons.person,
-                                        color: Colors.deepOrange.shade200,
+                                        color: Colors.amber.shade200,
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -1311,7 +1311,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                     children: [
                                       Icon(
                                         Icons.email_outlined,
-                                        color: Colors.deepOrange.shade200,
+                                        color: Colors.amber.shade200,
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -1330,7 +1330,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                     children: [
                                       Icon(
                                         Icons.phone,
-                                        color: Colors.deepOrange.shade200,
+                                        color: Colors.amber.shade200,
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -1367,7 +1367,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                       children: [
                                         Icon(
                                           Icons.article,
-                                          color: Colors.deepOrange,
+                                          color: Colors.amber,
                                         ),
                                         SizedBox(
                                           width: 10,
@@ -1377,7 +1377,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                                 fontSize: 20,
                                                 overflow: TextOverflow.ellipsis,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.deepOrange)),
+                                                color: Colors.amber)),
                                       ],
                                     ),
                                     const Divider(
@@ -1403,7 +1403,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 5),
                                           decoration: BoxDecoration(
-                                              color: Colors.deepOrange,
+                                              color: Colors.amber,
                                               borderRadius:
                                                   BorderRadius.circular(8.0)),
                                           child: const Row(
@@ -1617,7 +1617,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                       children: [
                                         Icon(
                                           Icons.article,
-                                          color: Colors.deepOrange,
+                                          color: Colors.amber,
                                         ),
                                         SizedBox(
                                           width: 10,
@@ -1627,7 +1627,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                                 fontSize: 20,
                                                 overflow: TextOverflow.ellipsis,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.deepOrange))
+                                                color: Colors.amber))
                                       ],
                                     ),
                                     const Divider(
@@ -1642,7 +1642,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                             flex: 0,
                                             child: Icon(
                                               Icons.groups,
-                                              color: Colors.deepOrange.shade100,
+                                              color: Colors.amber.shade100,
                                             )),
                                         const SizedBox(
                                           width: 10,
@@ -1668,7 +1668,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                             flex: 0,
                                             child: Icon(
                                               Icons.swipe_down_alt_outlined,
-                                              color: Colors.deepOrange.shade100,
+                                              color: Colors.amber.shade100,
                                             )),
                                         const SizedBox(
                                           width: 10,
@@ -1692,7 +1692,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                       children: [
                                         Icon(
                                           Icons.phone,
-                                          color: Colors.deepOrange.shade100,
+                                          color: Colors.amber.shade100,
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -1739,7 +1739,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                                         horizontal: 10,
                                                         vertical: 5),
                                                 decoration: BoxDecoration(
-                                                    color: Colors.deepOrange,
+                                                    color: Colors.amber,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0)),
@@ -1952,7 +1952,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                             children: [
                               Icon(
                                 Icons.redeem,
-                                color: Colors.deepOrange,
+                                color: Colors.amber,
                               ),
                               SizedBox(
                                 width: 10,
@@ -1962,7 +1962,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                       fontSize: 20,
                                       overflow: TextOverflow.ellipsis,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.deepOrange)),
+                                      color: Colors.amber)),
                             ],
                           ),
                           const SizedBox(
@@ -2025,8 +2025,8 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                             //         children: [
                                             //           TextSpan(text: "Price : ",style: TextStyle(color: Colors.black,fontSize: 16)),
                                             //           trackModelData?.order.type == "counselling"
-                                            //               ? TextSpan(text: "₹${trackModelData?.order.payAmount}",style: TextStyle(color: Colors.deepOrange,fontSize: 18,fontWeight: FontWeight.bold))
-                                            //               : TextSpan(text: "₹${trackModelData?.order.packagePrice}",style: TextStyle(color: Colors.deepOrange,fontSize: 18,fontWeight: FontWeight.bold)),
+                                            //               ? TextSpan(text: "₹${trackModelData?.order.payAmount}",style: TextStyle(color: Colors.amber,fontSize: 18,fontWeight: FontWeight.bold))
+                                            //               : TextSpan(text: "₹${trackModelData?.order.packagePrice}",style: TextStyle(color: Colors.amber,fontSize: 18,fontWeight: FontWeight.bold)),
                                             //           TextSpan(text: " (Tax include)",style: TextStyle(color: Colors.black,fontSize: 16)),
                                             //         ]
                                             //     )
@@ -2201,7 +2201,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                   style: const TextStyle(
                                       fontSize: 16,
                                       overflow: TextOverflow.ellipsis,
-                                      color: Colors.deepOrange,
+                                      color: Colors.amber,
                                       fontWeight: FontWeight.bold)),
                             ],
                           ),
@@ -2304,7 +2304,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
                                   style: TextStyle(
                                       fontSize: 16,
                                       overflow: TextOverflow.ellipsis,
-                                      color: Colors.deepOrange))),
+                                      color: Colors.amber))),
 
                           const SizedBox(
                             height: 50,

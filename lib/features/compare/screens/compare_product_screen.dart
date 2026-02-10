@@ -562,7 +562,7 @@ class CompareCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Icon(Icons.star_rate_rounded,
-                                  color: Colors.orange, size: 20),
+                                  color: Colors.amber, size: 20),
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 2.0),

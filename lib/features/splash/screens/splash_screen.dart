@@ -101,7 +101,7 @@ class SplashScreenState extends State<SplashScreen> {
     print('<--Splash Deep Link-->');
     Navigator.of(Get.context!).pushReplacement(
       CupertinoPageRoute(
-        builder: (BuildContext context) => const PanditBottomBar(pageIndex: 0, panditId: 3, sellerId: 188, astroImage: '',),
+        builder: (BuildContext context) => const PanditBottomBar(pageIndex: 0, panditId: AppConstants.panditId, sellerId: AppConstants.sellerId, astroImage: '',),
       ),
     );
     deepLinkService = DeepLinkService(widget.navigatorKey);

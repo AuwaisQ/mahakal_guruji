@@ -156,14 +156,14 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
       case 'confirmed':
         return Colors.green;
       default:
-        return Colors.orange; // Default color for unknown statuses
+        return Colors.amber; // Default color for unknown statuses
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      color: Colors.orange,
+      color: Colors.amber,
       onRefresh: () async {
         getTrackData(widget.orderId);
       },
@@ -243,7 +243,7 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                                 'Confirm order',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.deepOrange,
+                                  color: Colors.amber,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -251,7 +251,7 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                                 children: [
                                   const Icon(
                                     Icons.alarm,
-                                    color: Colors.orange,
+                                    color: Colors.amber,
                                     size: 18,
                                   ),
                                   const SizedBox(
@@ -275,7 +275,7 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                             width: 20,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.deepOrange),
+                                color: Colors.amber),
                             child: const Icon(
                               Icons.check,
                               color: Colors.white,
@@ -290,23 +290,23 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                           children: [
                             Text(
                               "|",
-                              style: TextStyle(color: Colors.deepOrange),
+                              style: TextStyle(color: Colors.amber),
                             ),
                             Text(
                               "|",
-                              style: TextStyle(color: Colors.deepOrange),
+                              style: TextStyle(color: Colors.amber),
                             ),
                             Text(
                               "|",
-                              style: TextStyle(color: Colors.deepOrange),
+                              style: TextStyle(color: Colors.amber),
                             ),
                             Text(
                               "|",
-                              style: TextStyle(color: Colors.deepOrange),
+                              style: TextStyle(color: Colors.amber),
                             ),
                             Text(
                               "|",
-                              style: TextStyle(color: Colors.deepOrange),
+                              style: TextStyle(color: Colors.amber),
                             ),
                           ],
                         ),
@@ -343,7 +343,7 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                                 'Order completed',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.deepOrange,
+                                  color: Colors.amber,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -356,7 +356,7 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                                           children: [
                                             const Icon(
                                               Icons.alarm,
-                                              color: Colors.orange,
+                                              color: Colors.amber,
                                               size: 18,
                                             ),
                                             const SizedBox(
@@ -376,7 +376,7 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                                           children: [
                                             Icon(
                                               Icons.check,
-                                              color: Colors.orange,
+                                              color: Colors.amber,
                                               size: 18,
                                             ),
                                             SizedBox(
@@ -404,8 +404,8 @@ class _CounsellingTrackingPageState extends State<CounsellingTrackingPage> {
                               shape: BoxShape.circle,
                               color:
                                   trackModelData?.order?.status == "completed"
-                                      ? Colors.deepOrange
-                                      : Colors.deepOrange.withOpacity(0.3),
+                                      ? Colors.amber
+                                      : Colors.amber.withOpacity(0.3),
                             ),
                             child: const Icon(
                               Icons.check,

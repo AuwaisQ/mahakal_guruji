@@ -48,7 +48,7 @@ class ReviewWidget extends StatelessWidget {
               const SizedBox(width: Dimensions.paddingSizeExtraSmall)
             ]),
             Row(children: [
-              const Icon(Icons.star, color: Colors.orange),
+              const Icon(Icons.star, color: Colors.amber),
               Text('${reviewModel.rating!.toDouble()} /5',
                   style: titilliumRegular.copyWith(
                       fontSize: Dimensions.fontSizeDefault),
