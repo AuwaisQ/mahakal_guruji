@@ -68,7 +68,7 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.amber,
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
@@ -132,7 +132,7 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Colors.deepOrange.withOpacity(0.3),
+          color: Colors.amber.withOpacity(0.3),
           width: 1.5,
         ),
       ),
@@ -147,13 +147,13 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: Colors.deepOrange.withOpacity(0.3),
+                    color: Colors.amber.withOpacity(0.3),
                     width: 1,
                   ),
                 ),
                 child: Icon(
                   Icons.landscape_rounded,
-                  color: Colors.deepOrange,
+                  color: Colors.amber,
                   size: 24,
                 ),
               ),
@@ -184,7 +184,7 @@ class _BookingDetailsPageState extends State<BookingDetailsPage> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.deepOrange.withOpacity(0.15),
+              color: Colors.amber.withOpacity(0.15),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: Colors.black.withOpacity(0.2),
@@ -1022,7 +1022,7 @@ class _AadharBottomSheetState extends State<AadharBottomSheet> with SingleTicker
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TabBar(
               controller: _tabController,
-              labelColor: Colors.deepOrange,
+              labelColor: Colors.amber,
               dividerColor: Colors.transparent,
               unselectedLabelColor: Colors.grey.shade600,
               labelStyle: TextStyle(
@@ -1036,7 +1036,7 @@ class _AadharBottomSheetState extends State<AadharBottomSheet> with SingleTicker
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.deepOrange.withOpacity(0.1),
+                color: Colors.amber.withOpacity(0.1),
               ),
               tabs: [
                 Tab(text: 'Non-Verified'),
@@ -1282,10 +1282,10 @@ class _AadharBottomSheetState extends State<AadharBottomSheet> with SingleTicker
       margin: EdgeInsets.only(bottom: 12),
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isVerified ? Color(0xFF4CAF50).withOpacity(0.05) : Colors.orange.shade50,
+        color: isVerified ? Color(0xFF4CAF50).withOpacity(0.05) : Colors.amber.shade50,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isVerified ? Color(0xFF4CAF50).withOpacity(0.2) : Colors.orange.shade200,
+          color: isVerified ? Color(0xFF4CAF50).withOpacity(0.2) : Colors.amber.shade200,
           width: 1,
         ),
       ),
@@ -1295,7 +1295,7 @@ class _AadharBottomSheetState extends State<AadharBottomSheet> with SingleTicker
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: isVerified ? Color(0xFF4CAF50) : Colors.orange,
+              color: isVerified ? Color(0xFF4CAF50) : Colors.amber,
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -1333,7 +1333,7 @@ class _AadharBottomSheetState extends State<AadharBottomSheet> with SingleTicker
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: isVerified ? Color(0xFF4CAF50) : Colors.orange,
+              color: isVerified ? Color(0xFF4CAF50) : Colors.amber,
             ),
           ),
         ],

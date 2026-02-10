@@ -125,7 +125,7 @@ class ProductWidget extends StatelessWidget {
                                   color: const Color(0xFFF36A6A)))),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       const Icon(Icons.star_rate_rounded,
-                          color: Colors.orange, size: 20),
+                          color: Colors.amber, size: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 2.0),
                         child: Text(double.parse(ratting).toStringAsFixed(1),

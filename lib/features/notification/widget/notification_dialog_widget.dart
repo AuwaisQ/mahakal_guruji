@@ -29,7 +29,7 @@
 //     final splashController =
 //     Provider.of<SplashController>(context, listen: false);
 //
-//     final Color deepOrange = Colors.deepOrange.shade600;
+//     final Color amber = Colors.amber.shade600;
 //
 //     void handleNotificationNavigation(NotificationItem notificationModel) {
 //       final notificationType = notificationModel.type ?? '';
@@ -259,7 +259,7 @@
 //                 notificationModel.title ?? '',
 //                 textAlign: TextAlign.center,
 //                 style: titilliumSemiBold.copyWith(
-//                   color: deepOrange,
+//                   color: amber,
 //                   fontSize: 22,
 //                   fontWeight: FontWeight.bold,
 //                 ),
@@ -292,14 +292,14 @@
 //                 width: double.infinity,
 //                 child: ElevatedButton(
 //                   style: ElevatedButton.styleFrom(
-//                     backgroundColor: deepOrange,
+//                     backgroundColor: amber,
 //                     padding:
 //                     const EdgeInsets.symmetric(vertical: 14, horizontal: 30),
 //                     shape: RoundedRectangleBorder(
 //                       borderRadius: BorderRadius.circular(30),
 //                     ),
 //                     elevation: 6,
-//                     shadowColor: deepOrange.withOpacity(0.4),
+//                     shadowColor: amber.withOpacity(0.4),
 //                   ),
 //                   onPressed: () {
 //
@@ -359,7 +359,7 @@ class _NotificationDialogWidgetState extends State<NotificationDialogWidget> {
   Widget build(BuildContext context) {
     final splashController =
     Provider.of<SplashController>(context, listen: false);
-    final Color deepOrange = Colors.deepOrange.shade600;
+    final Color amber = Colors.amber.shade600;
 
     void handleNotificationNavigation(NotificationItem notificationModel) {
       final notificationType = notificationModel.type ?? '';
@@ -427,7 +427,7 @@ class _NotificationDialogWidgetState extends State<NotificationDialogWidget> {
                   widget.notificationModel.title ?? '',
                   textAlign: TextAlign.center,
                   style: titilliumSemiBold.copyWith(
-                    color: deepOrange,
+                    color: amber,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
@@ -459,7 +459,7 @@ class _NotificationDialogWidgetState extends State<NotificationDialogWidget> {
                         child: Text(
                           isExpanded ? "View Less" : "View More",
                           style: const TextStyle(
-                            color: Colors.deepOrange,
+                            color: Colors.amber,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -475,14 +475,14 @@ class _NotificationDialogWidgetState extends State<NotificationDialogWidget> {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: deepOrange,
+                      backgroundColor: amber,
                       padding: const EdgeInsets.symmetric(
                           vertical: 14, horizontal: 30),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                       elevation: 6,
-                      shadowColor: deepOrange.withOpacity(0.4),
+                      shadowColor: amber.withOpacity(0.4),
                     ),
                     onPressed: () {
                       handleNotificationNavigation(widget.notificationModel);

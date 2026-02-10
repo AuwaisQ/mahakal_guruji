@@ -16,6 +16,7 @@ import '../../../common/basewidget/custom_textfield_widget.dart';
 import '../../../common/basewidget/show_custom_snakbar_widget.dart';
 import '../../../helper/velidate_check.dart';
 import '../../../main.dart';
+import '../../../utill/app_constants.dart';
 import '../../all_pandit/Pandit_Bottom_bar.dart';
 import '../../banner/controllers/banner_controller.dart';
 import '../../brand/controllers/brand_controller.dart';
@@ -81,21 +82,24 @@ class _AuthScreenState extends State<AuthScreen>
                   height: 220,
                   opacity: const AlwaysStoppedAnimation(.15)),
               Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * .07),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(Images.logoWithNameImageWhite,
-                            width: 280, height: 100)
-                      ])),
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.14,),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset(Images.appLogo, height: 65)),
+                      Image.asset(Images.logoNameImage,height: 50,)
+                    ]),
+              ),
               Platform.isIOS
                   ? InkWell(
                       onTap: () async {
                         Navigator.of(Get.context!).pushReplacement(
                             CupertinoPageRoute(
                                 builder: (BuildContext context) =>
-                                    const PanditBottomBar(pageIndex: 0, panditId: 3, sellerId: 188, astroImage: '',),));
+                                    const PanditBottomBar(pageIndex: 0, panditId: AppConstants.panditId, sellerId: AppConstants.sellerId, astroImage: '',),));
                         Provider.of<BannerController>(Get.context!,
                                 listen: false)
                             .getBannerList(true);
@@ -533,7 +537,7 @@ class _AuthScreenState extends State<AuthScreen>
             .getUserInfo(context);
         Navigator.pushAndRemoveUntil(
             Get.context!,
-            CupertinoPageRoute(builder: (_) => const PanditBottomBar(pageIndex: 0, panditId: 3, sellerId: 188, astroImage: '',),),
+            CupertinoPageRoute(builder: (_) => const PanditBottomBar(pageIndex: 0, panditId: AppConstants.panditId, sellerId: AppConstants.sellerId, astroImage: '',),),
             (route) => false);
       }
     } else {

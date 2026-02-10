@@ -144,7 +144,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
       appBar: AppBar(
         title: const Text(
           "Update Form",
-          style: TextStyle(color: Colors.orange),
+          style: TextStyle(color: Colors.amber),
         ),
         centerTitle: true,
       ),
@@ -181,7 +181,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextField(
-                          cursorColor: Colors.orange,
+                          cursorColor: Colors.amber,
                           controller: _nameController,
                           style: const TextStyle(fontFamily: 'Roboto-Regular'),
                           decoration: InputDecoration(
@@ -191,17 +191,17 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             suffixIcon: const Icon(Icons.person_outline,
                                 color: Colors.grey, size: 30),
@@ -214,7 +214,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextField(
-                          cursorColor: Colors.orange,
+                          cursorColor: Colors.amber,
                           controller: _emailController,
                           style: const TextStyle(fontFamily: 'Roboto-Regular'),
                           decoration: InputDecoration(
@@ -224,17 +224,17 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             suffixIcon: const Icon(Icons.mail,
                                 color: Colors.grey, size: 30),
@@ -247,7 +247,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextField(
-                          cursorColor: Colors.orange,
+                          cursorColor: Colors.amber,
                           controller: _mobileController,
                           style: const TextStyle(fontFamily: 'Roboto-Regular'),
                           decoration: InputDecoration(
@@ -257,17 +257,17 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: const BorderSide(
-                                  color: Colors.orange, width: 1),
+                                  color: Colors.amber, width: 1),
                             ),
                             suffixIcon: const Icon(Icons.numbers,
                                 color: Colors.grey, size: 30),
@@ -282,7 +282,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                             Radio(
                               materialTapTargetSize:
                                   MaterialTapTargetSize.shrinkWrap,
-                              activeColor: Colors.orange,
+                              activeColor: Colors.amber,
                               value: 1, // Value assigned to "Male"
                               groupValue: _maleValue,
                               onChanged: (value) {
@@ -297,7 +297,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                               materialTapTargetSize:
                                   MaterialTapTargetSize.shrinkWrap,
                               value: 2, // Value assigned to "Female"
-                              activeColor: Colors.orange,
+                              activeColor: Colors.amber,
                               groupValue: _maleValue,
                               onChanged: (value) {
                                 setState(() {
@@ -311,7 +311,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                               materialTapTargetSize:
                                   MaterialTapTargetSize.shrinkWrap,
                               value: 3, // Value assigned to "Female"
-                              activeColor: Colors.orange,
+                              activeColor: Colors.amber,
                               groupValue: _maleValue,
                               onChanged: (value) {
                                 setState(() {
@@ -333,7 +333,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.orange),
+                            border: Border.all(color: Colors.amber),
                           ),
                           child: TextButton(
                             onPressed: () async {
@@ -347,13 +347,13 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                                     data: ThemeData.light().copyWith(
                                       colorScheme: const ColorScheme.light(
                                         primary: Colors.white,
-                                        onPrimary: Colors.orange,
+                                        onPrimary: Colors.amber,
                                         surface: Color(0xFFFFF7EC),
-                                        onSurface: Colors.orange,
+                                        onSurface: Colors.amber,
                                       ),
                                       textButtonTheme: TextButtonThemeData(
                                         style: TextButton.styleFrom(
-                                          foregroundColor: Colors.orange,
+                                          foregroundColor: Colors.amber,
                                           backgroundColor: Colors.white,
                                         ),
                                       ),
@@ -417,7 +417,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.orange),
+                            border: Border.all(color: Colors.amber),
                           ),
                           child: TextButton(
                             onPressed: () async {
@@ -429,13 +429,13 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                                     data: ThemeData.light().copyWith(
                                       timePickerTheme:
                                           const TimePickerThemeData(
-                                        dialHandColor: Colors.orange,
-                                        dialTextColor: Colors.orange,
+                                        dialHandColor: Colors.amber,
+                                        dialTextColor: Colors.amber,
                                         dialBackgroundColor: Colors.white,
                                         dayPeriodColor: Colors.white,
-                                        dayPeriodTextColor: Colors.orange,
+                                        dayPeriodTextColor: Colors.amber,
                                         backgroundColor: Color(0xFFFFF7EC),
-                                        hourMinuteTextColor: Colors.orange,
+                                        hourMinuteTextColor: Colors.amber,
                                         hourMinuteColor: Colors.white,
                                         inputDecorationTheme:
                                             InputDecorationTheme(
@@ -443,14 +443,14 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                                           filled: true,
                                           fillColor: Colors.white,
                                           hintStyle:
-                                              TextStyle(color: Colors.orange),
+                                              TextStyle(color: Colors.amber),
                                           labelStyle:
-                                              TextStyle(color: Colors.orange),
+                                              TextStyle(color: Colors.amber),
                                         ),
                                       ),
                                       textButtonTheme: TextButtonThemeData(
                                         style: TextButton.styleFrom(
-                                          foregroundColor: Colors.orange,
+                                          foregroundColor: Colors.amber,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -547,7 +547,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                                         color: Colors.grey.shade100,
                                         borderRadius: BorderRadius.circular(8),
                                         border:
-                                            Border.all(color: Colors.orange),
+                                            Border.all(color: Colors.amber),
                                       ),
                                       child: Column(
                                         mainAxisAlignment:
@@ -596,7 +596,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(8),
                                         border:
-                                            Border.all(color: Colors.orange),
+                                            Border.all(color: Colors.amber),
                                       ),
                                       child: TextFormField(
                                         controller: cityController,
@@ -627,7 +627,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                           height: searchbox == false ? 0 : 160,
                           decoration: BoxDecoration(
                               color: Colors.white,
-                              border: Border.all(color: Colors.orange),
+                              border: Border.all(color: Colors.amber),
                               borderRadius: BorderRadius.circular(6.0)),
                           child: ListView.builder(
                             shrinkWrap: true,
@@ -689,7 +689,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.0),
-                          color: Colors.orange,
+                          color: Colors.amber,
                         ),
                         child: const Center(
                             child: CircularProgressIndicator(
@@ -703,7 +703,7 @@ class _UpdateInformationViewState extends State<UpdateInformationView> {
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.orange,
+                          backgroundColor: Colors.amber,
                           minimumSize: const Size(double.infinity, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),

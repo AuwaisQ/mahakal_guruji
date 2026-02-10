@@ -204,7 +204,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
               gradient: LinearGradient(
                 colors: [
                   Colors.white,
-                  Colors.deepOrange.shade50,
+                  Colors.amber.shade50,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -224,14 +224,14 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange.shade800,
+                          color: Colors.amber.shade800,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Container(
                         height: 2,
                         width: 40,
-                        color: Colors.deepOrange,
+                        color: Colors.amber,
                       ),
                     ],
                   ),
@@ -271,7 +271,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepOrange.shade700,
+                    color: Colors.amber.shade700,
                   ),
                 ),
 
@@ -332,7 +332,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrange,
+                          backgroundColor: Colors.amber,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -377,7 +377,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: isHighlight
-                  ? Colors.deepOrange.shade700
+                  ? Colors.amber.shade700
                   : Colors.black87,
             ),
           ),
@@ -394,7 +394,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                 fontWeight:
                 isHighlight ? FontWeight.bold : FontWeight.w500,
                 color: isHighlight
-                    ? Colors.deepOrange
+                    ? Colors.amber
                     : Colors.black54,
               ),
             ),
@@ -406,7 +406,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading ? Scaffold(body: Center(child: CircularProgressIndicator(color: Colors.orange))) : Scaffold(
+    return isLoading ? Scaffold(body: Center(child: CircularProgressIndicator(color: Colors.amber))) : Scaffold(
         appBar: PreferredSize(
           preferredSize:  Size.fromHeight(60),
           child: Container(
@@ -431,7 +431,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                       child: Text(
                         'Counselling Details',
                         style: TextStyle(
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.5,
@@ -454,7 +454,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
             gradient: LinearGradient(
               colors: [
                 Colors.white,
-                Colors.deepOrange.shade50,
+                Colors.amber.shade50,
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -494,7 +494,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                     '₹ ${allPanditCounsellingData!.counselling!.counsellingPackage!.price} /-',
                     style: const TextStyle(
                       fontSize: 22,
-                      color: Colors.deepOrange,
+                      color: Colors.amber,
                       fontWeight: FontWeight.w800,
                       letterSpacing: 0.3,
                     ),
@@ -517,7 +517,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
-                  backgroundColor: Colors.deepOrange,
+                  backgroundColor: Colors.amber,
                 ),
                 child: Row(
                   children: const [
@@ -588,7 +588,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                   effect: ExpandingDotsEffect(
                     dotHeight: 5,
                     dotWidth: 5,
-                    activeDotColor: Colors.deepOrange,
+                    activeDotColor: Colors.amber,
                     dotColor: Colors.grey.shade400,
                   ),
                 ),
@@ -610,7 +610,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Colors.deepOrange.shade50,
+                            Colors.amber.shade50,
                             Colors.white,
                           ],
                           begin: Alignment.topLeft,
@@ -619,7 +619,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                         borderRadius: BorderRadius.circular(14),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.deepOrange.withOpacity(0.08),
+                            color: Colors.amber.withOpacity(0.08),
                             blurRadius: 8,
                             offset: const Offset(0, 3),
                           ),
@@ -679,7 +679,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                                         ? Icons.keyboard_arrow_up_rounded
                                         : Icons.keyboard_arrow_down_rounded,
                                     size: 24,
-                                    color: Colors.deepOrange,
+                                    color: Colors.amber,
                                   ),
                                 ),
                               ),
@@ -695,7 +695,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.deepOrange.shade800,
+                                color: Colors.amber.shade800,
                               ),
                             ),
 
@@ -774,7 +774,7 @@ class _PanditCounsellingDetailsState extends State<PanditCounsellingDetails> {
                         children: [
                           // Spinner
                           CircularProgressIndicator(
-                            color: Colors.deepOrange,
+                            color: Colors.amber,
                             strokeWidth: 4,
                           ),
 

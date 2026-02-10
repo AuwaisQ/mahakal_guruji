@@ -28,7 +28,7 @@ class _MahakalLoadingDataState extends State<MahakalLoadingData>
     return const Scaffold(
       body: Center(
           child: CircularProgressIndicator(
-        color: Colors.deepOrange,
+        color: Colors.amber,
       )),
     );
   }

@@ -40,7 +40,7 @@ class _WalletAddMoneyScreenState extends State<WalletAddMoneyScreen> {
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.amber,
       ),
       appBar: AppBar(
         title: const Text('Add money to wallet'),
@@ -122,7 +122,7 @@ class _WalletAddMoneyScreenState extends State<WalletAddMoneyScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 2),
                         decoration: BoxDecoration(
-                          color: Colors.orange,
+                          color: Colors.amber,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Text(

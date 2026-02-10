@@ -1,11 +1,22 @@
 import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../data/datasource/remote/http/httpClient.dart';
+import '../../helper/responsive_helper.dart';
+import '../../localization/controllers/localization_controller.dart';
+import '../../localization/language_constrants.dart';
+import '../../main.dart';
+import '../../utill/color_resources.dart';
+import '../../utill/custom_themes.dart';
+import '../../utill/dimensions.dart';
 import '../../utill/images.dart';
+import '../notification/controllers/notification_controller.dart';
+import '../notification/screens/notification_screen.dart';
 import 'Model/all_pandit_service_model.dart';
-import 'Pandit_Bottom_bar.dart';
 import 'Pandit_Counselling_Details.dart';
 
 class AllPanditCounsScreen extends StatefulWidget {
@@ -24,21 +35,19 @@ class AllPanditCounsScreen extends StatefulWidget {
 
 class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
   bool isLoading = false;
-  bool _isSearchActive = false;
   bool isGridview = true;
-
-  final TextEditingController _searchController = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
-
+  String isLanguage = 'IN';
   List<Counselling> fullList = [];
   List<Counselling> filteredList = [];
-
   AllPanditServicesModel? gurujiInfo;
+  int activeIndex = 0;
+
 
   @override
   void initState() {
     super.initState();
     fetchAllPanditService();
+    isLanguage = Provider.of<LocalizationController>(Get.context!, listen: false).getCurrentLanguage()!;
   }
 
   Future<void> fetchAllPanditService() async {
@@ -77,8 +86,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
 
   Widget buildCounsellingCard(Counselling counselling, {bool isList = false}) {
     return InkWell(
-      onTap: () =>
-          Navigator.push(
+      onTap: () => Navigator.push(
             context,
             CupertinoPageRoute(
                 builder: (_) => PanditCounsellingDetails(gurujiId: '${gurujiInfo?.guruji?.id}', slug: '${counselling.slug}',)
@@ -157,7 +165,7 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                         ),
                       ),
                       const SizedBox(width: 5),
@@ -191,14 +199,13 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrange.shade400,
+                        backgroundColor: Colors.amber.shade400,
                         elevation: 4,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: const Text(
-                        'Book Now',
+                      child: Text('${getTranslated('book_now', context)}',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -234,242 +241,159 @@ class _AllPanditCounsScreenState extends State<AllPanditCounsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 50, left: 10),
+          child: Image.asset(Images.logoNameImage, height: 38),
+        ),
+        title: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.asset(Images.appLogo, height: 40)),
+        actions: [
+          Consumer<NotificationController>(builder: (context, notificationProvider, _) {
+            return IconButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (_) => const NotificationScreen())),
+                icon: Stack(clipBehavior: Clip.none, children: [
+                  Image.asset(Images.notification,
+                      height: Dimensions.iconSizeDefault,
+                      width: Dimensions.iconSizeDefault,
+                      color: ColorResources.getPrimary(context)),
+                  Positioned(
+                      top: -4,
+                      right: -4,
+                      child: CircleAvatar(
+                          radius:
+                          ResponsiveHelper.isTab(context) ? 10 : 7,
+                          backgroundColor: ColorResources.red,
+                          child: Text(
+                              notificationProvider.notificationModel
+                                  ?.newNotificationItem
+                                  .toString() ??
+                                  '0',
+                              style: titilliumSemiBold.copyWith(
+                                  color: ColorResources.white,
+                                  fontSize:
+                                  Dimensions.fontSizeExtraSmall))))
+                ]));
+          }),
+          const SizedBox(width: 10,),
+        ],
+      ),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator(color: Colors.orange))
-          : CustomScrollView(
-        controller: widget.scrollController,
-        slivers: [
-          // ----------------- TOP SEARCH APPBAR -----------------
-          SliverAppBar(
-            pinned: true,
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
-            title: Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: Colors.black),
-                  onPressed: () => Navigator.pop(context),
-                ),
-
-                _isSearchActive
-                    ? _buildSearchBox()
-                    : const Text(
-                  'Vendor Profile',
-                  style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
-
-                Spacer(),
-
-                _buildSearchToggle(),
-                SizedBox(width: 10),
-                _buildGridToggle(),
-              ],
-            ),
-          ),
-
-          // ----------------- PANIDT PROFILE HEADER -----------------
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            expandedHeight: 140,
-            backgroundColor: Colors.deepOrange.shade50,
-            flexibleSpace: FlexibleSpaceBar(
-              background: _buildGurujiHeader(),
-            ),
-          ),
-
-          // ----------------- GRID / LIST CONTENT -----------------
-          isGridview
-              ? SliverPadding(
-            padding: const EdgeInsets.all(14),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                    (context, index) =>
-                    buildCounsellingCard(filteredList[index]),
-                childCount: filteredList.length,
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 0.65,
-              ),
-            ),
-          )
-              : SliverPadding(
-            padding: const EdgeInsets.all(10),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (context, index) => buildCounsellingCard(filteredList[index], isList: true),
-                childCount: filteredList.length,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // SEARCH BOX
-  Widget _buildSearchBox() {
-    return Container(
-      height: 40,
-      width: MediaQuery.of(context).size.width * 0.55,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.grey.shade50,
-        border: Border.all(color: Colors.deepOrange),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.search, color: Colors.grey),
-          const SizedBox(width: 8),
-          Expanded(
-            child: TextField(
-              controller: _searchController,
-              focusNode: _focusNode,
-              autofocus: true,
-              onChanged: searchItems,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Search Counsell...',
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // SEARCH BUTTON
-  Widget _buildSearchToggle() {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isSearchActive = !_isSearchActive;
-
-          if (!_isSearchActive) {
-            _searchController.clear();
-            filteredList = fullList; // 🔥 IMPORTANT LINE
-            FocusScope.of(context).unfocus();
-          }
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.deepOrange.shade50,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.deepOrange),
-        ),
-        child: Icon(
-          _isSearchActive ? Icons.close : Icons.search,
-          color: Colors.deepOrange,
-        ),
-      ),
-    );
-  }
-
-  // GRID / LIST TOGGLE BUTTON
-  Widget _buildGridToggle() {
-    return GestureDetector(
-      onTap: () => setState(() => isGridview = !isGridview),
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.deepOrange.shade50,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.deepOrange),
-        ),
-        child: Icon(
-          isGridview ? Icons.list : Icons.grid_view,
-          color: Colors.deepOrange,
-        ),
-      ),
-    );
-  }
-
-  // GURUJI PROFILE HEADER
-  Widget _buildGurujiHeader() {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // IMAGE
-          CircleAvatar(
-            radius: 45,
-            backgroundColor: Colors.orange.shade200,
-            child: ClipOval(
-              child: CachedNetworkImage(
-                imageUrl: gurujiInfo?.guruji?.image ?? '',
-                width: 90,
-                height: 90,
-                fit: BoxFit.cover,
-                errorWidget: (_, __, ___) => Icon(Icons.broken_image),
-              ),
-            ),
-          ),
-          SizedBox(width: 16),
-
-          // NAME + STATS
-          Expanded(
+          ? const Center(child: CircularProgressIndicator(color: Colors.amber))
+          : SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  gurujiInfo?.guruji?.enName ?? '',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                CarouselSlider.builder(
+                  itemCount: 4,
+                  options: CarouselOptions(
+                    height: 160,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration: const Duration(milliseconds: 700),
+                    viewportFraction: 0.9, // 🔥 side images visible
+                    enlargeCenterPage: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                    enableInfiniteScroll: true,
+                    // onPageChanged: (index, reason) {
+                    //   setState(() => activeIndex = index);
+                    // },
+                  ),
+                  itemBuilder: (context, index, realIndex) {
+                    const imageUrl = 'https://www.nyckel.com/assets/images/functions/hindu-guru-by-picture.webp';
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(14),
+                        child: Image.network(
+                          imageUrl,
+                          fit: BoxFit.fill, // ⬅ better than fill
+                          width: double.infinity,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                SizedBox(height: 10),
-
-                Row(
-                  children: [
-                    _buildStat('6+ Yrs', 'Experience'),
-                    SizedBox(width: 10),
-                    _buildStat('10,000+', 'Devotees'),
-                    SizedBox(width: 10),
-                    _buildStat('1200', 'Followers'),
-                  ],
+                const SizedBox(height: 8),
+            
+                // DOT INDICATOR
+                AnimatedSmoothIndicator(
+                  activeIndex: activeIndex,
+                  count: 4,
+                  effect: ExpandingDotsEffect(
+                    dotHeight: 5,
+                    dotWidth: 5,
+                    activeDotColor: Colors.amber,
+                    dotColor: Colors.grey.shade400,
+                  ),
                 ),
-                SizedBox(height: 14),
-
-                Row(
-                  children: [
-                    _buildFollowBtn(),
-                    //SizedBox(width: 10),
-                    // _buildShopBtn(),
-                  ],
-                )
+            
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.amber.shade200,
+                          thickness: 1,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          'Astro Consultancy',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.amber.shade800,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.amber.shade200,
+                          thickness: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            
+            
+                isGridview
+                    ? GridView.builder(
+                    shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.only(top: 14,left: 14,right: 14,bottom: 120),
+                      itemCount: filteredList.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.65,
+                      ),
+                      itemBuilder: (context, index) {
+                        return buildCounsellingCard(filteredList[index]);
+                      },
+                    )
+                    : ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(10),
+                      itemCount: filteredList.length,
+                      itemBuilder: (context, index) {
+                        return buildCounsellingCard(
+                filteredList[index],
+                isList: true,
+                        );
+                      },
+                    ),
               ],
             ),
           ),
-        ],
-      ),
     );
   }
-
-  Widget _buildFollowBtn() {
-    return Container(
-      height: 40,
-      width: 150,
-      decoration: BoxDecoration(
-        color: Colors.deepOrangeAccent,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Center(
-        child: Text(
-          'Following',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-
 }

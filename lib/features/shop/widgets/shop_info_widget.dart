@@ -37,8 +37,7 @@ class ShopInfoWidget extends StatelessWidget {
     return Column(
       children: [
         CustomImageWidget(
-          image:
-              '${Provider.of<SplashController>(context, listen: false).baseUrls!.shopImageUrl}/banner/$banner',
+          image: '${Provider.of<SplashController>(context, listen: false).baseUrls!.shopImageUrl}/banner/$banner',
           placeholder: Images.placeholder_3x1,
           width: MediaQuery.of(context).size.width,
           height: ResponsiveHelper.isTab(context) ? 250 : 120,
@@ -191,7 +190,7 @@ class ShopInfoWidget extends StatelessWidget {
                               children: [
                                   Row(children: [
                                     const Icon(Icons.star_rate_rounded,
-                                        color: Colors.orange),
+                                        color: Colors.amber),
                                     Text(
                                         double.parse(ratting)
                                             .toStringAsFixed(1),

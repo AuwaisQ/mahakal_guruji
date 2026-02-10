@@ -203,7 +203,7 @@ class FlashDealShimmer extends StatelessWidget {
                                             width: 50,
                                             color: ColorResources.white),
                                         const Icon(Icons.star,
-                                            color: Colors.orange, size: 15)
+                                            color: Colors.amber, size: 15)
                                       ]),
                                   const SizedBox(
                                       height: Dimensions.paddingSizeExtraSmall),

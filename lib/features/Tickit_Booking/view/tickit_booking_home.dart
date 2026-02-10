@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
             child: IconButton(
               icon: Icon(
                 isGridView ? Icons.list : Icons.grid_view,
-                color: Colors.deepOrange,
+                color: Colors.amber,
               ),
               onPressed: () {
                 setState(() {
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(width: 12,)
         ],
         elevation: 0,
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.amber,
       ),
       body: CustomScrollView(
         slivers: [
@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                           height: 24,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                              colors: [Colors.deepOrange, Colors.orangeAccent],
+                              colors: [Colors.amber, Colors.amberAccent],
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                             ),
@@ -543,7 +543,7 @@ class _HomePageState extends State<HomePage> {
                         const Icon(
                           Icons.location_on,
                           size: 14,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                         ),
                         const SizedBox(width: 4),
                         Text(
@@ -584,7 +584,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
-                              colors: [Colors.deepOrange, Colors.deepOrange],
+                              colors: [Colors.amber, Colors.amber],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),

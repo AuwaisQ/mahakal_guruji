@@ -83,7 +83,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
       case 'confirmed':
         return Colors.green;
       default:
-        return Colors.orange; // Default color for unknown statuses
+        return Colors.amber; // Default color for unknown statuses
     }
   }
 
@@ -128,10 +128,10 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
             color: Colors.white,
             child: const Center(
                 child: CircularProgressIndicator(
-              color: Colors.orange,
+              color: Colors.amber,
             )))
         : RefreshIndicator(
-            color: Colors.orange,
+            color: Colors.amber,
             onRefresh: () async {
               getTrackData("${widget.userID}");
             },
@@ -196,7 +196,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                       //     child: Row(
                       //       children: [
                       //         Container(height:15,width: 4,decoration: BoxDecoration(
-                      //             color: Colors.orange,
+                      //             color: Colors.amber,
                       //             borderRadius: BorderRadius.circular(20)
                       //         ),),
                       //         const SizedBox(width: 5,),
@@ -242,7 +242,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       'Chadhava Confirmed',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -252,7 +252,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                             children: [
                                               const Icon(
                                                 Icons.alarm,
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 size: 18,
                                               ),
                                               const SizedBox(
@@ -278,8 +278,8 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       shape: BoxShape.circle,
                                       color: trackModelData?.order?.status ==
                                               "Rejected"
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -294,15 +294,15 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -343,7 +343,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       'Chadhava Time',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -353,7 +353,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                             children: [
                                               const Icon(
                                                 Icons.alarm,
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 size: 18,
                                               ),
                                               const SizedBox(
@@ -380,8 +380,8 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.scheduleCreated ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -396,15 +396,15 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -444,7 +444,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       'Live Stream',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -459,7 +459,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                                 children: [
                                                   const Icon(
                                                     Icons.alarm,
-                                                    color: Colors.orange,
+                                                    color: Colors.amber,
                                                     size: 18,
                                                   ),
                                                   const SizedBox(
@@ -495,7 +495,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                                   children: [
                                                     Icon(
                                                       Icons.video_label,
-                                                      color: Colors.orange,
+                                                      color: Colors.amber,
                                                       size: 18,
                                                     ),
                                                     SizedBox(width: 5),
@@ -527,8 +527,8 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.liveCreatedStream ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -543,15 +543,15 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -592,7 +592,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       'Recorded Video',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -608,7 +608,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                                 children: [
                                                   const Icon(
                                                     Icons.alarm,
-                                                    color: Colors.orange,
+                                                    color: Colors.amber,
                                                     size: 18,
                                                   ),
                                                   const SizedBox(
@@ -645,7 +645,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                                     Icon(
                                                       Icons
                                                           .slow_motion_video_sharp,
-                                                      color: Colors.orange,
+                                                      color: Colors.amber,
                                                       size: 18,
                                                     ),
                                                     SizedBox(width: 5),
@@ -670,7 +670,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                               //   },
                                               //   child: Row(
                                               //     children: [
-                                              //       Icon(Icons.slow_motion_video_sharp,color: Colors.orange,size: 18,),
+                                              //       Icon(Icons.slow_motion_video_sharp,color: Colors.amber,size: 18,),
                                               //       SizedBox(width: 5,),
                                               //       // Text("${trackModelData?.order?.poojaVideo}",
                                               //       //   style: TextStyle(
@@ -696,8 +696,8 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       color: trackModelData?.order
                                                   ?.videoCreatedSharing ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -712,15 +712,15 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -761,7 +761,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       'Certificate Generating',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -774,7 +774,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                                 children: [
                                                   const Icon(
                                                     Icons.alarm,
-                                                    color: Colors.orange,
+                                                    color: Colors.amber,
                                                     size: 18,
                                                   ),
                                                   const SizedBox(
@@ -820,7 +820,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                                     Icon(
                                                       Icons
                                                           .document_scanner_sharp,
-                                                      color: Colors.orange,
+                                                      color: Colors.amber,
                                                       size: 18,
                                                     ),
                                                     SizedBox(width: 5),
@@ -852,8 +852,8 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.poojaCertificate ==
                                               ""
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -868,15 +868,15 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -916,7 +916,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       'Order Completed',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -927,7 +927,7 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                             children: [
                                               const Icon(
                                                 Icons.alarm,
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 size: 18,
                                               ),
                                               const SizedBox(
@@ -954,8 +954,8 @@ class _ChadhavaTrackingPageState extends State<ChadhavaTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.orderCompleted ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,

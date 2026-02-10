@@ -78,7 +78,7 @@ class ProductShimmer extends StatelessWidget {
                               Container(
                                   height: 10, width: 50, color: Colors.white),
                               const Icon(Icons.star,
-                                  color: Colors.orange, size: 15),
+                                  color: Colors.amber, size: 15),
                             ]),
                           ],
                         ),

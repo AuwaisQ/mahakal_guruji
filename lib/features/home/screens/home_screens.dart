@@ -442,8 +442,8 @@ class _HomePageState extends State<HomePage> {
                           gradient: LinearGradient(
                             colors: [
                               Colors.white,
-                              Colors.deepOrange.shade50,
-                              Colors.deepOrange.shade100,
+                              Colors.amber.shade50,
+                              Colors.amber.shade100,
                             ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
@@ -451,13 +451,13 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.orange.withOpacity(0.15),
+                              color: Colors.amber.withOpacity(0.15),
                               blurRadius: 12,
                               offset: const Offset(0, 6),
                             ),
                           ],
                           border: Border.all(
-                            color: Colors.orange.shade200,
+                            color: Colors.amber.shade200,
                             width: 1.2,
                           ),
                         ),
@@ -471,8 +471,8 @@ class _HomePageState extends State<HomePage> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Colors.orange.shade400,
-                                    Colors.deepOrange.shade600
+                                    Colors.amber.shade400,
+                                    Colors.amber.shade600
                                   ],
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
@@ -480,7 +480,7 @@ class _HomePageState extends State<HomePage> {
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.orange.withOpacity(0.3),
+                                    color: Colors.amber.withOpacity(0.3),
                                     blurRadius: 8,
                                     offset: const Offset(0, 3),
                                   ),
@@ -505,7 +505,7 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.deepOrange.shade800,
+                                      color: Colors.amber.shade800,
                                     ),
                                   ),
                                   const SizedBox(height: 6),
@@ -526,18 +526,18 @@ class _HomePageState extends State<HomePage> {
                             Container(
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                color: Colors.orange.shade100,
+                                color: Colors.amber.shade100,
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.orange.withOpacity(0.2),
+                                    color: Colors.amber.withOpacity(0.2),
                                     blurRadius: 4,
                                   ),
                                 ],
                               ),
                               child: Icon(
                                 Icons.arrow_forward_ios_rounded,
-                                color: Colors.deepOrange.shade700,
+                                color: Colors.amber.shade700,
                                 size: 18,
                               ),
                             ),

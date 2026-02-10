@@ -221,7 +221,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                               style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.orange),
+                                  color: Colors.amber),
                             ),
                             Text(
                               userEmail,
@@ -309,7 +309,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                               children: List.generate(options.length, (index) {
                                 return CheckboxListTile(
                                   checkColor: Colors.white,
-                                  activeColor: Colors.orange,
+                                  activeColor: Colors.amber,
                                   title: Text(
                                     options[index],
                                     style: const TextStyle(fontSize: 14),
@@ -356,10 +356,10 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.orange)),
+                                        BorderSide(color: Colors.amber)),
                                 enabledBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.orange)),
+                                        BorderSide(color: Colors.amber)),
                                 hintText: "Write here...",
                               ),
                             ),
@@ -377,7 +377,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.0),
-                                color: Colors.orange.shade400,
+                                color: Colors.amber.shade400,
                               ),
                               child: const Center(
                                   child: CircularProgressIndicator(
@@ -401,7 +401,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                 margin: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.orange,
+                                  color: Colors.amber,
                                 ),
                                 child: const Center(
                                   child: Text(
@@ -516,7 +516,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.orange),
+                        color: Colors.amber),
                   ),
                   const SizedBox(height: 10),
                   ListView.builder(
@@ -547,7 +547,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                 )
                               : IconButton(
                                   icon: const Icon(Icons.download,
-                                      color: Colors.orange),
+                                      color: Colors.amber),
                                   onPressed: () async {
                                     await downloadPass(orderId, index,
                                         isDownloading, progressValues);
@@ -579,7 +579,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
             backgroundColor: Colors.white,
             body: Center(
                 child: CircularProgressIndicator(
-              color: Colors.orange,
+              color: Colors.amber,
             )))
         : Scaffold(
             appBar: AppBar(
@@ -632,7 +632,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
               },
               color: Colors.white,
               // Progress indicator color
-              backgroundColor: Colors.deepOrange,
+              backgroundColor: Colors.amber,
               // Background color of the refresh indicator
               displacement: 40.0,
               child: SingleChildScrollView(
@@ -666,7 +666,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                     children: [
                                       Icon(
                                         Icons.article,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -676,7 +676,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                               fontSize: 20,
                                               overflow: TextOverflow.ellipsis,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.deepOrange))
+                                              color: Colors.amber))
                                     ],
                                   ),
                                   const Divider(
@@ -689,7 +689,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                     children: [
                                       Icon(
                                         Icons.person,
-                                        color: Colors.deepOrange.shade200,
+                                        color: Colors.amber.shade200,
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -707,7 +707,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                     children: [
                                       Icon(
                                         Icons.email_outlined,
-                                        color: Colors.deepOrange.shade200,
+                                        color: Colors.amber.shade200,
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -725,7 +725,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                     children: [
                                       Icon(
                                         Icons.phone,
-                                        color: Colors.deepOrange.shade200,
+                                        color: Colors.amber.shade200,
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -765,7 +765,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                 borderRadius: BorderRadius.circular(35),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.orange.withOpacity(0.2),
+                                    color: Colors.amber.withOpacity(0.2),
                                     blurRadius: 15,
                                     spreadRadius: 2,
                                     offset: const Offset(0, 6),
@@ -794,7 +794,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                       borderRadius: BorderRadius.circular(12),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.orange.withOpacity(0.4),
+                                          color: Colors.amber.withOpacity(0.4),
                                           blurRadius: 8,
                                           offset: const Offset(0, 3),
                                         ),
@@ -816,7 +816,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                       Text(
                                         "Your Event Pass",
                                         style: TextStyle(
-                                          color: Colors.orange[800],
+                                          color: Colors.amber[800],
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 1.2,
@@ -839,16 +839,16 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                   Container(
                                     padding: const EdgeInsets.all(6),
                                     decoration: BoxDecoration(
-                                      color: Colors.orange.withOpacity(0.1),
+                                      color: Colors.amber.withOpacity(0.1),
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: Colors.orange.withOpacity(0.3),
+                                        color: Colors.amber.withOpacity(0.3),
                                         width: 1.5,
                                       ),
                                     ),
                                     child: Icon(
                                       Icons.arrow_forward_ios_rounded,
-                                      color: Colors.orange[700],
+                                      color: Colors.amber[700],
                                       size: 16,
                                     ),
                                   ),
@@ -870,7 +870,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                             children: [
                               Icon(
                                 Icons.redeem,
-                                color: Colors.deepOrange,
+                                color: Colors.amber,
                               ),
                               SizedBox(
                                 width: 10,
@@ -880,7 +880,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                       fontSize: 20,
                                       overflow: TextOverflow.ellipsis,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.deepOrange)),
+                                      color: Colors.amber)),
                             ],
                           ),
                           const SizedBox(
@@ -1057,7 +1057,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                   style: GoogleFonts.poppins(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange,
+                                    color: Colors.amber,
                                   ),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
@@ -1086,7 +1086,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                                 0)}",
                                         style: GoogleFonts.poppins(
                                           fontSize: 16,
-                                          color: Colors.deepOrange,
+                                          color: Colors.amber,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -1317,7 +1317,7 @@ class _TrackEventDetailsState extends State<TrackEventDetails> {
                                   style: TextStyle(
                                       fontSize: 16,
                                       overflow: TextOverflow.ellipsis,
-                                      color: Colors.deepOrange))),
+                                      color: Colors.amber))),
 
                           const SizedBox(
                             height: 80,
@@ -1552,7 +1552,7 @@ class _EventPassScreenState extends State<EventPassScreen> {
                       /// Performed By
                       Row(
                         children: [
-                          const Icon(Icons.mic, color: Colors.orange, size: 18),
+                          const Icon(Icons.mic, color: Colors.amber, size: 18),
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
@@ -1649,7 +1649,7 @@ class _EventPassScreenState extends State<EventPassScreen> {
         appBar: AppBar(
           title: const Text(
             "Event Pass List",
-            style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
           ),
         ),
         body: isLoading

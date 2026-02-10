@@ -115,6 +115,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   appbar_animated:
   syncfusion_flutter_pdfviewer: ^30.1.37
+  flutter_native_splash: ^2.4.0
 
   pdfx: ^2.9.2
   # flutter_tilt: ^3.2.1
@@ -156,6 +157,19 @@ icons_launcher:
       enable: true
     ios:
       enable: true
+
+flutter_native_splash:
+  color: "#FFFFFF"   # background white
+  android: true
+  ios: true
+  web: false
+
+  branding: "assets/images/mahakal.jpeg"   # 🔥 YOUR LOGO
+
+  android_12:
+    color: "#FFFFFF"
+    image: "assets/images/mahakal.jpeg"
+
 
 flutter:
   uses-material-design: true

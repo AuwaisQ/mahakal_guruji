@@ -68,9 +68,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
-                    child: const Icon(Icons.check, color: Colors.deepOrange),
+                    child: const Icon(Icons.check, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -82,7 +82,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Confirmed',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -90,7 +90,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: [
                           const Icon(
                             Icons.alarm,
-                            color: Colors.orange,
+                            color: Colors.amber,
                             size: 18,
                           ),
                           const SizedBox(
@@ -112,7 +112,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -127,11 +127,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -143,10 +143,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(Icons.assessment,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                   ),
                   const SizedBox(
                     width: 10,
@@ -158,7 +158,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Processing',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -170,7 +170,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -185,11 +185,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -201,11 +201,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -218,7 +218,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'In Transit',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -230,7 +230,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -245,11 +245,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -261,11 +261,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -278,7 +278,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Out for Pickup',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -290,7 +290,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -305,11 +305,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -321,11 +321,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -338,7 +338,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Delivered',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -350,7 +350,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -376,9 +376,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
-                    child: const Icon(Icons.check, color: Colors.deepOrange),
+                    child: const Icon(Icons.check, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -390,7 +390,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Confirmed',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -398,7 +398,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: [
                           const Icon(
                             Icons.alarm,
-                            color: Colors.orange,
+                            color: Colors.amber,
                             size: 18,
                           ),
                           const SizedBox(
@@ -420,7 +420,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -435,11 +435,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -451,10 +451,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -466,7 +466,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Processing',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -474,7 +474,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: [
                           const Icon(
                             Icons.alarm,
-                            color: Colors.orange,
+                            color: Colors.amber,
                             size: 18,
                           ),
                           const SizedBox(
@@ -524,7 +524,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -539,11 +539,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -555,11 +555,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -572,7 +572,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'In Transit',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -584,7 +584,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -599,11 +599,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -615,11 +615,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -632,7 +632,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Out for Pickup',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -644,7 +644,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -659,11 +659,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -675,11 +675,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -692,7 +692,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Delivered',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -704,7 +704,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -730,9 +730,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
-                    child: const Icon(Icons.check, color: Colors.deepOrange),
+                    child: const Icon(Icons.check, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -744,7 +744,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Confirmed',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -755,7 +755,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -770,11 +770,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -786,10 +786,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -801,7 +801,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Processing',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -809,7 +809,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: [
                           const Icon(
                             Icons.alarm,
-                            color: Colors.orange,
+                            color: Colors.amber,
                             size: 18,
                           ),
                           const SizedBox(
@@ -859,7 +859,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -874,11 +874,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -890,10 +890,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -905,7 +905,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'In Transit',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -916,7 +916,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -931,11 +931,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -947,11 +947,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -964,7 +964,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Out for Pickup',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -976,7 +976,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -991,11 +991,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1007,11 +1007,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -1024,7 +1024,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Delivered',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange.withOpacity(0.3),
+                          color: Colors.amber.withOpacity(0.3),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1036,7 +1036,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 20,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange.withOpacity(0.3)),
+                        color: Colors.amber.withOpacity(0.3)),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1062,9 +1062,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
-                    child: const Icon(Icons.check, color: Colors.deepOrange),
+                    child: const Icon(Icons.check, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1076,7 +1076,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Confirmed',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1087,7 +1087,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1102,11 +1102,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1118,10 +1118,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1133,7 +1133,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Processing',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1141,7 +1141,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: [
                           const Icon(
                             Icons.alarm,
-                            color: Colors.orange,
+                            color: Colors.amber,
                             size: 18,
                           ),
                           const SizedBox(
@@ -1191,7 +1191,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1206,11 +1206,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1222,10 +1222,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1237,7 +1237,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'In Transit',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1248,7 +1248,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1263,11 +1263,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1279,10 +1279,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1294,7 +1294,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Out for Pickup',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1305,7 +1305,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1320,11 +1320,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1336,11 +1336,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child: Icon(
                       Icons.assessment,
-                      color: Colors.deepOrange.withOpacity(0.3),
+                      color: Colors.amber.withOpacity(0.3),
                     ),
                   ),
                   const SizedBox(
@@ -1353,7 +1353,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Delivered',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1364,7 +1364,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1390,9 +1390,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
-                    child: const Icon(Icons.check, color: Colors.deepOrange),
+                    child: const Icon(Icons.check, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1404,7 +1404,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Confirmed',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1415,7 +1415,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1430,11 +1430,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1446,10 +1446,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1461,7 +1461,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Processing',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1469,7 +1469,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: [
                           const Icon(
                             Icons.alarm,
-                            color: Colors.orange,
+                            color: Colors.amber,
                             size: 18,
                           ),
                           const SizedBox(
@@ -1519,7 +1519,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1534,11 +1534,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1550,10 +1550,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1565,7 +1565,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'In Transit',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1576,7 +1576,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1591,11 +1591,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1607,10 +1607,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1622,7 +1622,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Out for Pickup',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1633,7 +1633,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1648,11 +1648,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   children: [
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                     Text(
                       "|",
-                      style: TextStyle(color: Colors.deepOrange),
+                      style: TextStyle(color: Colors.amber),
                     ),
                   ],
                 ),
@@ -1664,10 +1664,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.orange.withOpacity(0.2),
+                      color: Colors.amber.withOpacity(0.2),
                     ),
                     child:
-                        const Icon(Icons.assessment, color: Colors.deepOrange),
+                        const Icon(Icons.assessment, color: Colors.amber),
                   ),
                   const SizedBox(
                     width: 10,
@@ -1679,7 +1679,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         'Order Delivered',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1690,7 +1690,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     height: 20,
                     width: 20,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.deepOrange),
+                        shape: BoxShape.circle, color: Colors.amber),
                     child: const Icon(
                       Icons.check,
                       color: Colors.white,
@@ -1799,7 +1799,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
       case 'confirmed':
         return Colors.green;
       default:
-        return Colors.orange; // Default color for unknown statuses
+        return Colors.amber; // Default color for unknown statuses
     }
   }
 
@@ -1837,10 +1837,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
             color: Colors.white,
             child: const Center(
                 child: CircularProgressIndicator(
-              color: Colors.orange,
+              color: Colors.amber,
             )))
         : RefreshIndicator(
-            color: Colors.orange,
+            color: Colors.amber,
             onRefresh: () async {
               getTrackData("${widget.userID}");
               getTrackPrasad("${widget.userID}");
@@ -1945,7 +1945,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       'Pooja Confirmed',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -1955,7 +1955,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                             children: [
                                               const Icon(
                                                 Icons.alarm,
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 size: 18,
                                               ),
                                               const SizedBox(
@@ -1981,8 +1981,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       shape: BoxShape.circle,
                                       color: trackModelData?.order?.status ==
                                               "Rejected"
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -1997,11 +1997,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -2043,7 +2043,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       'Schedule Time',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -2053,7 +2053,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                             children: [
                                               const Icon(
                                                 Icons.alarm,
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 size: 18,
                                               ),
                                               const SizedBox(
@@ -2080,8 +2080,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.scheduleCreated ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -2096,11 +2096,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -2142,7 +2142,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       'Live Stream',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -2157,7 +2157,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                 children: [
                                                   const Icon(
                                                     Icons.alarm,
-                                                    color: Colors.orange,
+                                                    color: Colors.amber,
                                                     size: 18,
                                                   ),
                                                   const SizedBox(
@@ -2227,7 +2227,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                           Icon(
                                                             Icons.video_label,
                                                             color:
-                                                                Colors.orange,
+                                                                Colors.amber,
                                                             size: 18,
                                                           ),
                                                           SizedBox(width: 5),
@@ -2245,7 +2245,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                             Icons
                                                                 .keyboard_arrow_right,
                                                             color: Colors
-                                                                .deepOrange,
+                                                                .amber,
                                                             size: 18,
                                                           ),
                                                         ],
@@ -2264,8 +2264,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.liveCreatedStream ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -2281,11 +2281,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -2328,7 +2328,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       'Preparing Video',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -2344,7 +2344,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                 children: [
                                                   const Icon(
                                                     Icons.alarm,
-                                                    color: Colors.orange,
+                                                    color: Colors.amber,
                                                     size: 18,
                                                   ),
                                                   const SizedBox(
@@ -2384,7 +2384,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                     Icon(
                                                       Icons
                                                           .slow_motion_video_sharp,
-                                                      color: Colors.orange,
+                                                      color: Colors.amber,
                                                       size: 18,
                                                     ),
                                                     SizedBox(width: 5),
@@ -2399,7 +2399,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                     Icon(
                                                       Icons
                                                           .keyboard_arrow_right,
-                                                      color: Colors.deepOrange,
+                                                      color: Colors.amber,
                                                       size: 18,
                                                     ),
                                                   ],
@@ -2411,7 +2411,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                               //   },
                                               //   child: Row(
                                               //     children: [
-                                              //       Icon(Icons.slow_motion_video_sharp,color: Colors.orange,size: 18,),
+                                              //       Icon(Icons.slow_motion_video_sharp,color: Colors.amber,size: 18,),
                                               //       SizedBox(width: 5,),
                                               //       // Text("${trackModelData?.order?.poojaVideo}",
                                               //       //   style: TextStyle(
@@ -2437,8 +2437,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       color: trackModelData?.order
                                                   ?.videoCreatedSharing ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -2453,11 +2453,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -2500,7 +2500,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       'Certificate Generating',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -2513,7 +2513,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                 children: [
                                                   const Icon(
                                                     Icons.alarm,
-                                                    color: Colors.orange,
+                                                    color: Colors.amber,
                                                     size: 18,
                                                   ),
                                                   const SizedBox(
@@ -2552,7 +2552,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                     Icon(
                                                       Icons
                                                           .document_scanner_sharp,
-                                                      color: Colors.orange,
+                                                      color: Colors.amber,
                                                       size: 18,
                                                     ),
                                                     SizedBox(width: 5),
@@ -2567,7 +2567,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                                     Icon(
                                                       Icons
                                                           .keyboard_arrow_right,
-                                                      color: Colors.deepOrange,
+                                                      color: Colors.amber,
                                                       size: 18,
                                                     ),
                                                   ],
@@ -2586,8 +2586,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.poojaCertificate ==
                                               ""
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -2602,11 +2602,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                 children: [
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                   Text(
                                     "|",
-                                    style: TextStyle(color: Colors.deepOrange),
+                                    style: TextStyle(color: Colors.amber),
                                   ),
                                 ],
                               ),
@@ -2647,7 +2647,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       'Order Completed',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.deepOrange,
+                                        color: Colors.amber,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -2658,7 +2658,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                             children: [
                                               const Icon(
                                                 Icons.alarm,
-                                                color: Colors.orange,
+                                                color: Colors.amber,
                                                 size: 18,
                                               ),
                                               const SizedBox(
@@ -2685,8 +2685,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                       color: trackModelData
                                                   ?.order?.orderCompleted ==
                                               null
-                                          ? Colors.deepOrange.withOpacity(0.3)
-                                          : Colors.deepOrange),
+                                          ? Colors.amber.withOpacity(0.3)
+                                          : Colors.amber),
                                   child: const Icon(
                                     Icons.check,
                                     color: Colors.white,
@@ -2936,11 +2936,11 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
         title: const Text(
           '🎖 Certificate of Honor',
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.orange, fontSize: 18),
+              fontWeight: FontWeight.bold, color: Colors.amber, fontSize: 18),
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.orange),
+          icon: const Icon(Icons.arrow_back, color: Colors.amber),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -2972,7 +2972,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                   imageUrl: widget.certificateImageUrl,
                   fit: BoxFit.cover,
                   placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(color: Colors.orange),
+                    child: CircularProgressIndicator(color: Colors.amber),
                   ),
                   errorWidget: (context, url, error) => const Center(
                     child:
@@ -3014,7 +3014,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.orange.withOpacity(0.2),
+                    color: Colors.amber.withOpacity(0.2),
                     blurRadius: 8,
                     offset: const Offset(0, 4),
                   ),
@@ -3035,7 +3035,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                     TextSpan(
                       text: 'Mahakal.com',
                       style: TextStyle(
-                          color: Colors.orange,
+                          color: Colors.amber,
                           fontWeight: FontWeight.w600,
                           fontSize: 16),
                     ),
@@ -3055,7 +3055,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
             //     borderRadius: BorderRadius.circular(12),
             //     boxShadow: [
             //       BoxShadow(
-            //         color: Colors.orange.withOpacity(0.2),
+            //         color: Colors.amber.withOpacity(0.2),
             //         blurRadius: 8,
             //         offset: const Offset(0, 4),
             //       ),
@@ -3063,7 +3063,7 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
             //   ),
             //   child: const Text(
             //     '🎊 You have been awarded this certificate for your dedicated involvement in the Pooja Ceremony, facilitated by Mahakal.com.\n\n🙏 May Lord Mahakal bless you with wisdom and prosperity!',
-            //     style: TextStyle(color: Colors.orange, fontWeight: FontWeight.w600, fontSize: 16),
+            //     style: TextStyle(color: Colors.amber, fontWeight: FontWeight.w600, fontSize: 16),
             //     textAlign: TextAlign.center,
             //   ),
             // ),
@@ -3080,14 +3080,14 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.deepOrange, Colors.orange.shade400],
+                          colors: [Colors.amber, Colors.amber.shade400],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.orange.withOpacity(0.4),
+                            color: Colors.amber.withOpacity(0.4),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),
@@ -3125,14 +3125,14 @@ class _CertificateViewScreenState extends State<CertificateViewScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.deepOrange, Colors.orange.shade400],
+                          colors: [Colors.amber, Colors.amber.shade400],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.orange.withOpacity(0.4),
+                            color: Colors.amber.withOpacity(0.4),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),

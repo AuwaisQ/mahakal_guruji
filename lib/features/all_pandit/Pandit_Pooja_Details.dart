@@ -7,6 +7,7 @@ import 'package:mahakal/data/datasource/remote/http/httpClient.dart';
 import 'package:mahakal/features/all_pandit/person_details.dart';
 import 'package:mahakal/utill/app_constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../localization/language_constrants.dart';
 import '../../utill/devotees_count_widget.dart';
 import '../../utill/no_image_widget.dart';
 import '../../utill/razorpay_screen.dart';
@@ -16,9 +17,10 @@ import 'Model/all_pandit_success_model.dart';
 class PanditPoojaDetails extends StatefulWidget {
   final int panditId;
   final String poojaSlug;
+  final String isLanguage;
 
   const PanditPoojaDetails(
-      {super.key, required this.panditId, required this.poojaSlug});
+      {super.key, required this.panditId, required this.poojaSlug, required this.isLanguage});
 
   @override
   State<PanditPoojaDetails> createState() => _PanditPoojaDetailsState();
@@ -69,7 +71,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.deepOrange.shade700,
+                        color: Colors.amber.shade700,
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -113,7 +115,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                               ),
                             ),
                             const Icon(Icons.calendar_today,
-                                color: Colors.deepOrange),
+                                color: Colors.amber),
                           ],
                         ),
                       ),
@@ -129,7 +131,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                           Navigator.pop(context, selectedDate);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrange,
+                          backgroundColor: Colors.amber,
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -178,7 +180,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.orange.shade100,
+                    color: Colors.amber.shade100,
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
                   ),
                   child: Column(
@@ -189,7 +191,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.orange.shade900,
+                          color: Colors.amber.shade900,
                         ),
                       ),
                       const SizedBox(height: 6),
@@ -218,12 +220,12 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.orange.shade800,
+                            color: Colors.amber.shade800,
                           ),
                         ),
                         const SizedBox(height: 14),
 
-                        /// Orange Gradient Card
+                        /// amber Gradient Card
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(16),
@@ -231,16 +233,16 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                             borderRadius: BorderRadius.circular(14),
                             gradient: LinearGradient(
                               colors: [
-                                Colors.orange.shade50,
-                                Colors.orange.shade100.withOpacity(0.4),
+                                Colors.amber.shade50,
+                                Colors.amber.shade100.withOpacity(0.4),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
-                            border: Border.all(color: Colors.orange.shade200, width: 1),
+                            border: Border.all(color: Colors.amber.shade200, width: 1),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.orange.withOpacity(0.18),
+                                color: Colors.amber.withOpacity(0.18),
                                 blurRadius: 10,
                                 offset: const Offset(0, 4),
                               )
@@ -255,7 +257,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w800,
-                                  color: Colors.deepOrange.shade800,
+                                  color: Colors.amber.shade800,
                                 ),
                               ),
                               const SizedBox(height: 16),
@@ -263,14 +265,14 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                               /// Date
                               Row(
                                 children: [
-                                  Icon(Icons.date_range, size: 18, color: Colors.deepOrange.shade700),
+                                  Icon(Icons.date_range, size: 18, color: Colors.amber.shade700),
                                   const SizedBox(width: 8),
                                   Text(
                                     'Date:',
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.deepOrange.shade900,
+                                      color: Colors.amber.shade900,
                                     ),
                                   ),
                                   const Spacer(),
@@ -293,14 +295,14 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                               /// Person Count
                               Row(
                                 children: [
-                                  Icon(Icons.person, size: 18, color: Colors.deepOrange.shade700),
+                                  Icon(Icons.person, size: 18, color: Colors.amber.shade700),
                                   const SizedBox(width: 8),
                                   Text(
                                     'Qty:',
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.deepOrange.shade900,
+                                      color: Colors.amber.shade900,
                                     ),
                                   ),
                                   const Spacer(),
@@ -324,7 +326,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.deepOrange.shade900,
+                                      color: Colors.amber.shade900,
                                     ),
                                   ),
                                   const Spacer(),
@@ -401,7 +403,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.orange.shade800,
+                                color: Colors.amber.shade800,
                               ),
                             ),
                           ],
@@ -452,7 +454,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange,
+                            backgroundColor: Colors.amber,
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             shape: RoundedRectangleBorder(
@@ -563,7 +565,8 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
     int quantity = counts[index]; // current quantity for this item
 
     // Check if item already exists in selectedItems
-    int selIndex = selectedItems.indexWhere((e) => e['title'] == item.enName);
+    String? name = widget.isLanguage == 'IN' ? '${item.hiName}' : item.enName;
+    int selIndex = selectedItems.indexWhere((e) => e['title'] == name);
 
     if (selIndex >= 0) {
       if (quantity == 0) {
@@ -580,7 +583,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
         // Add new item
         selectedItems.add({
           'product_id': item.id,
-          'title': item.enName,
+          'title':  widget.isLanguage == 'IN' ? '${item.hiName}' : item.enName,
           'price': item.unitPrice ?? 0,
           'qty': quantity,
           'totalPrice': quantity * (item.unitPrice ?? 0),
@@ -705,7 +708,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                     child: Text(
                       'Pooja Details',
                       style: TextStyle(
-                        color: Colors.deepOrange,
+                        color: Colors.amber,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
@@ -725,7 +728,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
         margin: const EdgeInsets.symmetric(horizontal: 16),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: Colors.deepOrange,
+          color: Colors.amber,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
@@ -761,11 +764,10 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
               ),
-              child: Text(
-                'Book Now',
+              child: Text('${getTranslated('book_now', context)}',
                 style: TextStyle(
                   color: totalPrice + packageAmount > 0
-                      ? Colors.deepOrange
+                      ? Colors.amber
                       : Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -778,7 +780,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
         child: isLoading
             ? Center(
             child: CircularProgressIndicator(
-              color: Colors.orange,
+              color: Colors.amber,
             ))
             : CustomScrollView(
           slivers: [
@@ -827,7 +829,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                     effect: ExpandingDotsEffect(
                       dotHeight: 5,
                       dotWidth: 5,
-                      activeDotColor: Colors.deepOrange,
+                      activeDotColor: Colors.amber,
                       dotColor: Colors.grey.shade400,
                     ),
                   ),
@@ -852,7 +854,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Colors.deepOrange.shade50,
+                            Colors.amber.shade50,
                             Colors.white,
                           ],
                           begin: Alignment.topLeft,
@@ -861,7 +863,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                         borderRadius: BorderRadius.circular(14),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.deepOrange.withOpacity(0.08), // softer shadow
+                            color: Colors.amber.withOpacity(0.08), // softer shadow
                             blurRadius: 8,
                             offset: const Offset(0, 3),
                           ),
@@ -871,6 +873,16 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           /// DESCRIPTION
+                          Text(
+                           widget.isLanguage == 'IN' ? '${allPanditDetailsModel?.puja?.hiName}' : '${allPanditDetailsModel?.puja?.enName}',
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.deepOrange,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          SizedBox(height: 6,),
                           Text(
                             allPanditDetailsModel?.puja?.metaDescription ?? '',
                             maxLines: isExpanded ? null : 2, // ⬅ compact when collapsed
@@ -921,7 +933,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                         ? Icons.keyboard_arrow_up_rounded
                                         : Icons.keyboard_arrow_down_rounded,
                                     size: 24,
-                                    color: Colors.deepOrange,
+                                    color: Colors.amber,
                                   ),
                                 ),
                               ),
@@ -932,15 +944,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                           if (isExpanded) ...[
                             const SizedBox(height: 8),
                             Text(
-                              allPanditDetailsModel?.puja?.enName ?? '',
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.deepOrange.shade800,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
+                              widget.isLanguage == 'IN' ? '${allPanditDetailsModel?.puja?.hiPoojaHeading}' :
                               allPanditDetailsModel?.puja?.enPoojaHeading?.toUpperCase() ?? '',
                               style: const TextStyle(
                                 fontSize: 14,
@@ -955,6 +959,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                 const SizedBox(width: 4),
                                 Expanded(
                                   child: Text(
+                                    widget.isLanguage == 'IN' ? '${allPanditDetailsModel?.puja?.hiPoojaVenue}' :
                                     allPanditDetailsModel?.puja?.enPoojaVenue ?? '',
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -1077,7 +1082,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
             //                                children: [
             //                                  const Icon(Icons.person,
             //                                      size: 12,
-            //                                      color: Colors.orange),
+            //                                      color: Colors.amber),
             //                                  const SizedBox(width: 6),
             //                                  Text(
             //                                    "${item?.package?.person} Person",
@@ -1109,7 +1114,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
             //                                            : [
             //                                          Color(0xFFFFF3E0),
             //                                          Color(0xFFFFE0B2)
-            //                                        ], // Unselected: warm cream → light orange
+            //                                        ], // Unselected: warm cream → light amber
             //                                        begin: Alignment.topLeft,
             //                                        end: Alignment.bottomRight,
             //                                      ),
@@ -1119,7 +1124,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
             //                                        BoxShadow(
             //                                          color: isSelected
             //                                              ? Colors.grey
-            //                                              : Colors.deepOrange
+            //                                              : Colors.amber
             //                                              .shade200
             //                                              .withOpacity(0.3),
             //                                          blurRadius: 6,
@@ -1220,13 +1225,13 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.orange.shade50,
+                      Colors.amber.shade50,
                       Colors.white,
                     ],
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.deepOrange.withOpacity(0.08),
+                      color: Colors.amber.withOpacity(0.08),
                       blurRadius: 12,
                       offset: const Offset(0, 6),
                     ),
@@ -1240,7 +1245,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                       children: const [
                         Icon(
                           Icons.event_available_rounded,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           size: 22,
                         ),
                         SizedBox(width: 8),
@@ -1249,7 +1254,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
-                            color: Colors.deepOrange,
+                            color: Colors.amber,
                           ),
                         ),
                       ],
@@ -1283,7 +1288,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                           border: Border.all(
                             color: selectedDate == null
                                 ? Colors.grey.shade300
-                                : Colors.deepOrange.shade200,
+                                : Colors.amber.shade200,
                           ),
                         ),
                         child: Row(
@@ -1303,7 +1308,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                             ),
                             const Icon(
                               Icons.calendar_today_rounded,
-                              color: Colors.deepOrange,
+                              color: Colors.amber,
                               size: 20,
                             ),
                           ],
@@ -1331,7 +1336,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                       style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange),
+                          color: Colors.amber),
                     ),
                     SizedBox(height: 2),
                     Text(
@@ -1419,7 +1424,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                         shape: BoxShape.circle,
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.orange.withOpacity(0.35),
+                                            color: Colors.amber.withOpacity(0.35),
                                             blurRadius: 18,
                                             spreadRadius: 1,
                                           ),
@@ -1444,7 +1449,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 8),
                                       child: Text(
-                                        item?.package?.enTitle ?? '',
+                                        widget.isLanguage == 'IN' ? '${item?.package?.hiTitle}' : item?.package?.enTitle ?? '',
                                         maxLines: 2,
                                         textAlign: TextAlign.center,
                                         overflow: TextOverflow.ellipsis,
@@ -1465,7 +1470,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Icon(Icons.people_alt_rounded,
-                                            size: 14, color: Colors.deepOrange),
+                                            size: 14, color: Colors.amber),
                                         const SizedBox(width: 4),
                                         Text(
                                           '${item?.package?.person ?? 0} Persons',
@@ -1493,7 +1498,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                           ]
                                               : [
                                             Colors.white,
-                                            Colors.orange.shade100
+                                            Colors.amber.shade100
                                           ],
                                         ),
                                         borderRadius: BorderRadius.circular(30),
@@ -1512,7 +1517,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                           fontWeight: FontWeight.bold,
                                           color: isSelected
                                               ? Colors.white
-                                              : Colors.deepOrange,
+                                              : Colors.amber,
                                         ),
                                       ),
                                     ),
@@ -1710,7 +1715,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
             //                               fontWeight: FontWeight.bold,
             //                               color: isSelected
             //                                   ? Colors.white
-            //                                   : Colors.deepOrange,
+            //                                   : Colors.amber,
             //                             ),
             //                           ),
             //                         ],
@@ -1794,7 +1799,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                       style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange),
+                          color: Colors.amber),
                     ),
                     SizedBox(height: 2),
                     Text(
@@ -1811,14 +1816,14 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
               //   padding: const EdgeInsets.all(16),
               //   decoration: BoxDecoration(
               //     gradient: LinearGradient(
-              //       colors: [Colors.deepOrange.shade100, Colors.deepOrange.shade50],
+              //       colors: [Colors.amber.shade100, Colors.amber.shade50],
               //       begin: Alignment.topLeft,
               //       end: Alignment.bottomRight,
               //     ),
               //     borderRadius: BorderRadius.circular(16),
               //     boxShadow: [
               //       BoxShadow(
-              //         color: Colors.deepOrange.shade100.withOpacity(0.5),
+              //         color: Colors.amber.shade100.withOpacity(0.5),
               //         blurRadius: 10,
               //         offset: const Offset(0, 4),
               //       ),
@@ -1868,7 +1873,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
               //       const SizedBox(height: 12),
               //       Row(
               //         children: const [
-              //           Icon(Icons.local_fire_department, color: Colors.deepOrange),
+              //           Icon(Icons.local_fire_department, color: Colors.amber),
               //           SizedBox(width: 6),
               //           Text(
               //             "Dhanters Vishesh",
@@ -1879,7 +1884,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
               //       const SizedBox(height: 8),
               //       const Text(
               //         "Devi Laxmi Pooja",
-              //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.deepOrange),
+              //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber),
               //       ),
               //       const SizedBox(height: 4),
               //       Row(
@@ -1922,7 +1927,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                         border: Border(
                           left: BorderSide(
                             color: counts[index] == 0
-                                ? Colors.deepOrange
+                                ? Colors.amber
                                 : Colors.green,
                             width: 5,
                           ),
@@ -1953,10 +1958,10 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                                 CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    item.enName ?? '',
+                                    widget.isLanguage == 'IN' ? '${item.hiName}' : item.enName ?? '',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.deepOrange.shade700,
+                                      color: Colors.amber.shade700,
                                       fontSize: 14,
                                     ),
                                     maxLines: 2,
@@ -2067,242 +2072,174 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
             // Bill Details
             SliverToBoxAdapter(
               child: Container(
+                margin: const EdgeInsets.all(16),
                 padding: const EdgeInsets.all(16),
-                margin: EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border:
-                  Border.all(color: Colors.grey.shade300, width: 1.2),
                   color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                      blurRadius: 8,
-                      spreadRadius: 2,
-                      offset: const Offset(0, 2),
+                      color: Colors.black.withOpacity(0.06),
+                      blurRadius: 12,
+                      offset: const Offset(0, 6),
                     ),
                   ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Bill details',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Roboto',
-                        color: Colors.orange,
-                      ),
+                    // 🔥 Header
+                    Row(
+                      children: [
+                        const Icon(Icons.receipt_long,
+                            color: Color(0xFFFFA000), size: 26),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Bill Details',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
+
                     const SizedBox(height: 16),
 
+                    // 🔶 Pooja Info Card
                     Container(
-                      width: double.infinity,
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
                         gradient: LinearGradient(
                           colors: [
-                            Colors.orange.shade50,
-                            Colors.orange.shade100.withOpacity(0.4),
+                            const Color(0xFFFFF8E1),
+                            const Color(0xFFFFECB3),
                           ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
                         ),
-                        border: Border.all(
-                            color: Colors.orange.shade200, width: 1),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.orange.withOpacity(0.18),
-                            blurRadius: 10,
-                            offset: const Offset(0, 4),
-                          )
-                        ],
+                        border: Border.all(color: Colors.amber.shade200),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // ⭐ TITLE (Pooja Name)
                           Text(
                             '$packagePooja',
-                            style: TextStyle(
-                              fontSize: 22,
+                            style: const TextStyle(
+                              fontSize: 18,
                               fontWeight: FontWeight.w800,
-                              color: Colors.deepOrange.shade800,
+                              color: Color(0xFF5D4037),
                             ),
                           ),
 
-                          const SizedBox(height: 18),
+                          Divider(color: Colors.grey.shade300),
 
-                          // 📅 DATE ROW
-                          Row(
-                            children: [
-                              Icon(Icons.date_range,
-                                  size: 18,
-                                  color: Colors.deepOrange.shade700),
-                              const SizedBox(width: 8),
-                              Text(
-                                'Pooja Date:',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.deepOrange.shade900,
-                                ),
-                              ),
-                              const Spacer(),
-                              Text(
-                                (selectedDate == null ||
-                                    selectedDate
-                                        .toString()
-                                        .trim()
-                                        .isEmpty)
-                                    ? 'Please select date'
-                                    : DateFormat('dd MMM yyyy').format(
-                                    DateTime.parse('$selectedDate')),
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: (selectedDate == null ||
-                                      selectedDate
-                                          .toString()
-                                          .trim()
-                                          .isEmpty)
-                                      ? Colors.red.shade700
-                                      : Colors.black87,
-                                ),
-                              ),
-                            ],
+                          _infoRow(
+                            icon: Icons.date_range,
+                            label: 'Pooja Date',
+                            value: (selectedDate == null ||
+                                selectedDate.toString().isEmpty)
+                                ? 'Select Date'
+                                : DateFormat('dd MMM yyyy')
+                                .format(DateTime.parse('$selectedDate')),
+                            isError: selectedDate == null,
                           ),
 
                           const SizedBox(height: 12),
 
-                          // 👤 PERSON QUANTITY
-                          Row(
-                            children: [
-                              Icon(Icons.person,
-                                  size: 18,
-                                  color: Colors.deepOrange.shade700),
-                              const SizedBox(width: 8),
-                              Text(
-                                'Person Quantity:',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.deepOrange.shade900,
-                                ),
-                              ),
-                              const Spacer(),
-                              Text(
-                                '$packagePerson Person',
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                            ],
+                          _infoRow(
+                            icon: Icons.person,
+                            label: 'Person Qty',
+                            value: '$packagePerson Person',
                           ),
 
                           const SizedBox(height: 12),
 
-                          // 💰 PACKAGE AMOUNT
-                          Row(
-                            children: [
-                              Text(
-                                'Package Amount:',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.deepOrange.shade900,
-                                ),
-                              ),
-                              const Spacer(),
-                              Text(
-                                "₹${NumberFormat('#,##0').format(packageAmount ?? 0)}",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.green.shade700,
-                                ),
-                              ),
-                            ],
+                          _infoRow(
+                            icon: Icons.currency_rupee,
+                            label: 'Package Amount',
+                            value:
+                            "₹${NumberFormat('#,##0').format(packageAmount ?? 0)}",
+                            valueColor: Colors.green.shade700,
+                            isBold: true,
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 12),
 
-                    // Items List
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: selectedItems.length,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final item = selectedItems[index];
-                        final totalPay =
-                            item['qty'] * (item['price'] ?? 0);
-
-                        return Padding(
-                          padding:
-                          const EdgeInsets.symmetric(vertical: 6),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  "${item['title']}", // item name
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'Roboto',
-                                    color: Colors.black87,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  maxLines: 1,
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Text(
-                                "${item['qty']} x ₹${NumberFormat('#,##0').format(item['price'])} = ₹${NumberFormat('#,##0').format(totalPay)}",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'Roboto',
-                                  color: Colors.blue.shade700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 8),
-                    const Divider(height: 24, thickness: 1, color: Colors.grey),
-
-                    // Total Amount
-                    Row(
-                      children: [
-                        const Text(
-                          'Total Amount',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Roboto',
-                            color: Colors.black87,
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          "₹${NumberFormat('#,##0').format(totalPrice + packageAmount)}",
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Roboto',
-                            color: Colors.orange,
-                          ),
-                        ),
-                      ],
-                    ),
                     const SizedBox(height: 20),
+
+                    if(selectedItems.isNotEmpty)...[
+                      const Text(
+                        'Items',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: selectedItems.length,
+                        itemBuilder: (context, index) {
+                          final item = selectedItems[index];
+                          final totalPay = item['qty'] * (item['price'] ?? 0);
+
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    item['title'],
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                ),
+                                Text(
+                                  "${item['qty']} × ₹${item['price']} = ₹$totalPay",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey.shade700,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    const Divider(color: Colors.grey,),
+                    ],
+
+
+                    // 💰 Total
+                    Container(
+                      padding: const EdgeInsets.all(14),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFF3E0),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Total Payable',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            "₹${NumberFormat('#,##0').format(totalPrice + packageAmount)}",
+                            style: const TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFFFA000),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -2313,6 +2250,34 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
           ],
         ),
       ),
+    );
+  }
+  Widget _infoRow({
+    required IconData icon,
+    required String label,
+    required String value,
+    bool isError = false,
+    bool isBold = false,
+    Color? valueColor,
+  }) {
+    return Row(
+      children: [
+        Icon(icon, size: 18, color: Colors.amber.shade700),
+        const SizedBox(width: 8),
+        Text(
+          '$label:',
+          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+        ),
+        const Spacer(),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: isBold ? FontWeight.bold : FontWeight.w500,
+            color: isError ? Colors.red : valueColor ?? Colors.black87,
+          ),
+        ),
+      ],
     );
   }
 }

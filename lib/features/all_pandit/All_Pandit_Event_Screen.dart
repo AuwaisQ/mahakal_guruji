@@ -146,7 +146,7 @@
 //     width: double.infinity,
 //     child: ElevatedButton(
 //     style: ElevatedButton.styleFrom(
-//     backgroundColor: Colors.deepOrange),
+//     backgroundColor: Colors.amber),
 //     onPressed: () {
 //     // Navigator.push(
 //     //   context,
@@ -189,7 +189,7 @@
 //     return Scaffold(
 //       backgroundColor: Colors.white,
 //       body: isLoading
-//           ? const Center(child: CircularProgressIndicator(color: Colors.orange))
+//           ? const Center(child: CircularProgressIndicator(color: Colors.amber))
 //           : CustomScrollView(
 //         controller: widget.scrollController,
 //         slivers: [
@@ -211,7 +211,7 @@
 //                     : const Text(
 //                   "Vendor Profile",
 //                   style: TextStyle(
-//                       color: Colors.deepOrange,
+//                       color: Colors.amber,
 //                       fontSize: 22,
 //                       fontWeight: FontWeight.bold),
 //                 ),
@@ -229,7 +229,7 @@
 //           SliverAppBar(
 //             automaticallyImplyLeading: false,
 //             expandedHeight: 140,
-//             backgroundColor: Colors.deepOrange.shade50,
+//             backgroundColor: Colors.amber.shade50,
 //             flexibleSpace: FlexibleSpaceBar(
 //               background: _buildGurujiHeader(),
 //             ),
@@ -277,7 +277,7 @@
 //       decoration: BoxDecoration(
 //         borderRadius: BorderRadius.circular(20),
 //         color: Colors.grey.shade50,
-//         border: Border.all(color: Colors.deepOrange),
+//         border: Border.all(color: Colors.amber),
 //       ),
 //       child: Row(
 //         children: [
@@ -317,13 +317,13 @@
 //       child: Container(
 //         padding: const EdgeInsets.all(8),
 //         decoration: BoxDecoration(
-//           color: Colors.deepOrange.shade50,
+//           color: Colors.amber.shade50,
 //           borderRadius: BorderRadius.circular(12),
-//           border: Border.all(color: Colors.deepOrange),
+//           border: Border.all(color: Colors.amber),
 //         ),
 //         child: Icon(
 //           _isSearchActive ? Icons.close : Icons.search,
-//           color: Colors.deepOrange,
+//           color: Colors.amber,
 //         ),
 //       ),
 //     );
@@ -336,13 +336,13 @@
 //       child: Container(
 //         padding: const EdgeInsets.all(8),
 //         decoration: BoxDecoration(
-//           color: Colors.deepOrange.shade50,
+//           color: Colors.amber.shade50,
 //           borderRadius: BorderRadius.circular(12),
-//           border: Border.all(color: Colors.deepOrange),
+//           border: Border.all(color: Colors.amber),
 //         ),
 //         child: Icon(
 //           isGridview ? Icons.list : Icons.grid_view,
-//           color: Colors.deepOrange,
+//           color: Colors.amber,
 //         ),
 //       ),
 //     );
@@ -358,7 +358,7 @@
 //           // IMAGE
 //           CircleAvatar(
 //             radius: 45,
-//             backgroundColor: Colors.orange.shade200,
+//             backgroundColor: Colors.amber.shade200,
 //             child: ClipOval(
 //               child: CachedNetworkImage(
 //                 imageUrl: gurujiInfo?.guruji?.image ?? "",
@@ -415,7 +415,7 @@
 //       height: 40,
 //       width: 150,
 //       decoration: BoxDecoration(
-//         color: Colors.deepOrangeAccent,
+//         color: Colors.amberAccent,
 //         borderRadius: BorderRadius.circular(12),
 //       ),
 //       child: Center(

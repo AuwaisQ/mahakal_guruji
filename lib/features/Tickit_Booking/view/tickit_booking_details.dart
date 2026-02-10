@@ -213,7 +213,7 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
                             vertical: 8,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.deepOrange.withOpacity(0.1),
+                            color: Colors.amber.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
                               color: Colors.white.withOpacity(0.3),
@@ -392,14 +392,14 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
                 width: 200,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.deepOrange, Colors.orangeAccent],
+                    colors: [Colors.amber, Colors.amberAccent],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.deepOrange.withOpacity(0.4),
+                      color: Colors.amber.withOpacity(0.4),
                       blurRadius: 15,
                       offset: Offset(0, 5),
                     ),
@@ -610,17 +610,17 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Colors.deepOrange.shade50,
+                  color: Colors.amber.shade50,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.deepOrange.shade100,
+                    color: Colors.amber.shade100,
                     width: 1.5,
                   ),
                 ),
                 child: IconButton(
                   icon: Icon(
                     Icons.favorite_border_rounded,
-                    color: Colors.deepOrange,
+                    color: Colors.amber,
                     size: 24,
                   ),
                   onPressed: () {
@@ -634,7 +634,7 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
-                  color: Colors.deepOrange,
+                  color: Colors.amber,
                 ),
               ),
             ],
@@ -706,10 +706,10 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
           width: 36,
           height: 36,
           decoration: BoxDecoration(
-            color: Colors.deepOrange.withOpacity(0.1),
+            color: Colors.amber.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(icon, color: Colors.deepOrange, size: 20),
+          child: Icon(icon, color: Colors.amber, size: 20),
         ),
         SizedBox(width: 12),
         Text(
@@ -742,10 +742,10 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
               margin: EdgeInsets.only(right: 12),
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.deepOrange : Colors.white,
+                color: isSelected ? Colors.amber : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: isSelected ? Colors.deepOrange : Colors.grey.shade200,
+                  color: isSelected ? Colors.amber : Colors.grey.shade200,
                   width: 2,
                 ),
                 boxShadow: [
@@ -830,7 +830,7 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
                         child: Container(
                           width: 120,
                           height: 30,
-                          color: Colors.deepOrange,
+                          color: Colors.amber,
                           child: Center(
                             child: Text(
                               'POPULAR',
@@ -1016,10 +1016,10 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: Colors.deepOrange.withOpacity(0.1),
+            color: Colors.amber.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(icon, size: 20, color: Colors.deepOrange),
+          child: Icon(icon, size: 20, color: Colors.amber),
         ),
         SizedBox(width: 16),
         Expanded(
@@ -1112,7 +1112,7 @@ class _TicketDetailsPageState extends State<TicketDetailsPage> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w800,
-                            color: Colors.deepOrange,
+                            color: Colors.amber,
                           ),
                         ),
                       ],

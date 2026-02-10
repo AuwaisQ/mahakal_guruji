@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mahakal/features/product/controllers/seller_product_controller.dart';
 import 'package:mahakal/localization/controllers/localization_controller.dart';
@@ -19,6 +20,15 @@ import 'package:mahakal/features/shop/screens/overview_screen.dart';
 import 'package:mahakal/features/shop/widgets/shop_info_widget.dart';
 import 'package:mahakal/features/shop/widgets/shop_product_view_list.dart';
 import 'package:provider/provider.dart';
+
+import '../../../helper/responsive_helper.dart';
+import '../../../utill/color_resources.dart';
+import '../../cart/controllers/cart_controller.dart';
+import '../../cart/screens/cart_screen.dart';
+import '../../home/widgets/cart_home_page_widget.dart';
+import '../../notification/controllers/notification_controller.dart';
+import '../../notification/screens/notification_screen.dart';
+import '../../splash/controllers/splash_controller.dart';
 
 class TopSellerProductScreen extends StatefulWidget {
   final int? sellerId;
@@ -77,6 +87,8 @@ class _TopSellerProductScreenState extends State<TopSellerProductScreen>
         .getSellerWiseCategoryList(widget.sellerId!);
     await Provider.of<BrandController>(Get.context!, listen: false)
         .getSellerWiseBrandList(widget.sellerId!);
+    await Provider.of<SplashController>(context, listen: false)
+        .initConfig(context);
   }
 
   @override
@@ -166,9 +178,39 @@ class _TopSellerProductScreenState extends State<TopSellerProductScreen>
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text("Pandit Shop",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.orange),),
-          automaticallyImplyLeading: false,
-          centerTitle: true,
+          flexibleSpace: Padding(
+            padding: const EdgeInsets.only(top: 50, left: 10),
+            child: Image.asset(Images.logoNameImage, height: 38),
+          ),
+          title: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.asset(Images.appLogo, height: 40)),
+          actions: [
+            IconButton(
+            onPressed: () => Navigator.push(
+            context, CupertinoPageRoute(builder: (_) => const CartScreen())),
+            icon: Stack(clipBehavior: Clip.none, children: [
+            Image.asset(Images.cartArrowDownImage,
+            height: Dimensions.iconSizeDefault,
+            width: Dimensions.iconSizeDefault,
+            color: ColorResources.getPrimary(context)),
+            Positioned(
+            top: -4,
+            right: -4,
+            child:
+            Consumer<CartController>(builder: (context, cart, child) {
+    return CircleAvatar(
+    radius: ResponsiveHelper.isTab(context) ? 10 : 7,
+    backgroundColor: ColorResources.red,
+    child: Text(cart.cartList.length.toString(),
+    style: titilliumSemiBold.copyWith(
+    color: ColorResources.white,
+    fontSize: Dimensions.fontSizeExtraSmall)));
+    })),
+    ]),
+    ),
+            const SizedBox(width: 10,),
+          ],
         ),
         // appBar: CustomAppBar(
         //   title: widget.name,
@@ -176,13 +218,23 @@ class _TopSellerProductScreenState extends State<TopSellerProductScreen>
         body: Consumer<ShopController>(builder: (context, sellerProvider, _) {
           return CustomScrollView(controller: widget.scrollController, slivers: [
             SliverToBoxAdapter(
-                child: ShopInfoWidget(
-                    vacationIsOn: vacationIsOn,
-                    sellerName: widget.name ?? "",
-                    sellerId: widget.sellerId ?? 0,
-                    banner: widget.banner ?? '',
-                    shopImage: widget.image ?? '',
-                    temporaryClose: widget.temporaryClose ?? false)),
+                child: Column(
+                  children: [
+                    ShopInfoWidget(
+                        vacationIsOn: vacationIsOn,
+                        sellerName: widget.name ?? '',
+                        sellerId: widget.sellerId ?? 0,
+                        banner: widget.banner ?? '',
+                        shopImage: widget.image ?? '',
+                        temporaryClose: widget.temporaryClose ?? false),
+                    // InkWell(
+                    //     onTap: (){
+                    //       Provider.of<ShopController>(Get.context!, listen: false);
+                    //       print('${Provider.of<SplashController>(context, listen: false).baseUrls!.shopImageUrl}/banner/${widget.banner}');
+                    //     },
+                    //     child: Text("data"))
+                  ],
+                )),
             SliverPersistentHeader(
                 pinned: true,
                 delegate: SliverDelegate(

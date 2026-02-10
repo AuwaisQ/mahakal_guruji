@@ -247,6 +247,7 @@
   "CHADAVA" : "Charity(Chadhava)",
   "POOJA" : "Puja",
   "CONSULTATION" : "Consultation",
+  "CONSULT" : "Consult",
   "privacy_policy": "Privacy Policy",
   "no_internet_connection": "No Internet connection",
   "no_data_found": "No data found",
@@ -805,7 +806,7 @@
   "todays_suvichar": "Today Suvichar",
   "mandir": "Mandir",
   "mala": "Mala",
-  "lal_kitab": "Lal Kitab",
+  "lal_kitab": "View \nLal Kitab",
   "pdf25": "PDF 25 Pages",
   "pdf50": "PDF 50 Pages",
 
@@ -876,7 +877,7 @@
   "events_booking": "Events Booking",
   "pooja": "Book Your Puja",
   "blogs": "Blog",
-  "view_panchang" : "View Panchang (पंचांग)",
+  "view_panchang" : "View Panchang",
   "chadhava": "Chadhava",
   "offer_chadhava": "Make an offering (चढावा)",
   "sahitya_sansaar": "World of Literature (साहित्य)",
@@ -920,5 +921,7 @@
   "free_lalkitab": "Free Lal Kitab",
   "paid_prasad": "Prasad Booking(प्रसाद की बुकिंग)",
   "pooja_pandit": "Pandit Pooja",
-  "hotel_booking": "Hotel Booking"
+  "hotel_booking": "Hotel Booking",
+  "menu": "Menu",
+  "only_shop": "Shop"
 }

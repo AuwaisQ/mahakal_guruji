@@ -91,7 +91,7 @@
   "add_payment_method": "भुगतान विधि जोड़ें",
   "add_more" : "अधिक जोड़ें",
   "office": "ऑफिस",
-  "chat": "बात करना",
+  "chat": "चैट",
   "ADDRESS_LIST": "पता सूची",
   "ADD_ADDRESS": "पता जोड़ें",
   "order": "आर्डर",
@@ -526,6 +526,7 @@
   "CHADAVA": "चढ़वा अर्पित करे",
   "POOJA": "पूजा",
   "CONSULTATION": "परामर्श",
+  "CONSULT": "परामर्श",
   "sahitya": "साहित्य संसार",
   "sangeet": "भक्ति संगीत सुने",
   "yoga": "योग",
@@ -719,5 +720,7 @@
   "free_kundli": "फ्री कुंडली बनाएँ",
   "free_lalkitab": "फ्री लाल किताब",
   "paid_prasad": "प्रसाद की बुकिंग",
-  "hotel_booking": "Hotel Booking"
+  "hotel_booking": "Hotel Booking",
+  "menu": "मेनू",
+  "only_shop": "खरीदी"
 }

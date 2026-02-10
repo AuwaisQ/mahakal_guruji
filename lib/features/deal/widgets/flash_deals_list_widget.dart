@@ -156,7 +156,7 @@ class FlashDealsListWidget extends StatelessWidget {
                                                                         context)
                                                                     .darkTheme
                                                                 ? Colors.white
-                                                                : Colors.orange,
+                                                                : Colors.amber,
                                                             size: 15),
                                                         Text(
                                                             '(${flashDealController.flashDealList[index].reviewCount.toString()})',
