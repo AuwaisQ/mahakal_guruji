@@ -259,6 +259,7 @@ class _ChatScreenViewState extends State<ChatScreenView> {
                         }
                         // Pop the chat screen after completing the chat
                         if (mounted) Navigator.of(this.context).maybePop();
+                        Navigator.of(context).pop();
                       },
                       child: const Text('End Chat & Leave'),
                     ),
@@ -313,11 +314,7 @@ class _ChatScreenViewState extends State<ChatScreenView> {
       isConnected = false;
       isCompleted = true;
       Fluttertoast.showToast(msg: 'Chat completed');
-    //   Navigator.of(context).pushReplacement(
-    //   CupertinoPageRoute(
-    //     builder: (BuildContext context) => const BottomBar(pageIndex: 0),
-    //   ),
-    // );
+      Navigator.pop(context);
 
       // No final summary is sent here — backend has been receiving per-minute
       // deductions during the session, so no end-of-chat billing POST is needed.
@@ -999,7 +996,7 @@ class _ChatScreenViewState extends State<ChatScreenView> {
                   color: Colors.black.withOpacity(0.2),
                   child: const Center(
                     child: CircularProgressIndicator(
-                      color: Colors.amber,
+                      color: Colors.deepOrange,
                     ),
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_callkit_incoming/entities/entities.dart';
@@ -7,6 +8,9 @@ import 'package:flutter_callkit_incoming/flutter_callkit_incoming.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:http/http.dart' as http;
 import 'package:mahakal/call_service/call_service.dart';
+import 'package:mahakal/features/astrotalk/screen/astro_bottombar.dart';
+import 'package:mahakal/features/astrotalk/screen/astro_chatscreen.dart';
+import 'package:mahakal/features/astrotalk/screen/astro_home.dart';
 import 'package:mahakal/features/profile/controllers/profile_contrroller.dart';
 import 'package:mahakal/main.dart';
 import 'package:mahakal/push_notification/models/notification_body.dart';
@@ -17,8 +21,8 @@ import 'package:mahakal/utill/app_constants.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sip_ua/sip_ua.dart';
-import 'features/astrotalk/screen/astro_chatscreen.dart';
 import 'features/home/screens/home_screens.dart';
+import 'features/maha_bhandar/screen/maha_bhandar_screen.dart';
 import 'features/product_details/screens/product_details_screen.dart';
 import 'features/shop/screens/shop_screen.dart';
 import 'features/splash/screens/splash_screen.dart';
@@ -57,7 +61,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       switch (event!.event) {
         case Event.actionCallAccept:
           print('call accepted Body-${event.body}');
-          String id = event.body['extra']['callRequestId'];
+          final rawId = event.body?['extra']?['callRequestId'];
+          print('CallKit raw callRequestId: $rawId (type=${rawId.runtimeType})');
+          final id = rawId?.toString().trim() ?? '';
+          print('CallKit normalized callRequestId: "${id}"');
+          if (id.isEmpty) {
+            print('call accept: empty callRequestId, skipping status API');
+            break;
+          }
+          // Mark request id early to avoid duplicate processing across widgets
+          final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
+          callProvider.setRequestId(id);
+
           if (event.body['extra']['type'] == 'audio' ||
               event.body['extra']['type'] == 'video') {
             callStatusApi(id, 'connect');
@@ -67,8 +82,17 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
         case Event.actionCallDecline:
           debugPrint('❌ Call Declined');
-          String id = event.body['extra']['callRequestId'];
-          callStatusApi(id, 'reject');
+          final rawIdDecline = event.body?['extra']?['callRequestId'];
+          print('CallKit raw callRequestId (decline): $rawIdDecline (type=${rawIdDecline.runtimeType})');
+          final idDecline = rawIdDecline?.toString().trim() ?? '';
+          print('CallKit normalized callRequestId (decline): "${idDecline}"');
+          if (idDecline.isEmpty) {
+            debugPrint('Call decline: missing callRequestId, skipping status API');
+          } else {
+            final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
+            callProvider.setRequestId(idDecline);
+            callStatusApi(idDecline, 'reject');
+          }
           currentUuid = null;
           break;
 
@@ -90,6 +114,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   void checkSipRegistered()async{
     final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
+    print("callProvider.registerState: ${callProvider.registerState}");
     if (callProvider.registerState == null) {
       await callProvider.getSIPData();
     }
@@ -155,10 +180,15 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           if (eventBody != null && eventBody['extra'] != null){
             String id = eventBody['extra']['callRequestId'];
 
-            if(active['isAccepted'] == true){
+            // Skip if provider already handled this request id
+            final existingRequestId = callProvider.requestId;
+            if (existingRequestId != null && existingRequestId == id) {
+              debugPrint('Call $id already handled by provider; skipping.');
+            } else if(active['isAccepted'] == true){
+            callProvider.setRequestId(id);
             callStatusApi(id, 'connect');
-      }
           }
+              }
 
       String? callType;
       String? userName = 'John Doe';
@@ -171,13 +201,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       userId = prefs.getString('user_id') ?? '-1';
 
       print('User ID--->: $userId');
-      print('Call Register State -->${callProvider.registerState}');
+      print('Call Register State --> ${callProvider.registerState?.state ?? callProvider.registerState}');
       if (eventBody != null && eventBody['extra'] != null) {
         final extra = eventBody['extra'];
         final from = extra['from']?.toString() ?? 'background';
 
         if (extra is Map && extra['type'] == 'chat' && from != 'background' ) {
-          // FlutterCallkitIncoming.endAllCalls();
+          FlutterCallkitIncoming.endAllCalls();
           // Navigate to chat screen
             Navigator.of(Get.context!).push(MaterialPageRoute(
             builder: (_) => ChatScreenView(
@@ -265,21 +295,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               body: widget.body,
               navigatorKey: widget.navigatorKey,
             ),
-
-        // Ecommerce Product Details
-        '/product-details': (context) {
-          final args = ModalRoute.of(context)?.settings.arguments
-              as Map<String, dynamic>?;
-          return ProductDetails(
-            productId: args?['productId'] ?? 0,
-            slug: args?['slug'] ?? '',
-          );
-        },
-
-        // Shop Home Page
-        '/shop': (context) => HomePage(scrollController: scrollController),
-
-
+            
         '/shop-view-details': (context) {
           final args = ModalRoute.of(context)?.settings.arguments
               as Map<String, dynamic>?;

@@ -8,6 +8,7 @@ import 'package:flutter_callkit_incoming/flutter_callkit_incoming.dart';
 import 'package:http/http.dart' as http;
 import 'package:mahakal/call_service/call_service.dart';
 import 'package:mahakal/common/basewidget/bouncy_widget.dart';
+import 'package:mahakal/features/all_pandit/Pandit_Bottom_bar.dart';
 import 'package:mahakal/features/astrotalk/screen/astro_chatscreen.dart';
 import 'package:mahakal/features/order_details/screens/order_details_screen.dart';
 import 'package:mahakal/features/profile/controllers/profile_contrroller.dart';
@@ -27,10 +28,8 @@ import 'package:mahakal/features/onboarding/screens/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sip_ua/sip_ua.dart';
-
 import '../../../deeplinking/deeplink_service.dart';
 import '../../../push_notification/notification_helper.dart';
-import '../../all_pandit/Pandit_Bottom_bar.dart';
 import '../../auth/screens/auth_screen.dart';
 import '../../update/screen/update_screen.dart';
 import '../domain/models/config_model.dart';
@@ -101,39 +100,31 @@ class SplashScreenState extends State<SplashScreen> {
     print('<--Splash Deep Link-->');
     Navigator.of(Get.context!).pushReplacement(
       CupertinoPageRoute(
-        builder: (BuildContext context) => const PanditBottomBar(pageIndex: 0, panditId: AppConstants.panditId, sellerId: AppConstants.sellerId, astroImage: '',),
+        builder: (BuildContext context) => const PanditBottomBar(
+           pageIndex: 0, 
+            panditId: AppConstants.panditId, 
+            sellerId: AppConstants.sellerId, 
+            astroImage: '',
+          ),
       ),
     );
     deepLinkService = DeepLinkService(widget.navigatorKey);
     deepLinkService.init();
   }
 
+  
   void _route() {
     Provider.of<SplashController>(
       context,
       listen: false,
     ).initConfig(context).then((bool isSuccess) {
       if (isSuccess) {
-        String? minimumVersion = "0";
-        UserAppVersionControl? appVersion = Provider.of<SplashController>(
-          Get.context!,
-          listen: false,
-        ).configModel?.userAppVersionControl;
-        if (Platform.isAndroid) {
-          minimumVersion = appVersion?.forAndroid?.version ?? '0';
-        } else if (Platform.isIOS) {
-          minimumVersion = appVersion?.forIos?.version ?? '0';
-        }
         Provider.of<SplashController>(
           Get.context!,
           listen: false,
         ).initSharedPrefData();
         Timer(const Duration(seconds: 1), () {
-          if (compareVersions(minimumVersion!, AppConstants.appVersion) == 1) {
-            Navigator.of(Get.context!).pushReplacement(
-              CupertinoPageRoute(builder: (_) => const UpdateScreen()),
-            );
-          } else if (Provider.of<SplashController>(
+          if (Provider.of<SplashController>(
             Get.context!,
             listen: false,
           ).configModel!.maintenanceMode!) {
@@ -152,13 +143,16 @@ class SplashScreenState extends State<SplashScreen> {
               print(
                 'Splash Screen Notification Type----> ${json.encode(widget.body!)}',
               );
-              //NotificationHelper.handleNotificationNavigation(widget.body!);
+              NotificationHelper.handleNotificationNavigation(widget.body!);
             } else {
               checkDeepLinkAndNavigate();
 
+              // checkAndNavigationCallingPage();
+              
               if (widget.body != null) {
-                //NotificationHelper.handleNotificationNavigation(widget.body!);
+                NotificationHelper.handleNotificationNavigation(widget.body!);
               }
+              // Navigator.of(Get.context!).pushReplacement(CupertinoPageRoute(builder: (BuildContext context) => const DashBoardScreen()));
             }
           } else if (Provider.of<SplashController>(
             Get.context!,
@@ -266,3 +260,5 @@ class SplashScreenState extends State<SplashScreen> {
     return 0;
   }
 }
+
+

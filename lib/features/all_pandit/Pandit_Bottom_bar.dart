@@ -2,6 +2,7 @@ import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hidable/hidable.dart';
+import 'package:mahakal/call_service/call_service.dart';
 import 'package:mahakal/features/profile/controllers/profile_contrroller.dart';
 import 'package:mahakal/main.dart';
 import 'package:mahakal/utill/app_constants.dart';
@@ -64,8 +65,8 @@ class _PanditBottomBarState extends State<PanditBottomBar> {
   @override
   void initState() {
     super.initState();
-     Provider.of<ProfileController>(Get.context!, listen: false)
-        .getUserInfo(context);
+      Provider.of<CallServiceProvider>(Get.context!, listen: false).getSIPData();
+     Provider.of<ProfileController>(Get.context!, listen: false).getUserInfo(context);
     sellerModel =  Provider.of<ShopController>(Get.context!, listen: false).sellerModel;
     print('Pandit Id: ${widget.panditId}');
     print('Seller Id: ${widget.sellerId}');

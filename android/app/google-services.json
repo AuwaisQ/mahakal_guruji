@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1023155540439:android:a2f04d89144a2cc0bffb92",
         "android_client_info": {
-          "package_name": "manal.mahakal.guruji"
+          "package_name": "app.delivery.mahakal"
         }
       },
       "oauth_client": [
@@ -55,50 +55,6 @@
           "android_info": {
             "package_name": "com.example.collectorapp",
             "certificate_hash": "27bb251bc6c852057dd94d57ef2b8d9f426ed750"
-          }
-        },
-        {
-          "client_id": "1023155540439-5e8jglk059k1eg485q8anhv9beljrcsa.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB80EHlj24xSBxeu9lJBcREVDeCeVd5zR0"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1023155540439-5e8jglk059k1eg485q8anhv9beljrcsa.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "1023155540439-3ga7u2n9q68jfvsqe4bei2q84r2hj8g2.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.vendor.mahakal"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1023155540439:android:1cf11292cc5e9a2dbffb92",
-        "android_client_info": {
-          "package_name": "com.example.mahakalguruji"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1023155540439-fa9mgp9pt1oprtqramg1dcpdbhaiu2ip.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.mahakalguruji",
-            "certificate_hash": "4eefc5a88545314578d996116922b51580530858"
           }
         },
         {
@@ -205,6 +161,42 @@
             "certificate_hash": "b5cbf1371e61d6121e0c6f667edfd9cc6586cffb"
           }
         },
+        {
+          "client_id": "1023155540439-5e8jglk059k1eg485q8anhv9beljrcsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB80EHlj24xSBxeu9lJBcREVDeCeVd5zR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023155540439-5e8jglk059k1eg485q8anhv9beljrcsa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1023155540439-3ga7u2n9q68jfvsqe4bei2q84r2hj8g2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vendor.mahakal"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023155540439:android:7613139974a4f7a3bffb92",
+        "android_client_info": {
+          "package_name": "manal.mahakal.guruji"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "1023155540439-5e8jglk059k1eg485q8anhv9beljrcsa.apps.googleusercontent.com",
           "client_type": 3

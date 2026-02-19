@@ -1129,7 +1129,7 @@ class _ChadhavaMahakalTrackOrderState extends State<ChadhavaMahakalTrackOrder> {
       // var splashController = Provider.of<SplashController>(context, listen: false);
       //
       // String playStoreUrl = splashController.configModel?.userAppVersionControl?.forAndroid?.link ??
-      //     "https://play.google.com/store/apps/details?id=manal.mahakal.com";
+      //     "https://play.google.com/store/apps/details?id=manal.mahakal.guruji";
       // String appStoreUrl = splashController.configModel?.userAppVersionControl?.forIos?.link ??
       //     "https://apps.apple.com/app/idyourappid";
 

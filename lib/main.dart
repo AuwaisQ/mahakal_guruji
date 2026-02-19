@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_callkit_incoming/flutter_callkit_incoming.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mahakal/call_service/call_service.dart';
 import 'package:mahakal/my_app.dart';
 import 'package:mahakal/provider_registry.dart';
@@ -18,17 +19,17 @@ import 'package:media_kit/media_kit.dart';
 import 'di_container.dart' as di;
 import 'firebase_options.dart';
 
-// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-// FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey< NavigatorState>();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize FlutterDownloader
   await FlutterDownloader.initialize(
-    debug: true, // Set to true for debug mode
+    debug: true,
   );
 
   // Set callbacks for FlutterDownloader
@@ -50,19 +51,19 @@ Future<void> main() async {
 
   FlutterCallkitIncoming.requestFullIntentPermission();
   HttpOverrides.global = MyHttpOverrides();
-   NotificationBody? launchBody;
-  //
-  // try {
-  //   final RemoteMessage? initialMessage =
-  //   await FirebaseMessaging.instance.getInitialMessage();
-  //
-  //   if (initialMessage != null) {
-  //     launchBody = NotificationHelper.convertNotification(initialMessage.data);
-  //     print('🔔 App opened from terminated state via notification');
-  //   }
-  // } catch (e) {
-  //   print('❌ Error reading initial tap: $e');
-  // }
+  NotificationBody? launchBody;
+
+  try {
+    final RemoteMessage? initialMessage =
+    await FirebaseMessaging.instance.getInitialMessage();
+
+    if (initialMessage != null) {
+      launchBody = NotificationHelper.convertNotification(initialMessage.data);
+      print('🔔 App opened from terminated state via notification');
+    }
+  } catch (e) {
+    print('❌ Error reading initial tap: $e');
+  }
 
   runApp(
     MultiProvider(
@@ -75,10 +76,10 @@ Future<void> main() async {
   );
 
   
-  //
-  // Future.microtask(() async {
-  //   await initializeNotifications();
-  // });
+
+  Future.microtask(() async {
+    await initializeNotifications();
+  });
 }
 
 class MyHttpOverrides extends HttpOverrides {
@@ -90,25 +91,25 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-// Future<void> initializeNotifications() async {
-//   try {
-//     // Ask for permissions
-//     await flutterLocalNotificationsPlugin
-//         .resolvePlatformSpecificImplementation<
-//         AndroidFlutterLocalNotificationsPlugin>()
-//         ?.requestNotificationsPermission();
-//
-//     // Local Notification Setup
-//     await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
-//
-//     // Background handler
-//     FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
-//
-//     print('✅ Notifications initialized');
-//   } catch (e) {
-//     print('❌ Notification init failed: $e');
-//   }
-// }
+Future<void> initializeNotifications() async {
+  try {
+    // Ask for permissions
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestNotificationsPermission();
+
+    // Local Notification Setup
+    await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
+
+    // Background handler
+    FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
+
+    print('✅ Notifications initialized');
+  } catch (e) {
+    print('❌ Notification init failed: $e');
+  }
+}
 
 class Get {
   static BuildContext? get context => navigatorKey.currentContext;
