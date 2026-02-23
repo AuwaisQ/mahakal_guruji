@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_callkit_incoming/flutter_callkit_incoming.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -16,6 +17,7 @@ import '../model/chat_model.dart';
 
 class ChatState {
   static String? activeAstrologerId;
+  static bool get isChatActive => activeAstrologerId != null;
 }
 
 class ChatScreenView extends StatefulWidget {
@@ -72,7 +74,15 @@ class _ChatScreenViewState extends State<ChatScreenView> {
   @override
   void initState() {
     super.initState();
+    
+    // Check if chat is already active for a different astrologer
+    if (ChatState.activeAstrologerId != null && ChatState.activeAstrologerId != widget.astrologerId) {
+      debugPrint('Warning: Chat already active for astrologer ${ChatState.activeAstrologerId}, opening new chat for ${widget.astrologerId}');
+    }
+    
     ChatState.activeAstrologerId = widget.astrologerId;
+    debugPrint('ChatScreen opened for astrologer: ${widget.astrologerId}');
+    
     socketController = Provider.of<SocketController>(context, listen: false);
     print('Socket Connection: ${socketController.isConnected}');
     if (socketController.isConnected == false) {
@@ -121,6 +131,8 @@ class _ChatScreenViewState extends State<ChatScreenView> {
 
     if (proceed) {
       makeChatRequest();
+      Navigator.of(context).pop();
+      Navigator.of(context).pop();
     } else {
       fetchChatMessages(userA: widget.astrologerId, userB: widget.userId);
     }
@@ -259,7 +271,6 @@ class _ChatScreenViewState extends State<ChatScreenView> {
                         }
                         // Pop the chat screen after completing the chat
                         if (mounted) Navigator.of(this.context).maybePop();
-                        Navigator.of(context).pop();
                       },
                       child: const Text('End Chat & Leave'),
                     ),
@@ -311,11 +322,11 @@ class _ChatScreenViewState extends State<ChatScreenView> {
         'astrologerId': widget.astrologerId,
         'status': 'Completed',
       });
+      FlutterCallkitIncoming.endAllCalls();
       isConnected = false;
       isCompleted = true;
       Fluttertoast.showToast(msg: 'Chat completed');
-      Navigator.pop(context);
-
+      Navigator.of(context).pop();
       // No final summary is sent here — backend has been receiving per-minute
       // deductions during the session, so no end-of-chat billing POST is needed.
       if (mounted) setState(() {});
@@ -550,7 +561,9 @@ class _ChatScreenViewState extends State<ChatScreenView> {
           }
         }
       }else if(isConnected == false || isCompleted == false){
-        firstMessage();
+        // Guard: ensure widget is still mounted before accessing context or calling firstMessage
+        if (!mounted) return;
+        firstMessage(socketController);
       }
 
       if (widget.isConnect != null && widget.isConnect == true) {
@@ -563,10 +576,11 @@ class _ChatScreenViewState extends State<ChatScreenView> {
     }
   }
 
-  void firstMessage() async {
+  void firstMessage(SocketController socketController) async {
+    // Guard: do nothing if the widget is no longer mounted.
+    if (!mounted) return;
+    
     print('First Message Sent');
-    final socketController =
-        Provider.of<SocketController>(context, listen: false);
 
     socketController
       .sendChatMessage(
@@ -695,7 +709,13 @@ class _ChatScreenViewState extends State<ChatScreenView> {
   @override
   void dispose() {
     _ticker?.dispose();
-    ChatState.activeAstrologerId = null;
+    
+    // Only clear the active astrologer if it's the current one
+    if (ChatState.activeAstrologerId == widget.astrologerId) {
+      ChatState.activeAstrologerId = null;
+      debugPrint('ChatScreen closed for astrologer: ${widget.astrologerId}');
+    }
+    
     timerNotifier.dispose();
     // Unsubscribe from socket listener to avoid invoking callbacks on a
     // disposed widget, which can trigger setState after dispose.

@@ -9,7 +9,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:http/http.dart' as http;
 import 'package:mahakal/call_service/call_service.dart';
 import 'package:mahakal/features/astrotalk/screen/astro_bottombar.dart';
-import 'package:mahakal/features/astrotalk/screen/astro_chatscreen.dart';
 import 'package:mahakal/features/astrotalk/screen/astro_home.dart';
 import 'package:mahakal/features/profile/controllers/profile_contrroller.dart';
 import 'package:mahakal/main.dart';
@@ -21,6 +20,7 @@ import 'package:mahakal/utill/app_constants.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sip_ua/sip_ua.dart';
+import 'features/astrotalk/screen/astro_chatscreen.dart';
 import 'features/home/screens/home_screens.dart';
 import 'features/maha_bhandar/screen/maha_bhandar_screen.dart';
 import 'features/product_details/screens/product_details_screen.dart';
@@ -43,6 +43,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   late ScrollController scrollController;
   String? currentUuid;
   static _MyAppState? instances;
+  // Flag to prevent duplicate navigation to chat screen
+  bool _isNavigatingToChat = false;
 
   @override
   void initState() {
@@ -77,7 +79,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               event.body['extra']['type'] == 'video') {
             callStatusApi(id, 'connect');
           }
-          checkAndNavigationCallingPage();
+          // Only navigate if not already navigating to prevent double navigation
+          if (!_isNavigatingToChat) {
+            checkAndNavigationCallingPage();
+          }
           break;
 
         case Event.actionCallDecline:
@@ -114,7 +119,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   void checkSipRegistered()async{
     final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
-    print("callProvider.registerState: ${callProvider.registerState}");
     if (callProvider.registerState == null) {
       await callProvider.getSIPData();
     }
@@ -163,6 +167,12 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   Future<void> checkAndNavigationCallingPage() async {
+    // Prevent duplicate navigation
+    if (_isNavigatingToChat) {
+      debugPrint('Already navigating to chat, skipping duplicate call');
+      return;
+    }
+    
     Call? call;
     var calls = await FlutterCallkitIncoming.activeCalls();
     debugPrint('calls...$calls');
@@ -207,7 +217,16 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         final from = extra['from']?.toString() ?? 'background';
 
         if (extra is Map && extra['type'] == 'chat' && from != 'background' ) {
-          FlutterCallkitIncoming.endAllCalls();
+          // Check if chat screen is already open for this astrologer
+          if (ChatState.activeAstrologerId == extra['userId']?.toString()) {
+            debugPrint('Chat screen already open for astrologer ${extra['userId']}, skipping navigation');
+            return;
+          }
+          
+          // Set flag to prevent duplicate navigation
+          _isNavigatingToChat = true;
+          
+          // FlutterCallkitIncoming.endAllCalls();
           // Navigate to chat screen
             Navigator.of(Get.context!).push(MaterialPageRoute(
             builder: (_) => ChatScreenView(
@@ -218,8 +237,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               userId: userId ?? '0',
               isConnect: true,
             ),
-          ));
-          print('Chat call navigation skipped on Splash Screen.');
+          )).then((_) {
+            // Reset flag when navigation completes
+            _isNavigatingToChat = false;
+          });
+          print('Chat call navigation from MyApp.');
         } else if (extra is Map &&
             (extra['type'] == 'audio' || extra['type'] == 'video')) {
           // For audio/video we require SIP registration
@@ -250,7 +272,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     debugPrint('📱 Lifecycle: $state');
     if (state == AppLifecycleState.resumed) {
-      checkAndNavigationCallingPage();
+      // Only check for calls if not already navigating
+      if (!_isNavigatingToChat) {
+        checkAndNavigationCallingPage();
+      }
     }
   }
 
@@ -295,7 +320,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               body: widget.body,
               navigatorKey: widget.navigatorKey,
             ),
-            
+
         '/shop-view-details': (context) {
           final args = ModalRoute.of(context)?.settings.arguments
               as Map<String, dynamic>?;
