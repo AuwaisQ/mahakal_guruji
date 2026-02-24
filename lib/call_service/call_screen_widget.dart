@@ -633,12 +633,16 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
         _callWaitTimer?.cancel();
         _disableWakeLock();
         comepleteChat();
+        // Reset call state in provider to allow new calls
+        _resetProviderCallState();
         _backToDialPad();
         break;
       case CallStateEnum.FAILED:
         print('Call failed');
         _callWaitTimer?.cancel();
         _disableWakeLock();
+        // Reset call state in provider to allow new calls
+        _resetProviderCallState();
         _backToDialPad();
         break;
       case CallStateEnum.ACCEPTED:
@@ -816,6 +820,17 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
     }
     _cleanUp();
     if (mounted) Navigator.of(context).pop();
+  }
+
+  /// Reset call state in provider to allow new incoming calls
+  void _resetProviderCallState() {
+    try {
+      final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
+      callProvider.resetCallState();
+      print('✅ Provider call state reset from CallScreenWidget');
+    } catch (e) {
+      print('⚠️ Error resetting provider call state: $e');
+    }
   }
 
   Widget _buildContent() {

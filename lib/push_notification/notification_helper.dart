@@ -68,58 +68,34 @@ class NotificationHelper {
         return;
       }
 
-      if (message.data['type'] == 'audio' ||
-          message.data['type'] == 'video' ||
-          message.data['type'] == 'chat') {
-        // Show incoming call screen
-        NotificationHelper.showCallkitIncoming(message.data, 'foreground');
-        return; // don’t show local notification for calls
+      // Only process call notifications (audio, video, chat)
+      // All other notification types are disabled
+      if (message.data['type'] != 'audio' &&
+          message.data['type'] != 'video' &&
+          message.data['type'] != 'chat') {
+        return; // Ignore all non-call notifications
       }
 
-      if (message.data['type'] == 'block') {
-        Provider.of<AuthController>(Get.context!, listen: false)
-            .clearSharedData();
-        Provider.of<AddressController>(Get.context!, listen: false)
-            .getAddressList();
-        Navigator.of(Get.context!).pushAndRemoveUntil(
-            CupertinoPageRoute(builder: (context) => const AuthScreen()),
-            (route) => false);
-      }
-      NotificationHelper.showNotification(
-          message, flutterLocalNotificationsPlugin, false);
+      // Show incoming call screen for call types
+      NotificationHelper.showCallkitIncoming(message.data, 'foreground');
     });
+
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       if(ChatState.activeAstrologerId == message.data['astrologer_id'].toString()){
         return;
       }
-      if (message.data['type'] == 'audio' ||
-          message.data['type'] == 'video' ||
-          message.data['type'] == 'chat') {
-        NotificationHelper.showCallkitIncoming(message.data, 'foreground');
 
-        return;
-      }
-      final ScrollController scrollController = ScrollController();
-      if (kDebugMode) {
-        print('onOpenApp: ${message.notification!.title}/${message.notification!.body}/${message.notification!.titleLocKey}');
-        print('Message Data: ${message.data}');
+      // Only process call notifications (audio, video, chat)
+      // All other notification types are disabled
+      if (message.data['type'] != 'audio' &&
+          message.data['type'] != 'video' &&
+          message.data['type'] != 'chat') {
+        return; // Ignore all non-call notifications
       }
 
-      final notificationType = message.data['notification_type'];
-      print("Notification Type: ${message.data}");
-
-      try {
-        if (message.data.isNotEmpty) {
-          NotificationBody notificationBody = convertNotification(message.data);
-
-          log('Notification Body Working=> ${notificationBody.type}');
-
-          NotificationHelper.handleNotificationNavigation(notificationBody);
-
-        }
-      } catch (_) {}
-
+      // Show incoming call screen for call types
+      NotificationHelper.showCallkitIncoming(message.data, 'foreground');
     });
   }
 
@@ -182,7 +158,8 @@ class NotificationHelper {
       String body,
       String orderID,
       NotificationBody? notificationBody,
-      FlutterLocalNotificationsPlugin fln) async {
+      FlutterLocalNotificationsPlugin fln,
+      {int id = 0}) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'Mahakal.com',
@@ -205,7 +182,8 @@ class NotificationHelper {
       String body,
       String? orderID,
       NotificationBody? notificationBody,
-      FlutterLocalNotificationsPlugin fln) async {
+      FlutterLocalNotificationsPlugin fln,
+      {int id = 0}) async {
     print('Notification Body ----> $body');
     BigTextStyleInformation bigTextStyleInformation = BigTextStyleInformation(
       body,
@@ -237,7 +215,8 @@ class NotificationHelper {
       String? orderID,
       NotificationBody? notificationBody,
       String image,
-      FlutterLocalNotificationsPlugin fln) async {
+      FlutterLocalNotificationsPlugin fln,
+      {int id = 0}) async {
     final String largeIconPath = await _downloadAndSaveFile(image, 'largeIcon');
     final String bigPicturePath =
         await _downloadAndSaveFile(image, 'bigPicture');
@@ -376,6 +355,21 @@ class NotificationHelper {
 
   static Future<void> showCallkitIncoming(Map<String, dynamic> data, String from) async {
     print("Call Data ----> :${data}");
+    
+    // CRITICAL: Check for and end any existing active calls before showing new one
+    // This prevents multiple call notifications from stacking up
+    try {
+      var activeCalls = await FlutterCallkitIncoming.activeCalls();
+      if (activeCalls is List && activeCalls.isNotEmpty) {
+        print('⚠️ Found ${activeCalls.length} existing active call(s), ending them before showing new call');
+        await FlutterCallkitIncoming.endAllCalls();
+        // Small delay to ensure cleanup completes
+        await Future.delayed(const Duration(milliseconds: 100));
+      }
+    } catch (e) {
+      print('⚠️ Error checking/ending active calls: $e');
+      // Continue anyway to show the new call
+    }
     var id = 0;
     switch (data['type']) {
       case 'audio':
@@ -443,4 +437,3 @@ Future<dynamic> myBackgroundMessageHandler(RemoteMessage message) async {
     return;
   }
 }
-

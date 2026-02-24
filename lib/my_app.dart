@@ -91,14 +91,24 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           print('CallKit raw callRequestId (decline): $rawIdDecline (type=${rawIdDecline.runtimeType})');
           final idDecline = rawIdDecline?.toString().trim() ?? '';
           print('CallKit normalized callRequestId (decline): "${idDecline}"');
+          
+          // Get provider first for cleanup
+          final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
+          
           if (idDecline.isEmpty) {
             debugPrint('Call decline: missing callRequestId, skipping status API');
           } else {
-            final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
             callProvider.setRequestId(idDecline);
             callStatusApi(idDecline, 'reject');
           }
+          
+          // CRITICAL: Reset all call state to allow new incoming calls
+          callProvider.resetCallState();
           currentUuid = null;
+          
+          // End all CallKit calls to clean up any stuck notifications
+          FlutterCallkitIncoming.endAllCalls();
+          debugPrint('✅ Call state cleaned up after decline');
           break;
 
         case Event.actionCallEnded:
@@ -175,7 +185,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     
     Call? call;
     var calls = await FlutterCallkitIncoming.activeCalls();
-    debugPrint('calls...$calls');
+    debugPrint('Active calls from CallKit: $calls');
     final callProvider = Provider.of<CallServiceProvider>(context, listen: false);
     final bool sipRegistered = await ensureSipRegistered();
 
@@ -184,21 +194,29 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       currentUuid = active['id'];
       
       // Safely convert to Map<String, dynamic>
-        final Map<String, dynamic>? eventBody =
+      final Map<String, dynamic>? eventBody =
           active is Map ? Map<String, dynamic>.from(active) : null;
 
-          if (eventBody != null && eventBody['extra'] != null){
-            String id = eventBody['extra']['callRequestId'];
+      if (eventBody != null && eventBody['extra'] != null) {
+        String id = eventBody['extra']['callRequestId']?.toString() ?? '';
 
-            // Skip if provider already handled this request id
-            final existingRequestId = callProvider.requestId;
-            if (existingRequestId != null && existingRequestId == id) {
-              debugPrint('Call $id already handled by provider; skipping.');
-            } else if(active['isAccepted'] == true){
-            callProvider.setRequestId(id);
-            callStatusApi(id, 'connect');
-          }
-              }
+        // Skip if provider already handled this request id AND call is not accepted
+        // But if it's a new call (different ID), we should process it
+        final existingRequestId = callProvider.requestId;
+        if (existingRequestId.isNotEmpty && existingRequestId == id && active['isAccepted'] != true) {
+          debugPrint('Call $id already handled by provider and not accepted; skipping.');
+          return;
+        }
+        
+        // If this is a new call or the call was accepted, process it
+        if (active['isAccepted'] == true) {
+          debugPrint('Call $id was accepted, processing...');
+          callProvider.setRequestId(id);
+          callStatusApi(id, 'connect');
+        } else {
+          debugPrint('New call $id detected, will wait for acceptance...');
+        }
+      }
 
       String? callType;
       String? userName = 'John Doe';
@@ -212,11 +230,31 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
       print('User ID--->: $userId');
       print('Call Register State --> ${callProvider.registerState?.state ?? callProvider.registerState}');
-      if (eventBody != null && eventBody['extra'] != null) {
-        final extra = eventBody['extra'];
-        final from = extra['from']?.toString() ?? 'background';
+      
+      // Check if we have valid event body with extra data
+      if (eventBody == null || eventBody['extra'] == null) {
+        debugPrint('⚠️ No event body or extra data found, skipping navigation');
+        return;
+      }
+      
+      final extra = eventBody['extra'];
+      final from = extra['from']?.toString() ?? 'background';
+      final callRequestId = extra['callRequestId']?.toString() ?? '';
 
-        if (extra is Map && extra['type'] == 'chat' && from != 'background' ) {
+      // Validate that we have a call request ID
+      if (callRequestId.isEmpty) {
+        debugPrint('⚠️ No callRequestId found, skipping navigation');
+        return;
+      }
+
+      // Only process if call was actually accepted
+      if (active['isAccepted'] != true) {
+        debugPrint('⏳ Call $callRequestId not yet accepted, waiting...');
+        return;
+      }
+
+      // Process based on call type
+      if (extra is Map && extra['type'] == 'chat' && from != 'background') {
           // Check if chat screen is already open for this astrologer
           if (ChatState.activeAstrologerId == extra['userId']?.toString()) {
             debugPrint('Chat screen already open for astrologer ${extra['userId']}, skipping navigation');
@@ -242,29 +280,28 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             _isNavigatingToChat = false;
           });
           print('Chat call navigation from MyApp.');
-        } else if (extra is Map &&
-            (extra['type'] == 'audio' || extra['type'] == 'video')) {
-          // For audio/video we require SIP registration
-          if (!sipRegistered || callProvider.registerState == null) {
-            print('SIP not registered after retries — skipping call navigation.');
-            return;
-          }
-          callType = extra['type'];
-
-          print('Sending call charges: ${extra['charges']}/min');
-          
-          Provider.of<CallServiceProvider>(context, listen: false)
-              .setUserName(eventBody['handle'] ?? 'John Doe');
-          Provider.of<CallServiceProvider>(context, listen: false)
-              .setUserImage(eventBody['avatar'] ?? '');
-          Provider.of<CallServiceProvider>(context, listen: false)
-              .setRequestId(eventBody['extra']['callRequestId'] ?? '-1');
-          Provider.of<CallServiceProvider>(context, listen: false)
-              .setCharges(eventBody['extra']['charges'] ?? '0');
-          Provider.of<CallServiceProvider>(context, listen: false)
-              .setAstrologerId(extra['userId']?.toString() ?? '');
+      } else if (extra is Map &&
+          (extra['type'] == 'audio' || extra['type'] == 'video')) {
+        // For audio/video we require SIP registration
+        if (!sipRegistered || callProvider.registerState == null) {
+          print('SIP not registered after retries — skipping call navigation.');
+          return;
         }
+        callType = extra['type'];
+
+        print('Sending call charges: ${extra['charges']}/min');
+        
+        // Set all call data in provider
+        callProvider.setUserName(eventBody['handle'] ?? 'John Doe');
+        callProvider.setUserImage(eventBody['avatar'] ?? '');
+        callProvider.setRequestId(callRequestId);
+        callProvider.setCharges(extra['charges']?.toString() ?? '0');
+        callProvider.setAstrologerId(extra['userId']?.toString() ?? '');
+        
+        debugPrint('✅ Audio/Video call data set for requestId: $callRequestId');
       }
+    } else {
+      debugPrint('ℹ️ No active calls from CallKit');
     }
   }
 

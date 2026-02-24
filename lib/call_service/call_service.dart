@@ -73,6 +73,24 @@ class CallServiceProvider extends ChangeNotifier
     notifyListeners();
   }
 
+  /// Reset all call state when call is declined/ended/rejected
+  /// This is critical to allow new incoming calls to be processed
+  void resetCallState() {
+    _callScreenNavigated = false;
+    _requestId = '';
+    _userName = '';
+    _userImage = '';
+    _charges = '';
+    _astrologerId = '';
+    isCallActive = false;
+    isCaller = false;
+    isConnecting = false;
+    _currentCall = null;
+    _callState = null;
+    notifyListeners();
+    print('✅ Call state reset - ready for new calls');
+  }
+
   Call? get currentCall => _currentCall;
   RegistrationState? get registerState => _registerState;
   CallStateEnum? get callState => _callState;
