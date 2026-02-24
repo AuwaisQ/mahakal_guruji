@@ -14,6 +14,7 @@ import '../../../utill/completed_order_dialog.dart';
 import '../../../utill/flutter_toast_helper.dart';
 import '../auth/controllers/auth_controller.dart';
 import '../profile/controllers/profile_contrroller.dart';
+import 'Pandit_Bottom_bar.dart';
 import 'city_picker_model.dart';
 
 
@@ -39,7 +40,7 @@ class PersonDetails extends StatefulWidget {
     required this.poojaVenue,
     required this.date,
     this.tabIndex = 3,
-    this.typeByVendor = "panditVendor",
+    this.typeByVendor = 'panditVendor',
   });
 
   @override
@@ -62,10 +63,10 @@ class _PersonDetailsState extends State<PersonDetails> {
     widget.personCount,
         (index) => TextEditingController(),
   );
-  String mess = "";
-  String userNumber = "";
-  String latiTude = "";
-  String longiTude = "";
+  String mess = '';
+  String userNumber = '';
+  String latiTude = '';
+  String longiTude = '';
 
   final billFormKey = GlobalKey<FormState>();
   ScrollController? scrollController;
@@ -76,26 +77,26 @@ class _PersonDetailsState extends State<PersonDetails> {
 
   // button functionality
   void _submitForm() {
-    print("Pooja Type:${widget.typePooja}");
+    print('Pooja Type:${widget.typePooja}');
     isLoading = true;
     if (!isYesNo) {
       if (textControllers.isEmpty || gotraController.text.isEmpty) {
         billFormKey.currentState!.validate();
-        ToastHelper.showToast(message: "Form fields required!");
+        ToastHelper.showToast(message: 'Form fields required!');
         setState(() {
           isLoading = false;
         });
       } else {
         saveTextValues();
-        widget.typePooja == "pooja"
-            ? sendPostRequest("pooja-sankalp")
-            : widget.typePooja == "chadhava"
-            ? sendPostRequest("chadhava-sankalp")
-            : widget.typePooja == "vip"
-            ? sendPostRequest("vip-sankalp")
-            : widget.typePooja == "anushthan"
-            ? sendPostRequest("anushthan-sankalp")
-            : ToastHelper.showError("Method Error!");
+        widget.typePooja == 'pooja'
+            ? sendPostRequest('pooja-sankalp')
+            : widget.typePooja == 'chadhava'
+            ? sendPostRequest('chadhava-sankalp')
+            : widget.typePooja == 'vip'
+            ? sendPostRequest('vip-sankalp')
+            : widget.typePooja == 'anushthan'
+            ? sendPostRequest('anushthan-sankalp')
+            : ToastHelper.showError('Method Error!');
       }
     } else {
       if (textControllers.isEmpty ||
@@ -107,21 +108,21 @@ class _PersonDetailsState extends State<PersonDetails> {
           areaController.text.isEmpty ||
           landmarkController.text.isEmpty) {
         billFormKey.currentState!.validate();
-        ToastHelper.showToast(message: "Form fields required!");
+        ToastHelper.showToast(message: 'Form fields required!');
         setState(() {
           isLoading = false;
         });
       } else {
         saveTextValues();
-        widget.typePooja == "pooja"
-            ? sendPostRequest("pooja-sankalp")
-            : widget.typePooja == "chadhava"
-            ? sendPostRequest("chadhava-sankalp")
-            : widget.typePooja == "vip"
-            ? sendPostRequest("vip-sankalp")
-            : widget.typePooja == "anushthan"
-            ? sendPostRequest("anushthan-sankalp")
-            : sendPostRequest("pooja-details");
+        widget.typePooja == 'pooja'
+            ? sendPostRequest('pooja-sankalp')
+            : widget.typePooja == 'chadhava'
+            ? sendPostRequest('chadhava-sankalp')
+            : widget.typePooja == 'vip'
+            ? sendPostRequest('vip-sankalp')
+            : widget.typePooja == 'anushthan'
+            ? sendPostRequest('anushthan-sankalp')
+            : sendPostRequest('pooja-details');
         // ... rest of the code remains the same
       }
     }
@@ -131,7 +132,7 @@ class _PersonDetailsState extends State<PersonDetails> {
 
     final String userToken = Provider.of<AuthController>(context, listen: false).getUserToken();
 
-    String finalUrl = "${AppConstants.baseUrl}${AppConstants.allPanditPersonUrl}";
+    String finalUrl = '${AppConstants.baseUrl}${AppConstants.allPanditPersonUrl}';
 
     // Define the API endpoint
     String orderId = widget.pjIdOrder;
@@ -142,30 +143,30 @@ class _PersonDetailsState extends State<PersonDetails> {
 
     // Create the data payload
     Map<String, dynamic> data = {
-      if(widget.typeByVendor == "panditVendor") "order_id" : "${widget.pjIdOrder}",
-      "newPhone": phoneController.text.isEmpty ? "" : int.parse(phoneController.text),
-      "gotra": gotraController.text,
-      "pincode": isYesNo == false ? "" : int.parse(pinController.text),
-      "city": isYesNo == false ? "" : countryController.text,
-      "state": isYesNo == false ? "" : stateController.text,
-      "house_no": isYesNo == false ? "" : int.parse(houseController.text),
-      "area": isYesNo == false ? "" : areaController.text,
-      "landmark": isYesNo == false ? "" : landmarkController.text,
-      "members": textValues,
-      "is_prashad": isYesNo == false ? 0 : 1,
-      "latitude": latiTude,
-      "longitude": longiTude
+      if(widget.typeByVendor == 'panditVendor') 'order_id' : '${widget.pjIdOrder}',
+      'newPhone': phoneController.text.isEmpty ? '' : int.parse(phoneController.text),
+      'gotra': gotraController.text,
+      'pincode': isYesNo == false ? '' : int.parse(pinController.text),
+      'city': isYesNo == false ? '' : countryController.text,
+      'state': isYesNo == false ? '' : stateController.text,
+      'house_no': isYesNo == false ? '' : int.parse(houseController.text),
+      'area': isYesNo == false ? '' : areaController.text,
+      'landmark': isYesNo == false ? '' : landmarkController.text,
+      'members': textValues,
+      'is_prashad': isYesNo == false ? 0 : 1,
+      'latitude': latiTude,
+      'longitude': longiTude
     };
 
-    print("Api data : $data");
-    print("order : $orderId");
+    print('Api data : $data');
+    print('order : $orderId');
     // Make the POST request
     try {
       final response = await http.post(
-        Uri.parse(widget.typeByVendor == "panditVendor"  ? finalUrl : apiUrl),
+        Uri.parse(widget.typeByVendor == 'panditVendor'  ? finalUrl : apiUrl),
         headers: {
           'Content-Type': 'application/json',
-          if(widget.typeByVendor == "panditVendor") 'Authorization': 'Bearer $userToken',
+          if(widget.typeByVendor == 'panditVendor') 'Authorization': 'Bearer $userToken',
         },
         body: jsonEncode(data),
       );
@@ -173,18 +174,18 @@ class _PersonDetailsState extends State<PersonDetails> {
       if (response.statusCode == 200) {
         // Handle success
         print('Request successful');
-        print("is_prashad ${isYesNo == false ? 0 : 1}");
-        // Navigator.of(context).pushReplacement(CupertinoPageRoute(
-        //     builder: (BuildContext context) => const BottomBar(pageIndex: 0)));
-        int orderIndex = widget.typePooja == "pooja"
+        print('is_prashad ${isYesNo == false ? 0 : 1}');
+        Navigator.of(context).pushReplacement(CupertinoPageRoute(
+            builder: (BuildContext context) => const PanditBottomBar(pageIndex: 0, panditId: AppConstants.panditId, sellerId: AppConstants.sellerId, astroImage: '',)));
+        int orderIndex = widget.typePooja == 'pooja'
             ? widget.tabIndex
-            : widget.typePooja == "chadhava"
+            : widget.typePooja == 'chadhava'
             ? 2
-            : widget.typePooja == "vip"
+            : widget.typePooja == 'vip'
             ? 0
-            : widget.typePooja == "anushthan"
+            : widget.typePooja == 'anushthan'
             ? 1
-            : widget.typeByVendor == "panditVendor"
+            : widget.typeByVendor == 'panditVendor'
             ? 11
             : 111;
         showDialog(
@@ -279,16 +280,16 @@ class _PersonDetailsState extends State<PersonDetails> {
 
   //Country Picker
   final Country _selectedCountry = Country(
-    phoneCode: "91",
-    countryCode: "IN",
+    phoneCode: '91',
+    countryCode: 'IN',
     e164Sc: 0,
     geographic: true,
     level: 1,
-    name: "India",
-    example: "9123456789",
-    displayName: "India",
-    displayNameNoCountryCode: "India",
-    e164Key: "91-IN-0",
+    name: 'India',
+    example: '9123456789',
+    displayName: 'India',
+    displayNameNoCountryCode: 'India',
+    e164Key: '91-IN-0',
   );
 
   void updateValue(String value) {
@@ -310,30 +311,30 @@ class _PersonDetailsState extends State<PersonDetails> {
         searchbox = false;
       });
     }
-    print("serchbox $searchbox");
+    print('serchbox $searchbox');
   }
 
   // country picker api
   void getCityPick() async {
-    print("object");
+    print('object');
     cityListModel.clear();
     var response = await http.post(
       Uri.parse('https://geo.vedicrishi.in/places/'),
       body: {
-        "country": _selectedCountry.name,
-        "name": countryController.text,
+        'country': _selectedCountry.name,
+        'name': countryController.text,
       },
     );
     if (response.statusCode == 200) {
       setState(() {
         var result = json.decode(response.body);
-        print("Api response $result");
+        print('Api response $result');
         List listLocation = result;
         cityListModel
             .addAll(listLocation.map((e) => CityPickerModel.fromJson(e)));
       });
     } else {
-      print("Failed Api Rresponse");
+      print('Failed Api Rresponse');
     }
   }
 
@@ -341,17 +342,17 @@ class _PersonDetailsState extends State<PersonDetails> {
     return await showCupertinoDialog(
       context: context,
       builder: (context) => CupertinoAlertDialog(
-        title: const Text("Confirm Exit"),
-        content: const Text("Are you sure you want to go back?"),
+        title: const Text('Confirm Exit'),
+        content: const Text('Are you sure you want to go back?'),
         actions: [
           CupertinoDialogAction(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text("Cancel"),
+            child: const Text('Cancel'),
           ),
           CupertinoDialogAction(
             onPressed: () => Navigator.of(context).pop(true),
             isDestructiveAction: true, // Red color for emphasis
-            child: const Text("Yes"),
+            child: const Text('Yes'),
           ),
         ],
       ),
@@ -401,7 +402,7 @@ class _PersonDetailsState extends State<PersonDetails> {
             ),
             child: const Center(
               child: Text(
-                "Submit",
+                'Submit',
                 style: TextStyle(
                     fontSize: 16,
                     color: Colors.white,
@@ -413,7 +414,7 @@ class _PersonDetailsState extends State<PersonDetails> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text(
-            "Fill Pooja Form",
+            'Fill Pooja Form',
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
@@ -504,7 +505,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                               SizedBox(
                                   width: screenWidth * 0.7,
                                   child: Text(
-                                    "${widget.date}",
+                                    '${widget.date}',
                                     //DateFormat('dd-MMM-yyyy,').format(bookingDate),
                                     style: const TextStyle(
                                         fontSize: 14,
@@ -559,12 +560,12 @@ class _PersonDetailsState extends State<PersonDetails> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        "Name of member participating in pooja",
+                        'Name of member participating in pooja',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                       const Text(
-                        "Panditji will take your name along with gotra during pooja.",
+                        'Panditji will take your name along with gotra during pooja.',
                         style: TextStyle(
                           color: Colors.grey,
                         ),
@@ -579,7 +580,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                           child: TextFormField(
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Enter your Name";
+                                return 'Enter your Name';
                               }
                               return null;
                             },
@@ -587,7 +588,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                             style:
                             const TextStyle(fontFamily: 'Roboto-Regular'),
                             decoration: InputDecoration(
-                              hintText: "Member Name ${i + 1}",
+                              hintText: 'Member Name ${i + 1}',
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                               border: OutlineInputBorder(
@@ -632,7 +633,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                             fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                       const Text(
-                        "gotra will be recited during the pooja.",
+                        'gotra will be recited during the pooja.',
                         style: TextStyle(
                           color: Colors.grey,
                         ),
@@ -644,13 +645,13 @@ class _PersonDetailsState extends State<PersonDetails> {
                         controller: gotraController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Required Gotra Name";
+                            return 'Required Gotra Name';
                           }
                           return null;
                         },
                         style: const TextStyle(fontFamily: 'Roboto-Regular'),
                         decoration: InputDecoration(
-                          hintText: "Gotra",
+                          hintText: 'Gotra',
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
                           border: OutlineInputBorder(
@@ -682,13 +683,13 @@ class _PersonDetailsState extends State<PersonDetails> {
                               setState(() {
                                 isChecked = newValue!;
                                 isChecked
-                                    ? gotraController.text = "Kashyap"
+                                    ? gotraController.text = 'Kashyap'
                                     : gotraController.clear();
                               });
                             },
                           ),
                           Text(
-                            "I do not know my gotra",
+                            'I do not know my gotra',
                             style: TextStyle(
                                 color: isChecked ? Colors.black : Colors.grey,
                                 fontSize: 14,
@@ -713,12 +714,12 @@ class _PersonDetailsState extends State<PersonDetails> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        "Add your whatsApp number (Optional)",
+                        'Add your whatsApp number (Optional)',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                       const Text(
-                        "To get order related updates.",
+                        'To get order related updates.',
                         style: TextStyle(
                           color: Colors.grey,
                         ),
@@ -743,7 +744,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                         controller: phoneController,
                         style: const TextStyle(fontFamily: 'Roboto-Regular'),
                         decoration: InputDecoration(
-                          hintText: "+91 000-000-0000",
+                          hintText: '+91 000-000-0000',
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
                           border: OutlineInputBorder(
@@ -787,7 +788,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                             fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                       const Text(
-                        "After the completion of the pooja, the prasad will be sent to you within 8–10 days.",
+                        'After the completion of the pooja, the prasad will be sent to you within 8–10 days.',
                         style: TextStyle(
                           color: Colors.grey,
                         ),
@@ -812,7 +813,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                   border: Border.all(
                                       color: Colors.grey.shade400, width: 1.5)),
                               child: Text(
-                                "Yes",
+                                'Yes',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -839,7 +840,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                                   border: Border.all(
                                       color: Colors.grey.shade400, width: 1.5)),
                               child: Text(
-                                "No",
+                                'No',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -858,7 +859,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "Your address for prasad delivery",
+                            'Your address for prasad delivery',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17),
@@ -876,14 +877,14 @@ class _PersonDetailsState extends State<PersonDetails> {
                                   keyboardType: TextInputType.number,
                                   validator: (value) {
                                     if (value!.isEmpty) {
-                                      return "Required House Number";
+                                      return 'Required House Number';
                                     }
                                     return null;
                                   },
                                   style: const TextStyle(
                                       fontFamily: 'Roboto-Regular'),
                                   decoration: InputDecoration(
-                                    hintText: "House Number",
+                                    hintText: 'House Number',
                                     contentPadding:
                                     const EdgeInsets.symmetric(
                                         vertical: 10.0,
@@ -920,14 +921,14 @@ class _PersonDetailsState extends State<PersonDetails> {
                                   controller: areaController,
                                   validator: (value) {
                                     if (value!.isEmpty) {
-                                      return "Required Colony Name";
+                                      return 'Required Colony Name';
                                     }
                                     return null;
                                   },
                                   style: const TextStyle(
                                       fontFamily: 'Roboto-Regular'),
                                   decoration: InputDecoration(
-                                    hintText: "Road , Area , Colony",
+                                    hintText: 'Road , Area , Colony',
                                     contentPadding:
                                     const EdgeInsets.symmetric(
                                         vertical: 10.0,
@@ -970,14 +971,14 @@ class _PersonDetailsState extends State<PersonDetails> {
                             controller: landmarkController,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Required Landmark";
+                                return 'Required Landmark';
                               }
                               return null;
                             },
                             style: const TextStyle(
                                 fontFamily: 'Roboto-Regular'),
                             decoration: InputDecoration(
-                              hintText: "Enter Landmark",
+                              hintText: 'Enter Landmark',
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                               border: OutlineInputBorder(
@@ -1010,7 +1011,7 @@ class _PersonDetailsState extends State<PersonDetails> {
                             style: const TextStyle(
                                 fontFamily: 'Roboto-Regular'),
                             decoration: InputDecoration(
-                              hintText: "City ( Compulsory ) ",
+                              hintText: 'City ( Compulsory ) ',
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                               border: OutlineInputBorder(
@@ -1110,14 +1111,14 @@ class _PersonDetailsState extends State<PersonDetails> {
                             controller: stateController,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Required State Name";
+                                return 'Required State Name';
                               }
                               return null;
                             },
                             style: const TextStyle(
                                 fontFamily: 'Roboto-Regular'),
                             decoration: InputDecoration(
-                              hintText: "State ( Compulsory ) ",
+                              hintText: 'State ( Compulsory ) ',
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                               border: OutlineInputBorder(
@@ -1148,14 +1149,14 @@ class _PersonDetailsState extends State<PersonDetails> {
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Required Pin Code";
+                                return 'Required Pin Code';
                               }
                               return null;
                             },
                             style: const TextStyle(
                                 fontFamily: 'Roboto-Regular'),
                             decoration: InputDecoration(
-                              hintText: "Pin Code ( Compulsory ) ",
+                              hintText: 'Pin Code ( Compulsory ) ',
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                               border: OutlineInputBorder(

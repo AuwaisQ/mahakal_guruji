@@ -525,7 +525,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
 
           if (packages.isNotEmpty) {
             packageAmount = packages[0].price ?? 0;
-            packageId = packages[0].id ?? 0;
+            packageId = packages[0].packageId ?? 0;
             serviceId = packages[0].serviceId ?? 0;
             packagePerson = packages[0].package?.person ?? 0;
             packagePooja = packages[0].package?.enTitle ?? '';
@@ -651,7 +651,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
             CupertinoPageRoute(
                 builder: (context) => PersonDetails(
                   billAmount: (totalPrice + packageAmount).toString(),
-                  personCount: packagePerson,
+                  personCount: 1,
                   typePooja: 'pooja',
                   pjIdOrder: allPanditSuccess?.orderId ?? '',
                   packageName: packagePooja,
@@ -1368,7 +1368,7 @@ class _PanditPoojaDetailsState extends State<PanditPoojaDetails> {
                               _currentIndex = index;
                               selectedIndex = index;
                               packageAmount = item?.price ?? 0;
-                              packageId = item?.id ?? 0;
+                              packageId = item?.packageId ?? 0;
                               serviceId = item?.serviceId ?? 0;
                               packagePerson = item?.package?.person ?? 0;
                               packagePooja = item?.package?.enTitle ?? '';

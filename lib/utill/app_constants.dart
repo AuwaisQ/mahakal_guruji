@@ -7,8 +7,8 @@ class AppConstants {
   static const String appVersion = '1.0';
 
   static const String otherBaseUrl = 'https://hotels.mahakal.com';
-  static const String baseUrl = 'https://uat.pavtr.in';
-  // static const String baseUrl = 'https://sit.resrv.in';
+  // static const String baseUrl = 'https://uat.pavtr.in';
+  static const String baseUrl = 'https://sit.resrv.in';
   // static const String baseUrl = 'https://mahakal.com';
 
   // Razorpay API key
