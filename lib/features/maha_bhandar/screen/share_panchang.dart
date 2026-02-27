@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:mahakal/features/maha_bhandar/model/festival_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:mahakal/features/maha_bhandar/screen/custom_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import '../../../data/datasource/remote/http/httpClient.dart';
@@ -596,11 +597,12 @@ class _SharePachangScreenState extends State<SharePachangScreen> {
     String moonDate = DateFormat('dd-MMMM-yyyy').format(now);
 
     return Scaffold(
+      backgroundColor: CustomColors.clrwhite,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.white,
+            color: CustomColors.clrwhite,
             size: screenWidth * 0.06,
           ),
           onPressed: () {
@@ -609,7 +611,7 @@ class _SharePachangScreenState extends State<SharePachangScreen> {
         ),
         title: Text('Share Panchang',
             style: TextStyle(
-                color: Colors.white,
+                color: CustomColors.clrwhite,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w600,
                 fontSize: screenWidth * 0.06)),
@@ -617,7 +619,7 @@ class _SharePachangScreenState extends State<SharePachangScreen> {
         actions: [
           InkWell(
             onTap: () {
-              context.read<SharePachangController>().shareCustomDesign(context);
+              sharePanchang.shareCustomDesign(context);
             },
             child: Container(
               padding: const EdgeInsets.all(8),
@@ -728,9 +730,7 @@ class _SharePachangScreenState extends State<SharePachangScreen> {
                         left: screenWidth * 0.04,
                         right: screenWidth * 0.04),
                     child: Screenshot(
-                      controller: context
-                          .watch<SharePachangController>()
-                          .screenshotController,
+                      controller: sharePanchang.screenshotController,
                       child: Container(
                         decoration: BoxDecoration(
                             color: _showColor ? _colors[_colorIndex] : null,

@@ -2,13 +2,15 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mahakal/features/infopage/infopageview.dart';
 import 'package:mahakal/features/maha_bhandar/model/shubh_muhrt_model.dart';
 import 'package:intl/intl.dart';
+import 'package:mahakal/features/maha_bhandar/screen/astrodetailspage.dart';
+import 'package:mahakal/features/maha_bhandar/screen/shubhmuhuratmodel.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:toggle_list/toggle_list.dart';
-import '../../../data/datasource/remote/http/httpClient.dart';
-import '../../../utill/app_constants.dart';
-import '../../infopage/infopageview.dart';
+import '../../../../data/datasource/remote/http/httpClient.dart';
+import '../../../../utill/app_constants.dart';
 import '../model/specialmuhurat_model.dart';
 
 class ShubhMuhurat extends StatefulWidget {
@@ -190,6 +192,23 @@ class _ShubhMuhuratState extends State<ShubhMuhurat> {
   //   setState(()=>shimmerEffect = false);
   //
   // }
+
+  List<Muhurat> muhuratModelList = <Muhurat>[];
+
+  void getmuhuratData() async {
+    var res = await HttpService().getApi(AppConstants.shubhmuhuratUrl);
+    if (res["status"] == 200) {
+      setState(() {
+        muhuratModelList.clear();
+        List shubhmuhuratList = res['data'];
+        muhuratModelList
+            .addAll(shubhmuhuratList.map((e) => Muhurat.fromJson(e)));
+      });
+      print(res);
+    } else {
+      print("Failed Api Response");
+    }
+  }
 
   void getSpecialMuhurat() async {
     var res = await HttpService().getApi(
@@ -624,6 +643,7 @@ class _ShubhMuhuratState extends State<ShubhMuhurat> {
   void initState() {
     getData();
     getSpecialMuhurat();
+    getmuhuratData();
     super.initState();
   }
 
@@ -2491,7 +2511,162 @@ class _ShubhMuhuratState extends State<ShubhMuhurat> {
                                 ],
                               ),
                             ),
+                            const SizedBox(
+                              height: 5,
+                            ),
 
+                            SizedBox(
+                              height: 205,
+                              child: ListView.builder(
+                                physics: const BouncingScrollPhysics(),
+                                itemCount: muhuratModelList.length,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  AstroDetailsView(
+                                                    productId:
+                                                        muhuratModelList[index]
+                                                            .id!,
+                                                    isProduct: false,
+                                                  )));
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(
+                                          right: 5, bottom: 10),
+                                      width: 140,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          border: Border.all(
+                                              color: Colors.grey.shade300,
+                                              width: 1.5),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              flex: 1,
+                                              child: Container(
+                                                height: 130,
+                                                width: 130,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  color: Colors.grey.shade300,
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(6),
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        "${muhuratModelList[index].thumbnail}",
+                                                    fit: BoxFit.cover,
+                                                    errorWidget: (context, url,
+                                                            error) =>
+                                                        const Icon(Icons.error),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Expanded(
+                                                flex: 0,
+                                                child: Text(
+                                                  '${muhuratModelList[index].enName}',
+                                                  style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black),
+                                                  maxLines: 1,
+                                                )),
+                                            Text.rich(TextSpan(children: [
+                                              TextSpan(
+                                                  text:
+                                                      '₹${muhuratModelList[index].counsellingSellingPrice} ',
+                                                  style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.orange)),
+                                              TextSpan(
+                                                  text:
+                                                      '₹${muhuratModelList[index].counsellingMainPrice}',
+                                                  style: const TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                      decoration: TextDecoration
+                                                          .lineThrough)),
+                                            ]))
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    // Container(
+                                    //   margin: const EdgeInsets.only(right: 5,bottom: 10),
+                                    //   width: 140,
+                                    //   decoration: BoxDecoration(
+                                    //       color: Colors.white,
+                                    //       border: Border.all(color :Colors.grey.shade300,width: 1.5),
+                                    //     borderRadius: BorderRadius.circular(4.0)
+                                    //   ),
+                                    //   child: Padding(
+                                    //     padding: const EdgeInsets.all(8.0),
+                                    //     child: Column(
+                                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                                    //       children: [
+                                    //         const SizedBox(height: 5,),
+                                    //         Center(
+                                    //           child: Container(
+                                    //             height: 90,
+                                    //             width: 130,
+                                    //             decoration: BoxDecoration(
+                                    //                 borderRadius: BorderRadius.circular(4),
+                                    //                 color: Colors.grey.shade300
+                                    //             ),
+                                    //             child:  Image.network("${muhuratModelList[index].thumbnail}",fit: BoxFit.cover,)
+                                    //           ),
+                                    //         ),
+                                    //
+                                    //         Spacer(),
+                                    //         Text('${translateBtn ? muhuratModelList[index].hiName : muhuratModelList[index].enName}',style: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black),maxLines: 2,),
+                                    //
+                                    //         Spacer(),
+                                    //         Text.rich(
+                                    //             TextSpan(
+                                    //                 children: [
+                                    //                   TextSpan(
+                                    //                       text:'₹${muhuratModelList[index].counsellingSellingPrice} ',style: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color:Colors.blue)
+                                    //                   ),
+                                    //                   TextSpan(
+                                    //                       text:'₹${muhuratModelList[index].counsellingMainPrice}',style: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black,decoration: TextDecoration.lineThrough)
+                                    //                   ),
+                                    //                 ]
+                                    //             )
+                                    //         )
+                                    //
+                                    //       ],
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                  );
+                                },
+                              ),
+                            ),
                             const SizedBox(
                               height: 30,
                             ),

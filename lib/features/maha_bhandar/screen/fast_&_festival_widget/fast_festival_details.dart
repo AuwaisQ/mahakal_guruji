@@ -3,11 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:mahakal/features/splash/controllers/splash_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tdk_bouncingwidget/tdk_bouncingwidget.dart';
-
-import '../../../splash/controllers/splash_controller.dart';
 
 class FastFestivalsDetails extends StatefulWidget {
   final String title;

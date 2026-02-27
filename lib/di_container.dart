@@ -157,6 +157,7 @@ import 'package:mahakal/features/wishlist/domain/repositories/wishlist_repositor
 import 'package:mahakal/features/wishlist/domain/repositories/wishlist_repository_interface.dart';
 import 'package:mahakal/features/wishlist/domain/services/wishlist_service.dart';
 import 'package:mahakal/features/wishlist/domain/services/wishlist_service_interface.dart';
+import 'package:mahakal/features/maha_bhandar/controller/hora_controller.dart';
 import 'package:mahakal/helper/network_info.dart';
 import 'package:mahakal/features/auth/controllers/auth_controller.dart';
 import 'package:mahakal/features/brand/controllers/brand_controller.dart';
@@ -268,6 +269,8 @@ Future<void> init() async {
       () => LoyaltyPointController(loyaltyPointServiceInterface: sl()));
   sl.registerFactory(() => CheckoutController(checkoutServiceInterface: sl()));
   sl.registerFactory(() => LocationController(locationServiceInterface: sl()));
+  // Controller used by maha bhandar feature (hora screen)
+  sl.registerFactory(() => HoraController());
   sl.registerFactory(() => ShippingController(shippingServiceInterface: sl()));
   sl.registerFactory(
       () => ContactUsController(contactUsServiceInterface: sl()));

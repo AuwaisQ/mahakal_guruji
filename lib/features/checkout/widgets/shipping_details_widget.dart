@@ -40,8 +40,9 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
       final locationProvider =
           Provider.of<AddressController>(context, listen: false);
 
-      if (locationProvider.addressList == null ||
-          locationProvider.addressList!.isEmpty) {
+      // initialize index only if we actually have an address to show
+      if (locationProvider.addressList != null &&
+          locationProvider.addressList!.isNotEmpty) {
         Provider.of<CheckoutController>(context, listen: false)
             .setAddressIndex(0);
       }
@@ -134,9 +135,13 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
                                 child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      (locationProvider.addressList == null ||
+                                      (locationProvider.addressList != null &&
                                               locationProvider
-                                                  .addressList!.isEmpty)
+                                                  .addressList!.isNotEmpty &&
+                                              shippingProvider.addressIndex != null &&
+                                              shippingProvider.addressIndex! <
+                                                  locationProvider
+                                                      .addressList!.length)
                                           ? Text(
                                               locationProvider
                                                   .addressList![shippingProvider
@@ -152,7 +157,12 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
                                       const Divider(thickness: .125),
                                       (shippingProvider.addressIndex == null ||
                                               locationProvider
-                                                  .addressList!.isEmpty)
+                                                  .addressList == null ||
+                                              locationProvider
+                                                  .addressList!.isEmpty ||
+                                              shippingProvider.addressIndex! >=
+                                                  locationProvider
+                                                      .addressList!.length)
                                           ? Column(
                                               children: [
                                                 Divider(

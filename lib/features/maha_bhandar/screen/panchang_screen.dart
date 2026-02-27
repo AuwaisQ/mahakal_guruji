@@ -751,7 +751,6 @@ class _PanchangScreenState extends State<PanchangScreen> {
         panchangData();
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: Column(
           children: [
             Expanded(flex: 0, child: SizedBox(height: w * 0.21)),

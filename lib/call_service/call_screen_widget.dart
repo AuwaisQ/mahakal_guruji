@@ -1063,6 +1063,54 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
       _timer?.cancel();
     }
   }
+
+  void _showEndCallConfirmationDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.grey[900],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          title: const Text(
+            'End Call?',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: const Text(
+            'Are you sure you want to end this call?',
+            style: TextStyle(color: Colors.white70),
+          ),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'No',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _handleHangup();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   
   Widget _buildActionButtons() {
     List<Widget> actions = [];
@@ -1098,7 +1146,7 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
         ActionButton(
           icon: Icons.call_end,
           fillColor: Colors.red,
-          onPressed: _handleHangup,
+          onPressed: _showEndCallConfirmationDialog,
         ),
       ];
     } else if (_state == CallStateEnum.PROGRESS || _state == CallStateEnum.CONNECTING) {
@@ -1106,7 +1154,7 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
         ActionButton(
           icon: Icons.call_end,
           fillColor: Colors.red,
-          onPressed: _handleHangup,
+          onPressed: _showEndCallConfirmationDialog,
         ),
       ];
     } else if (_state == CallStateEnum.FAILED || _state == CallStateEnum.ENDED) {
@@ -1127,8 +1175,13 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
+    return WillPopScope(
+      onWillPop: () async {
+        _showEndCallConfirmationDialog();
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
       appBar: voiceOnly ? AppBar(
         centerTitle: true,
         backgroundColor: Colors.black87,
@@ -1165,17 +1218,18 @@ class _MyCallScreenWidget extends State<CallScreenWidget>
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        width: 350,
-        margin: const EdgeInsets.only(top: 5),
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: voiceOnly ? Colors.black : Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Container(
-          margin: const EdgeInsets.only(top: 10),
-          child: _buildActionButtons(),
+        floatingActionButton: Container(
+          width: 350,
+          margin: const EdgeInsets.only(top: 5),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: voiceOnly ? Colors.black : Colors.transparent,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            margin: const EdgeInsets.only(top: 10),
+            child: _buildActionButtons(),
+          ),
         ),
       ),
     );

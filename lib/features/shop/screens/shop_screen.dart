@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mahakal/features/product/controllers/seller_product_controller.dart';
+import 'package:mahakal/features/shipping/controllers/shipping_controller.dart';
 import 'package:mahakal/localization/controllers/localization_controller.dart';
 import 'package:mahakal/localization/language_constrants.dart';
 import 'package:mahakal/features/brand/controllers/brand_controller.dart';
@@ -91,6 +92,19 @@ class _TopSellerProductScreenState extends State<TopSellerProductScreen>
         .initConfig(context);
   }
 
+  Future<void> _loadData() async {
+    await Provider.of<CartController>(Get.context!, listen: false)
+        .getCartData(Get.context!);
+    Provider.of<CartController>(Get.context!, listen: false).setCartData();
+    if (Provider.of<SplashController>(Get.context!, listen: false)
+            .configModel!
+            .shippingMethod !=
+        'sellerwise_shipping') {
+      Provider.of<ShippingController>(Get.context!, listen: false)
+          .getAdminShippingMethodList(Get.context!);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -125,7 +139,8 @@ class _TopSellerProductScreenState extends State<TopSellerProductScreen>
 
     // Load initial data
     debugPrint('📦 Loading initial shop data via _load()...');
-    _load();
+    // _load();
+    _loadData();
 
     // Initialize tab controller based on fromMore flag
     if (widget.fromMore) {

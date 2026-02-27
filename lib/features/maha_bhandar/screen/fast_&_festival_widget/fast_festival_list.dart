@@ -9,8 +9,8 @@ import 'package:page_animation_transition/page_animation_transition.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tdk_bouncingwidget/tdk_bouncingwidget.dart';
 
-import '../../../../data/datasource/remote/http/httpClient.dart';
-import '../../../../utill/app_constants.dart';
+import '../../../../../data/datasource/remote/http/httpClient.dart';
+import '../../../../../utill/app_constants.dart';
 import 'fast_festival_details.dart';
 
 class FastFestivalsList extends StatefulWidget {

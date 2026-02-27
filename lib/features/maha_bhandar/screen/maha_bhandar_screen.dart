@@ -8,7 +8,7 @@ import 'package:mahakal/features/maha_bhandar/screen/shubh_muhurt.dart';
 import 'package:mahakal/features/maha_bhandar/screen/today_screen.dart';
 import 'package:intl/intl.dart';
 
-import '../../../localization/language_constrants.dart';
+import '../../../../localization/language_constrants.dart';
 import 'fast_screen.dart';
 
 class MahaBhandar extends StatefulWidget {
@@ -78,7 +78,6 @@ class _MahaBhandarState extends State<MahaBhandar>
     DateTime now = DateTime.now();
     String moonDate = DateFormat('dd-MMMM-yyyy').format(now);
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,

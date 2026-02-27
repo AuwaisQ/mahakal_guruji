@@ -4,6 +4,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:mahakal/features/brand/controllers/brand_controller.dart';
+import 'package:mahakal/features/category/controllers/category_controller.dart';
+import 'package:mahakal/features/coupon/controllers/coupon_controller.dart';
+import 'package:mahakal/features/shop/controllers/shop_controller.dart';
 import 'package:mahakal/utill/app_constants.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -481,9 +485,35 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
     // },
   ];
 
+  void _load() async {
+    if (widget.sellerId == null) {
+      debugPrint('⚠️ sellerId is null, skipping _load()');
+      return;
+    }
+    await Provider.of<SellerProductController>(context, listen: false)
+        .getSellerProductList(widget.sellerId.toString(), 1, '');
+    await Provider.of<ShopController>(Get.context!, listen: false)
+        .getSellerInfo(widget.sellerId.toString());
+    await Provider.of<SellerProductController>(Get.context!, listen: false)
+        .getSellerWiseBestSellingProductList(widget.sellerId.toString(), 1);
+    await Provider.of<SellerProductController>(Get.context!, listen: false)
+        .getSellerWiseFeaturedProductList(widget.sellerId.toString(), 1);
+    await Provider.of<SellerProductController>(Get.context!, listen: false)
+        .getSellerWiseRecommandedProductList(widget.sellerId.toString(), 1);
+    await Provider.of<CouponController>(Get.context!, listen: false)
+        .getSellerWiseCouponList(widget.sellerId!, 1);
+    await Provider.of<CategoryController>(Get.context!, listen: false)
+        .getSellerWiseCategoryList(widget.sellerId!);
+    await Provider.of<BrandController>(Get.context!, listen: false)
+        .getSellerWiseBrandList(widget.sellerId!);
+    await Provider.of<SplashController>(context, listen: false)
+        .initConfig(context);
+  }
+
   @override
   void initState() {
     super.initState();
+    _load();
     fetchAllPanditService();
     isLanguage =
     Provider
@@ -494,6 +524,8 @@ class _AllPanditPoojaScreenState extends State<AllPanditPoojaScreen> {
   @override
   void dispose() {
     _searchController.dispose();
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override

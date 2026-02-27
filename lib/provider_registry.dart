@@ -1,4 +1,5 @@
 import 'package:mahakal/features/astrotalk/controller/astrotalk_controller.dart';
+import 'package:mahakal/features/maha_bhandar/controller/hora_controller.dart';
 import 'package:mahakal/theme/controllers/theme_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -77,4 +78,7 @@ final List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (context) => di.sl<ReviewController>()),
   ChangeNotifierProvider(create: (context) => di.sl<SellerProductController>()),
   ChangeNotifierProvider(create: (context) => di.sl<SocketController>()),
+
+  // controllers for maha bhandar feature
+  ChangeNotifierProvider(create: (context) => di.sl<HoraController>()),
 ];

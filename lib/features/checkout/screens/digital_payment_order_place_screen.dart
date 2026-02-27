@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:mahakal/features/all_pandit/Pandit_Bottom_bar.dart';
 import 'package:mahakal/localization/language_constrants.dart';
 import 'package:mahakal/main.dart';
 import 'package:mahakal/utill/app_constants.dart';
@@ -97,9 +98,14 @@ class DigitalPaymentScreenState extends State<DigitalPaymentScreen> {
       controllerGlobal.goBack();
       return Future.value(false);
     } else {
-      // Navigator.of(Get.context!).pushAndRemoveUntil(
-      //     CupertinoPageRoute(builder: (_) => const BottomBar(pageIndex: 0)),
-      //     (route) => false);
+      Navigator.of(Get.context!).pushAndRemoveUntil(
+          CupertinoPageRoute(builder: (_) => const PanditBottomBar(
+           pageIndex: 0, 
+            panditId: AppConstants.panditId, 
+            sellerId: AppConstants.sellerId, 
+            astroImage: '',
+          ),),
+          (route) => false);
       showAnimatedDialog(
           Get.context!,
           OrderPlaceDialogWidget(
@@ -174,9 +180,14 @@ class MyInAppBrowser extends InAppBrowser {
   @override
   void onExit() {
     if (_canRedirect) {
-      // Navigator.of(context).pushAndRemoveUntil(
-      //     CupertinoPageRoute(builder: (_) => const BottomBar(pageIndex: 0)),
-      //     (route) => false);
+      Navigator.of(context).pushAndRemoveUntil(
+          CupertinoPageRoute(builder: (_) => const PanditBottomBar(
+           pageIndex: 0, 
+            panditId: AppConstants.panditId, 
+            sellerId: AppConstants.sellerId, 
+            astroImage: '',
+          ),),
+          (route) => false);
 
       showAnimatedDialog(
           context,
@@ -233,9 +244,14 @@ class MyInAppBrowser extends InAppBrowser {
         close();
       }
       if (isSuccess) {
-        // Navigator.of(context).pushAndRemoveUntil(
-        //     CupertinoPageRoute(builder: (_) => const BottomBar(pageIndex: 0)),
-        //     (route) => false);
+        Navigator.of(context).pushAndRemoveUntil(
+          CupertinoPageRoute(builder: (_) => const PanditBottomBar(
+           pageIndex: 0, 
+            panditId: AppConstants.panditId, 
+            sellerId: AppConstants.sellerId, 
+            astroImage: '',
+          ),),
+          (route) => false);
 
         showAnimatedDialog(
             context,
@@ -247,9 +263,14 @@ class MyInAppBrowser extends InAppBrowser {
             dismissible: false,
             willFlip: true);
       } else if (isFailed) {
-        // Navigator.of(context).pushAndRemoveUntil(
-        //     CupertinoPageRoute(builder: (_) => const BottomBar(pageIndex: 0)),
-        //     (route) => false);
+        Navigator.of(context).pushAndRemoveUntil(
+          CupertinoPageRoute(builder: (_) => const PanditBottomBar(
+           pageIndex: 0, 
+            panditId: AppConstants.panditId, 
+            sellerId: AppConstants.sellerId, 
+            astroImage: '',
+          ),),
+          (route) => false);
 
         showAnimatedDialog(
             context,
@@ -262,9 +283,14 @@ class MyInAppBrowser extends InAppBrowser {
             dismissible: false,
             willFlip: true);
       } else if (isCancel) {
-        // Navigator.of(context).pushAndRemoveUntil(
-        //     CupertinoPageRoute(builder: (_) => const BottomBar(pageIndex: 0)),
-        //     (route) => false);
+        Navigator.of(context).pushAndRemoveUntil(
+          CupertinoPageRoute(builder: (_) => const PanditBottomBar(
+           pageIndex: 0, 
+            panditId: AppConstants.panditId, 
+            sellerId: AppConstants.sellerId, 
+            astroImage: '',
+          ),),
+          (route) => false);
 
         showAnimatedDialog(
             context,

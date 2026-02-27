@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mahakal/features/auth/controllers/auth_controller.dart';
+import 'package:mahakal/features/infopage/infopageview.dart';
 import 'package:mahakal/features/maha_bhandar/controller/hora_controller.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -12,11 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tdk_bouncingwidget/tdk_bouncingwidget.dart';
 import 'package:toggle_list/toggle_list.dart';
-import '../../../data/datasource/remote/http/httpClient.dart';
-import '../../../main.dart';
-import '../../../utill/app_constants.dart';
-import '../../auth/controllers/auth_controller.dart';
-import '../../infopage/infopageview.dart';
+import '../../../../data/datasource/remote/http/httpClient.dart';
+import '../../../../utill/app_constants.dart';
 import '../model/city_model.dart';
 import '../model/hora_day_Model.dart';
 import '../model/hora_model.dart';
@@ -100,9 +99,9 @@ class _HoraScreenState extends State<HoraScreen> {
         "date": DateFormat('dd/MM/yyyy').format(DateTime.now()),
         "time": DateFormat('HH:mm').format(DateTime.now()),
         "latitutde":
-            Provider.of<HoraController>(Get.context!, listen: false).latitude,
+            Provider.of<HoraController>(context, listen: false).latitude,
         "longitude":
-            Provider.of<HoraController>(Get.context!, listen: false).longitude,
+            Provider.of<HoraController>(context, listen: false).longitude,
         "timezone": "5.5",
         "language": isTranslate ? "en" : "hi"
       });
@@ -149,9 +148,9 @@ class _HoraScreenState extends State<HoraScreen> {
       "date": DateFormat('dd/MM/yyyy').format(DateTime.now()),
       "time": DateFormat('HH:mm').format(DateTime.now()),
       "latitutde":
-          Provider.of<HoraController>(Get.context!, listen: false).latitude,
+          Provider.of<HoraController>(context, listen: false).latitude,
       "longitude":
-          Provider.of<HoraController>(Get.context!, listen: false).longitude,
+          Provider.of<HoraController>(context, listen: false).longitude,
       "timezone": "5.5",
       "language": isTranslate ? "en" : "hi"
     });
@@ -216,9 +215,9 @@ class _HoraScreenState extends State<HoraScreen> {
           .format(DateTime.now().add(const Duration(days: 1))),
       "time": DateFormat('HH:mm').format(DateTime.now()),
       "latitutde":
-          Provider.of<HoraController>(Get.context!, listen: false).latitude,
+          Provider.of<HoraController>(context, listen: false).latitude,
       "longitude":
-          Provider.of<HoraController>(Get.context!, listen: false).longitude,
+          Provider.of<HoraController>(context, listen: false).longitude,
       "timezone": "5.5",
       "language": isTranslate ? "en" : "hi"
     });
@@ -241,9 +240,9 @@ class _HoraScreenState extends State<HoraScreen> {
           .format(DateTime.now().add(const Duration(days: 1))),
       "time": DateFormat('HH:mm').format(DateTime.now()),
       "latitude":
-          Provider.of<HoraController>(Get.context!, listen: false).latitude,
+          Provider.of<HoraController>(context, listen: false).latitude,
       "longitude":
-          Provider.of<HoraController>(Get.context!, listen: false).longitude,
+          Provider.of<HoraController>(context, listen: false).longitude,
       "timezone": "5.5",
       "language": isTranslate ? "en" : "hi"
     });
@@ -260,41 +259,41 @@ class _HoraScreenState extends State<HoraScreen> {
   }
 
   void searchBox() {
-    if (Provider.of<HoraController>(Get.context!, listen: false)
+    if (Provider.of<HoraController>(context, listen: false)
             .countryController
             .text
             .length >
         1) {
       setState(() {
-        Provider.of<HoraController>(Get.context!, listen: false).searchbox =
+        Provider.of<HoraController>(context, listen: false).searchbox =
             true;
       });
-    } else if (Provider.of<HoraController>(Get.context!, listen: false)
+    } else if (Provider.of<HoraController>(context, listen: false)
         .countryController
         .text
         .isEmpty) {
       setState(() {
-        Provider.of<HoraController>(Get.context!, listen: false).searchbox =
+        Provider.of<HoraController>(context, listen: false).searchbox =
             false;
       });
     }
     print(
-        "serchbox $Provider.of<HoraController>(Get.context!, listen: false).searchbox");
+        "serchbox ${Provider.of<HoraController>(context, listen: false).searchbox}");
   }
 
   // country picker api
   void getCityPick() async {
     print("object");
-    Provider.of<HoraController>(Get.context!, listen: false)
+    Provider.of<HoraController>(context, listen: false)
         .cityListModel
         .clear();
     var response = await http.post(
       Uri.parse('https://geo.vedicrishi.in/places/'),
       body: {
-        "country": Provider.of<HoraController>(Get.context!, listen: false)
+        "country": Provider.of<HoraController>(context, listen: false)
             .selectedCountry
             .name,
-        "name": Provider.of<HoraController>(Get.context!, listen: false)
+        "name": Provider.of<HoraController>(context, listen: false)
             .countryController
             .text,
       },
@@ -304,7 +303,7 @@ class _HoraScreenState extends State<HoraScreen> {
         var result = json.decode(response.body);
         print("Api response $result");
         List listLocation = result;
-        Provider.of<HoraController>(Get.context!, listen: false)
+        Provider.of<HoraController>(context, listen: false)
             .cityListModel
             .addAll(listLocation.map((e) => CityPickerModel.fromJson(e)));
       });
@@ -388,13 +387,13 @@ class _HoraScreenState extends State<HoraScreen> {
   @override
   void initState() {
     super.initState();
-    Provider.of<HoraController>(Get.context!, listen: false).isToday = true;
-    latitude = Provider.of<AuthController>(Get.context!, listen: false)
+    Provider.of<HoraController>(context, listen: false).isToday = true;
+    latitude = Provider.of<AuthController>(context, listen: false)
         .latitude
         .toString();
-    longitude = Provider.of<AuthController>(Get.context!, listen: false)
+    longitude = Provider.of<AuthController>(context, listen: false)
         .longitude
-        .toString(); // Provider.of<HoraController>(Get.context!, listen: false).timer = Timer.periodic(const Duration(milliseconds: 10), (Timer t) => updategetHoraData());
+        .toString(); // Provider.of<HoraController>(context, listen: false).timer = Timer.periodic(const Duration(milliseconds: 10), (Timer t) => updategetHoraData());
     getHoraData();
     tomorrowHora();
     getDayHora();
@@ -404,7 +403,7 @@ class _HoraScreenState extends State<HoraScreen> {
   @override
   Widget build(BuildContext context) {
     final horaController =
-        Provider.of<HoraController>(Get.context!, listen: false);
+        Provider.of<HoraController>(context, listen: false);
     String horaDate = DateFormat('dd-MMMM-yyyy').format(horaController.now);
     double screenHeight = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
@@ -458,7 +457,7 @@ class _HoraScreenState extends State<HoraScreen> {
                                                 2.5,
                                         child: Text(
                                           Provider.of<HoraController>(
-                                                  Get.context!,
+                                                  context,
                                                   listen: false)
                                               .countryDefault,
                                           style: TextStyle(
@@ -772,7 +771,7 @@ class _HoraScreenState extends State<HoraScreen> {
 
   Widget todayScreen() {
     final horaController =
-        Provider.of<HoraController>(Get.context!, listen: false);
+        Provider.of<HoraController>(context, listen: false);
     double screenHeight = MediaQuery.of(context).size.height;
     return RefreshIndicator(
       displacement: 20,
@@ -1720,7 +1719,7 @@ class _HoraScreenState extends State<HoraScreen> {
 
   Widget tomorrowScreen() {
     final horaController =
-        Provider.of<HoraController>(Get.context!, listen: false);
+        Provider.of<HoraController>(context, listen: false);
     double screenHeight = MediaQuery.of(context).size.height;
     return horaTomorrowModelList.isEmpty
         ? const Shimmerscreen()
@@ -2333,7 +2332,7 @@ class _HoraScreenState extends State<HoraScreen> {
     final TextEditingController countryController = TextEditingController();
     List<CityPickerModel> citylistdata = <CityPickerModel>[];
     final horaController =
-        Provider.of<HoraController>(Get.context!, listen: false);
+        Provider.of<HoraController>(context, listen: false);
 
     void getCityPick(StateSetter modalSetter) async {
       List<CityPickerModel> citypicket = [];

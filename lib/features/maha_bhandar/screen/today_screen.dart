@@ -3,7 +3,13 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mahakal/features/auth/controllers/auth_controller.dart';
 import 'package:mahakal/features/checkout/widgets/shipping_details_widget.dart';
+import 'package:mahakal/features/infopage/infopageview.dart';
+import 'package:mahakal/features/maha_bhandar/api_service.dart';
+import 'package:mahakal/features/maha_bhandar/model/newtabs_model.dart';
+import 'package:mahakal/features/maha_bhandar/screen/Playlist_Tab_Screen.dart';
+import 'package:mahakal/features/maha_bhandar/screen/all_videos.dart';
 import 'package:mahakal/features/maha_bhandar/screen/share_panchang.dart';
 import 'package:mahakal/features/product/widgets/recommended_product_widget.dart';
 import 'package:intl/intl.dart';
@@ -13,13 +19,11 @@ import 'package:page_animation_transition/page_animation_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tdk_bouncingwidget/tdk_bouncingwidget.dart';
-import '../../../data/datasource/remote/http/httpClient.dart';
-import '../../../localization/language_constrants.dart';
-import '../../../main.dart';
-import '../../../utill/app_constants.dart';
-import '../../../utill/dimensions.dart';
-import '../../auth/controllers/auth_controller.dart';
-import '../../infopage/infopageview.dart';
+import '../../../../data/datasource/remote/http/httpClient.dart';
+import '../../../../localization/language_constrants.dart';
+import '../../../../main.dart';
+import '../../../../utill/app_constants.dart';
+import '../../../../utill/dimensions.dart';
 import '../model/festival_model.dart';
 import '../model/specialmuhurat_model.dart';
 import '../model/today_muhurat_model.dart';
@@ -396,11 +400,65 @@ class _TodayTabState extends State<TodayTab>
         });
   }
 
+  /// Live youtube Videos
+  DynamicTabs? dynamicTabs;
+  List<Video> allVideos = [];
+  Future<void> _fetchLiveData() async {
+    try {
+      final data = await getList(178);
+
+      dynamicTabs = data;
+
+      // Extract videos from dynamicTabs and add to allVideos
+      allVideos = _extractVideos(dynamicTabs);
+
+      print("All Videos length is ${allVideos.length}");
+      setState(() {});
+    } catch (e) {
+      print('Error fetching data: $e');
+    }
+  }
+
+  List<Video> _extractVideos(DynamicTabs? dynamicTabs) {
+    List<Video> videos = [];
+
+    if (dynamicTabs != null) {
+      for (var category in dynamicTabs.data) {
+        // Check if playlistName and listType are null at the category level
+        if (category.playlistName == null && category.listType == null) {
+          for (var video in category.videos) {
+            videos.add(Video(
+              title: video.title,
+              url: video.url,
+              image: video.image,
+              urlStatus: video
+                  .urlStatus, // Assuming urlStatus is a property in the Video class
+            ));
+          }
+        }
+      }
+    }
+
+    return videos;
+  }
+
+  Future<DynamicTabs> getList(int subCategory) async {
+    final url =
+        '${AppConstants.baseUrl}/api/v1/video/video-by-listType?subcategory_id=$subCategory';
+
+    var response = await ApiService().getPlayList(url);
+
+    print(response);
+
+    return DynamicTabs.fromJson(response);
+  }
+
   @override
   void initState() {
     fetchData();
     getMuhuratData();
     getSpecialMuhurat();
+    _fetchLiveData();
     latitude = Provider.of<AuthController>(Get.context!, listen: false)
         .latitude
         .toString();
@@ -1935,6 +1993,161 @@ class _TodayTabState extends State<TodayTab>
                         //     ],
                         //   ),
                         // ),
+
+                        //Todays Live Darshan
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Column(children: [
+                          Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(7),
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 6.0),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context)
+                                      .primaryColor
+                                      .withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 15,
+                                    width: 4,
+                                    decoration: BoxDecoration(
+                                        color: Colors.orange,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    getTranslated('live_darshan', context) ??
+                                        "live_darshan",
+                                    style: TextStyle(
+                                        fontSize: Dimensions.fontSizeLarge,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const Spacer(),
+                                  InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    const PlaylistTabScreen(
+                                                      subCategoryId: 178,
+                                                      categoryName: "Live",
+                                                    )));
+                                      },
+                                      child: Text(
+                                        getTranslated('VIEW_ALL', context) ??
+                                            "View",
+                                        style: TextStyle(
+                                            color: Colors.orange,
+                                            fontSize: Dimensions.fontSizeLarge,
+                                            fontWeight: FontWeight.bold),
+                                      )),
+                                ],
+                              )),
+                          const SizedBox(height: 5),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, top: 3),
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.width * 0.6,
+                              width: MediaQuery.of(context).size.width,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: allVideos.length,
+                                itemBuilder: (BuildContext ctx, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) =>
+                                              SingleVideoPlayer(
+                                            playlist: dynamicTabs!.data[0],
+                                            allVideos: allVideos,
+                                            video: allVideos[index].url,
+                                            isNamePassed: true,
+                                            videoTitle: allVideos[index].title,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 10),
+                                      width: 280,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.grey.shade300),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Expanded(
+                                              flex: 2,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(10),
+                                                        topRight:
+                                                            Radius.circular(
+                                                                10)),
+                                                child: CachedNetworkImage(
+                                                  imageUrl:
+                                                      allVideos[index].image,
+                                                  fit: BoxFit.fill,
+                                                  width: 280,
+                                                  errorWidget: (context, url,
+                                                          error) =>
+                                                      const Icon(Icons.error),
+                                                ),
+                                              )),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10, top: 5),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Expanded(
+                                                    child: Text(
+                                                      allVideos[index].title,
+                                                      style: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                      maxLines: 2,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 5.0),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                        ]),
 
                         //Todays Offers
                         const SizedBox(
